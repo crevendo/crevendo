@@ -57,7 +57,7 @@ func (m *GatewayListMessage) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for UserId
+	// no validation rules for UserUUID
 
 	if len(errors) > 0 {
 		return GatewayListMessageMultiError(errors)
