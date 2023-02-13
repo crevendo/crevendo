@@ -1,6 +1,6 @@
 package crevendo
 
-import "github.com/crevendo/libraries/crevendo-go/crevendo/data"
+import "github.com/crevendo/crevendo/data"
 
 func GetDataValue(key string, data []*data.Data) string {
 	var value string

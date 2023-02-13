@@ -1,6 +1,6 @@
 package hooks
 
-import "github.com/crevendo/libraries/crevendo-go/crevendo/hook"
+import "github.com/crevendo/crevendo/hook"
 
 type CartHooks struct {
 	hook.UnimplementedCartHooksServer

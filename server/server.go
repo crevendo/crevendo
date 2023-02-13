@@ -2,7 +2,7 @@ package server
 
 import (
 	"fmt"
-	"github.com/crevendo/libraries/crevendo-go/crevendo/hook"
+	"github.com/crevendo/crevendo/hook"
 	"github.com/grpc-ecosystem/go-grpc-middleware/recovery"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
