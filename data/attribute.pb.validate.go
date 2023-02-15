@@ -59,8 +59,6 @@ func (m *Attribute) validate(all bool) error {
 
 	// no validation rules for Name
 
-	// no validation rules for Value
-
 	if len(errors) > 0 {
 		return AttributeMultiError(errors)
 	}
