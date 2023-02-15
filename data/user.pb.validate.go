@@ -70,7 +70,7 @@ func (m *User) validate(all bool) error {
 
 	// no validation rules for Password
 
-	// no validation rules for RoleId
+	// no validation rules for Role
 
 	for idx, item := range m.GetData() {
 		_, _ = idx, item
