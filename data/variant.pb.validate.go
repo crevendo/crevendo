@@ -58,6 +58,8 @@ func (m *Variant) validate(all bool) error {
 
 	// no validation rules for Id
 
+	// no validation rules for Name
+
 	// no validation rules for CustomId
 
 	// no validation rules for Image
