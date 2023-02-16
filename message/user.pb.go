@@ -21,6 +21,100 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type UserGetMessage struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *UserGetMessage) Reset() {
+	*x = UserGetMessage{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_user_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UserGetMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserGetMessage) ProtoMessage() {}
+
+func (x *UserGetMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_user_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserGetMessage.ProtoReflect.Descriptor instead.
+func (*UserGetMessage) Descriptor() ([]byte, []int) {
+	return file_proto_message_user_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *UserGetMessage) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type UserGetResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	User *data.User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+}
+
+func (x *UserGetResponse) Reset() {
+	*x = UserGetResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_user_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UserGetResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserGetResponse) ProtoMessage() {}
+
+func (x *UserGetResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_user_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserGetResponse.ProtoReflect.Descriptor instead.
+func (*UserGetResponse) Descriptor() ([]byte, []int) {
+	return file_proto_message_user_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *UserGetResponse) GetUser() *data.User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 type UserListMessage struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -30,7 +124,7 @@ type UserListMessage struct {
 func (x *UserListMessage) Reset() {
 	*x = UserListMessage{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_message_user_proto_msgTypes[0]
+		mi := &file_proto_message_user_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -43,7 +137,7 @@ func (x *UserListMessage) String() string {
 func (*UserListMessage) ProtoMessage() {}
 
 func (x *UserListMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_message_user_proto_msgTypes[0]
+	mi := &file_proto_message_user_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +150,7 @@ func (x *UserListMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserListMessage.ProtoReflect.Descriptor instead.
 func (*UserListMessage) Descriptor() ([]byte, []int) {
-	return file_proto_message_user_proto_rawDescGZIP(), []int{0}
+	return file_proto_message_user_proto_rawDescGZIP(), []int{2}
 }
 
 type UserListResponse struct {
@@ -70,7 +164,7 @@ type UserListResponse struct {
 func (x *UserListResponse) Reset() {
 	*x = UserListResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_message_user_proto_msgTypes[1]
+		mi := &file_proto_message_user_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -83,7 +177,7 @@ func (x *UserListResponse) String() string {
 func (*UserListResponse) ProtoMessage() {}
 
 func (x *UserListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_message_user_proto_msgTypes[1]
+	mi := &file_proto_message_user_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -96,7 +190,7 @@ func (x *UserListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserListResponse.ProtoReflect.Descriptor instead.
 func (*UserListResponse) Descriptor() ([]byte, []int) {
-	return file_proto_message_user_proto_rawDescGZIP(), []int{1}
+	return file_proto_message_user_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *UserListResponse) GetUsers() []*data.User {
@@ -111,7 +205,12 @@ var File_proto_message_user_proto protoreflect.FileDescriptor
 var file_proto_message_user_proto_rawDesc = []byte{
 	0x0a, 0x18, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2f,
 	0x75, 0x73, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x10, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x11, 0x0a, 0x0f,
+	0x6f, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x20, 0x0a, 0x0e,
+	0x55, 0x73, 0x65, 0x72, 0x47, 0x65, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x0e,
+	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x02, 0x69, 0x64, 0x22, 0x2c,
+	0x0a, 0x0f, 0x55, 0x73, 0x65, 0x72, 0x47, 0x65, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x12, 0x19, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x05, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x22, 0x11, 0x0a, 0x0f,
 	0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22,
 	0x2f, 0x0a, 0x10, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x1b, 0x0a, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03,
@@ -133,19 +232,22 @@ func file_proto_message_user_proto_rawDescGZIP() []byte {
 	return file_proto_message_user_proto_rawDescData
 }
 
-var file_proto_message_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_message_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_proto_message_user_proto_goTypes = []interface{}{
-	(*UserListMessage)(nil),  // 0: UserListMessage
-	(*UserListResponse)(nil), // 1: UserListResponse
-	(*data.User)(nil),        // 2: User
+	(*UserGetMessage)(nil),   // 0: UserGetMessage
+	(*UserGetResponse)(nil),  // 1: UserGetResponse
+	(*UserListMessage)(nil),  // 2: UserListMessage
+	(*UserListResponse)(nil), // 3: UserListResponse
+	(*data.User)(nil),        // 4: User
 }
 var file_proto_message_user_proto_depIdxs = []int32{
-	2, // 0: UserListResponse.users:type_name -> User
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: UserGetResponse.user:type_name -> User
+	4, // 1: UserListResponse.users:type_name -> User
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_proto_message_user_proto_init() }
@@ -155,7 +257,7 @@ func file_proto_message_user_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_proto_message_user_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserListMessage); i {
+			switch v := v.(*UserGetMessage); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -167,6 +269,30 @@ func file_proto_message_user_proto_init() {
 			}
 		}
 		file_proto_message_user_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UserGetResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_user_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UserListMessage); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_user_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UserListResponse); i {
 			case 0:
 				return &v.state
@@ -185,7 +311,7 @@ func file_proto_message_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_message_user_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
