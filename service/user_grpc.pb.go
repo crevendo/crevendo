@@ -23,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
-	Get(ctx context.Context, in *message.UserGetMessage, opts ...grpc.CallOption) (*message.UserGetMessage, error)
+	Get(ctx context.Context, in *message.UserGetMessage, opts ...grpc.CallOption) (*message.UserGetResponse, error)
 	List(ctx context.Context, in *message.UserListMessage, opts ...grpc.CallOption) (*message.UserListResponse, error)
 }
 
@@ -35,8 +35,8 @@ func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
 	return &userServiceClient{cc}
 }
 
-func (c *userServiceClient) Get(ctx context.Context, in *message.UserGetMessage, opts ...grpc.CallOption) (*message.UserGetMessage, error) {
-	out := new(message.UserGetMessage)
+func (c *userServiceClient) Get(ctx context.Context, in *message.UserGetMessage, opts ...grpc.CallOption) (*message.UserGetResponse, error) {
+	out := new(message.UserGetResponse)
 	err := c.cc.Invoke(ctx, "/UserService/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -57,7 +57,7 @@ func (c *userServiceClient) List(ctx context.Context, in *message.UserListMessag
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility
 type UserServiceServer interface {
-	Get(context.Context, *message.UserGetMessage) (*message.UserGetMessage, error)
+	Get(context.Context, *message.UserGetMessage) (*message.UserGetResponse, error)
 	List(context.Context, *message.UserListMessage) (*message.UserListResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
@@ -66,7 +66,7 @@ type UserServiceServer interface {
 type UnimplementedUserServiceServer struct {
 }
 
-func (UnimplementedUserServiceServer) Get(context.Context, *message.UserGetMessage) (*message.UserGetMessage, error) {
+func (UnimplementedUserServiceServer) Get(context.Context, *message.UserGetMessage) (*message.UserGetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
 func (UnimplementedUserServiceServer) List(context.Context, *message.UserListMessage) (*message.UserListResponse, error) {
