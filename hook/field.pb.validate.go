@@ -35,22 +35,22 @@ var (
 	_ = sort.Sort
 )
 
-// Validate checks the field values on ListFieldHookParams with the rules
+// Validate checks the field values on FieldListHookParams with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *ListFieldHookParams) Validate() error {
+func (m *FieldListHookParams) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ListFieldHookParams with the rules
+// ValidateAll checks the field values on FieldListHookParams with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ListFieldHookParamsMultiError, or nil if none found.
-func (m *ListFieldHookParams) ValidateAll() error {
+// FieldListHookParamsMultiError, or nil if none found.
+func (m *FieldListHookParams) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ListFieldHookParams) validate(all bool) error {
+func (m *FieldListHookParams) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -64,7 +64,7 @@ func (m *ListFieldHookParams) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ListFieldHookParamsValidationError{
+					errors = append(errors, FieldListHookParamsValidationError{
 						field:  fmt.Sprintf("Fields[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -72,7 +72,7 @@ func (m *ListFieldHookParams) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, ListFieldHookParamsValidationError{
+					errors = append(errors, FieldListHookParamsValidationError{
 						field:  fmt.Sprintf("Fields[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -81,7 +81,7 @@ func (m *ListFieldHookParams) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return ListFieldHookParamsValidationError{
+				return FieldListHookParamsValidationError{
 					field:  fmt.Sprintf("Fields[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -92,19 +92,19 @@ func (m *ListFieldHookParams) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return ListFieldHookParamsMultiError(errors)
+		return FieldListHookParamsMultiError(errors)
 	}
 
 	return nil
 }
 
-// ListFieldHookParamsMultiError is an error wrapping multiple validation
-// errors returned by ListFieldHookParams.ValidateAll() if the designated
+// FieldListHookParamsMultiError is an error wrapping multiple validation
+// errors returned by FieldListHookParams.ValidateAll() if the designated
 // constraints aren't met.
-type ListFieldHookParamsMultiError []error
+type FieldListHookParamsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ListFieldHookParamsMultiError) Error() string {
+func (m FieldListHookParamsMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -113,11 +113,11 @@ func (m ListFieldHookParamsMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ListFieldHookParamsMultiError) AllErrors() []error { return m }
+func (m FieldListHookParamsMultiError) AllErrors() []error { return m }
 
-// ListFieldHookParamsValidationError is the validation error returned by
-// ListFieldHookParams.Validate if the designated constraints aren't met.
-type ListFieldHookParamsValidationError struct {
+// FieldListHookParamsValidationError is the validation error returned by
+// FieldListHookParams.Validate if the designated constraints aren't met.
+type FieldListHookParamsValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -125,24 +125,24 @@ type ListFieldHookParamsValidationError struct {
 }
 
 // Field function returns field value.
-func (e ListFieldHookParamsValidationError) Field() string { return e.field }
+func (e FieldListHookParamsValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ListFieldHookParamsValidationError) Reason() string { return e.reason }
+func (e FieldListHookParamsValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ListFieldHookParamsValidationError) Cause() error { return e.cause }
+func (e FieldListHookParamsValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ListFieldHookParamsValidationError) Key() bool { return e.key }
+func (e FieldListHookParamsValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ListFieldHookParamsValidationError) ErrorName() string {
-	return "ListFieldHookParamsValidationError"
+func (e FieldListHookParamsValidationError) ErrorName() string {
+	return "FieldListHookParamsValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ListFieldHookParamsValidationError) Error() string {
+func (e FieldListHookParamsValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -154,14 +154,14 @@ func (e ListFieldHookParamsValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sListFieldHookParams.%s: %s%s",
+		"invalid %sFieldListHookParams.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ListFieldHookParamsValidationError{}
+var _ error = FieldListHookParamsValidationError{}
 
 var _ interface {
 	Field() string
@@ -169,4 +169,4 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ListFieldHookParamsValidationError{}
+} = FieldListHookParamsValidationError{}

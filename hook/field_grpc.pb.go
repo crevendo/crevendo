@@ -22,8 +22,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FieldHooksClient interface {
-	ListAddressField(ctx context.Context, in *ListFieldHookParams, opts ...grpc.CallOption) (*ListFieldHookParams, error)
-	ListUserField(ctx context.Context, in *ListFieldHookParams, opts ...grpc.CallOption) (*ListFieldHookParams, error)
+	AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error)
+	UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error)
 }
 
 type fieldHooksClient struct {
@@ -34,18 +34,18 @@ func NewFieldHooksClient(cc grpc.ClientConnInterface) FieldHooksClient {
 	return &fieldHooksClient{cc}
 }
 
-func (c *fieldHooksClient) ListAddressField(ctx context.Context, in *ListFieldHookParams, opts ...grpc.CallOption) (*ListFieldHookParams, error) {
-	out := new(ListFieldHookParams)
-	err := c.cc.Invoke(ctx, "/FieldHooks/ListAddressField", in, out, opts...)
+func (c *fieldHooksClient) AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error) {
+	out := new(FieldListHookParams)
+	err := c.cc.Invoke(ctx, "/FieldHooks/AddressFieldList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *fieldHooksClient) ListUserField(ctx context.Context, in *ListFieldHookParams, opts ...grpc.CallOption) (*ListFieldHookParams, error) {
-	out := new(ListFieldHookParams)
-	err := c.cc.Invoke(ctx, "/FieldHooks/ListUserField", in, out, opts...)
+func (c *fieldHooksClient) UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error) {
+	out := new(FieldListHookParams)
+	err := c.cc.Invoke(ctx, "/FieldHooks/UserFieldList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,8 +56,8 @@ func (c *fieldHooksClient) ListUserField(ctx context.Context, in *ListFieldHookP
 // All implementations must embed UnimplementedFieldHooksServer
 // for forward compatibility
 type FieldHooksServer interface {
-	ListAddressField(context.Context, *ListFieldHookParams) (*ListFieldHookParams, error)
-	ListUserField(context.Context, *ListFieldHookParams) (*ListFieldHookParams, error)
+	AddressFieldList(context.Context, *FieldListHookParams) (*FieldListHookParams, error)
+	UserFieldList(context.Context, *FieldListHookParams) (*FieldListHookParams, error)
 	mustEmbedUnimplementedFieldHooksServer()
 }
 
@@ -65,11 +65,11 @@ type FieldHooksServer interface {
 type UnimplementedFieldHooksServer struct {
 }
 
-func (UnimplementedFieldHooksServer) ListAddressField(context.Context, *ListFieldHookParams) (*ListFieldHookParams, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAddressField not implemented")
+func (UnimplementedFieldHooksServer) AddressFieldList(context.Context, *FieldListHookParams) (*FieldListHookParams, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddressFieldList not implemented")
 }
-func (UnimplementedFieldHooksServer) ListUserField(context.Context, *ListFieldHookParams) (*ListFieldHookParams, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUserField not implemented")
+func (UnimplementedFieldHooksServer) UserFieldList(context.Context, *FieldListHookParams) (*FieldListHookParams, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserFieldList not implemented")
 }
 func (UnimplementedFieldHooksServer) mustEmbedUnimplementedFieldHooksServer() {}
 
@@ -84,38 +84,38 @@ func RegisterFieldHooksServer(s grpc.ServiceRegistrar, srv FieldHooksServer) {
 	s.RegisterService(&FieldHooks_ServiceDesc, srv)
 }
 
-func _FieldHooks_ListAddressField_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListFieldHookParams)
+func _FieldHooks_AddressFieldList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FieldListHookParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FieldHooksServer).ListAddressField(ctx, in)
+		return srv.(FieldHooksServer).AddressFieldList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/FieldHooks/ListAddressField",
+		FullMethod: "/FieldHooks/AddressFieldList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FieldHooksServer).ListAddressField(ctx, req.(*ListFieldHookParams))
+		return srv.(FieldHooksServer).AddressFieldList(ctx, req.(*FieldListHookParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FieldHooks_ListUserField_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListFieldHookParams)
+func _FieldHooks_UserFieldList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FieldListHookParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FieldHooksServer).ListUserField(ctx, in)
+		return srv.(FieldHooksServer).UserFieldList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/FieldHooks/ListUserField",
+		FullMethod: "/FieldHooks/UserFieldList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FieldHooksServer).ListUserField(ctx, req.(*ListFieldHookParams))
+		return srv.(FieldHooksServer).UserFieldList(ctx, req.(*FieldListHookParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -128,12 +128,12 @@ var FieldHooks_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*FieldHooksServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListAddressField",
-			Handler:    _FieldHooks_ListAddressField_Handler,
+			MethodName: "AddressFieldList",
+			Handler:    _FieldHooks_AddressFieldList_Handler,
 		},
 		{
-			MethodName: "ListUserField",
-			Handler:    _FieldHooks_ListUserField_Handler,
+			MethodName: "UserFieldList",
+			Handler:    _FieldHooks_UserFieldList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

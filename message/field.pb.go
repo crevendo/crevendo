@@ -21,14 +21,14 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type ListFieldMessage struct {
+type FieldListMessage struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *ListFieldMessage) Reset() {
-	*x = ListFieldMessage{}
+func (x *FieldListMessage) Reset() {
+	*x = FieldListMessage{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_message_field_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -36,13 +36,13 @@ func (x *ListFieldMessage) Reset() {
 	}
 }
 
-func (x *ListFieldMessage) String() string {
+func (x *FieldListMessage) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListFieldMessage) ProtoMessage() {}
+func (*FieldListMessage) ProtoMessage() {}
 
-func (x *ListFieldMessage) ProtoReflect() protoreflect.Message {
+func (x *FieldListMessage) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_message_field_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -54,12 +54,12 @@ func (x *ListFieldMessage) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListFieldMessage.ProtoReflect.Descriptor instead.
-func (*ListFieldMessage) Descriptor() ([]byte, []int) {
+// Deprecated: Use FieldListMessage.ProtoReflect.Descriptor instead.
+func (*FieldListMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_field_proto_rawDescGZIP(), []int{0}
 }
 
-type ListFieldResponse struct {
+type FieldListResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -67,8 +67,8 @@ type ListFieldResponse struct {
 	Fields []*data.Field `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty"`
 }
 
-func (x *ListFieldResponse) Reset() {
-	*x = ListFieldResponse{}
+func (x *FieldListResponse) Reset() {
+	*x = FieldListResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_message_field_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -76,13 +76,13 @@ func (x *ListFieldResponse) Reset() {
 	}
 }
 
-func (x *ListFieldResponse) String() string {
+func (x *FieldListResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListFieldResponse) ProtoMessage() {}
+func (*FieldListResponse) ProtoMessage() {}
 
-func (x *ListFieldResponse) ProtoReflect() protoreflect.Message {
+func (x *FieldListResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_message_field_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -94,12 +94,12 @@ func (x *ListFieldResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListFieldResponse.ProtoReflect.Descriptor instead.
-func (*ListFieldResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use FieldListResponse.ProtoReflect.Descriptor instead.
+func (*FieldListResponse) Descriptor() ([]byte, []int) {
 	return file_proto_message_field_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ListFieldResponse) GetFields() []*data.Field {
+func (x *FieldListResponse) GetFields() []*data.Field {
 	if x != nil {
 		return x.Fields
 	}
@@ -112,8 +112,8 @@ var file_proto_message_field_proto_rawDesc = []byte{
 	0x0a, 0x19, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2f,
 	0x66, 0x69, 0x65, 0x6c, 0x64, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x11, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x12,
-	0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61,
-	0x67, 0x65, 0x22, 0x33, 0x0a, 0x11, 0x4c, 0x69, 0x73, 0x74, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x52,
+	0x0a, 0x10, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x22, 0x33, 0x0a, 0x11, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1e, 0x0a, 0x06, 0x66, 0x69, 0x65, 0x6c, 0x64,
 	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x06, 0x2e, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x52,
 	0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75,
@@ -136,12 +136,12 @@ func file_proto_message_field_proto_rawDescGZIP() []byte {
 
 var file_proto_message_field_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_proto_message_field_proto_goTypes = []interface{}{
-	(*ListFieldMessage)(nil),  // 0: ListFieldMessage
-	(*ListFieldResponse)(nil), // 1: ListFieldResponse
+	(*FieldListMessage)(nil),  // 0: FieldListMessage
+	(*FieldListResponse)(nil), // 1: FieldListResponse
 	(*data.Field)(nil),        // 2: Field
 }
 var file_proto_message_field_proto_depIdxs = []int32{
-	2, // 0: ListFieldResponse.fields:type_name -> Field
+	2, // 0: FieldListResponse.fields:type_name -> Field
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -156,7 +156,7 @@ func file_proto_message_field_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_proto_message_field_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListFieldMessage); i {
+			switch v := v.(*FieldListMessage); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -168,7 +168,7 @@ func file_proto_message_field_proto_init() {
 			}
 		}
 		file_proto_message_field_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListFieldResponse); i {
+			switch v := v.(*FieldListResponse); i {
 			case 0:
 				return &v.state
 			case 1:

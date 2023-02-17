@@ -23,8 +23,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FieldServiceClient interface {
-	ListUserField(ctx context.Context, in *message.ListFieldMessage, opts ...grpc.CallOption) (*message.ListFieldResponse, error)
-	ListAddressField(ctx context.Context, in *message.ListFieldMessage, opts ...grpc.CallOption) (*message.ListFieldResponse, error)
+	UserFieldList(ctx context.Context, in *message.FieldListMessage, opts ...grpc.CallOption) (*message.FieldListResponse, error)
+	AddressFieldList(ctx context.Context, in *message.FieldListMessage, opts ...grpc.CallOption) (*message.FieldListResponse, error)
 }
 
 type fieldServiceClient struct {
@@ -35,18 +35,18 @@ func NewFieldServiceClient(cc grpc.ClientConnInterface) FieldServiceClient {
 	return &fieldServiceClient{cc}
 }
 
-func (c *fieldServiceClient) ListUserField(ctx context.Context, in *message.ListFieldMessage, opts ...grpc.CallOption) (*message.ListFieldResponse, error) {
-	out := new(message.ListFieldResponse)
-	err := c.cc.Invoke(ctx, "/FieldService/ListUserField", in, out, opts...)
+func (c *fieldServiceClient) UserFieldList(ctx context.Context, in *message.FieldListMessage, opts ...grpc.CallOption) (*message.FieldListResponse, error) {
+	out := new(message.FieldListResponse)
+	err := c.cc.Invoke(ctx, "/FieldService/UserFieldList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *fieldServiceClient) ListAddressField(ctx context.Context, in *message.ListFieldMessage, opts ...grpc.CallOption) (*message.ListFieldResponse, error) {
-	out := new(message.ListFieldResponse)
-	err := c.cc.Invoke(ctx, "/FieldService/ListAddressField", in, out, opts...)
+func (c *fieldServiceClient) AddressFieldList(ctx context.Context, in *message.FieldListMessage, opts ...grpc.CallOption) (*message.FieldListResponse, error) {
+	out := new(message.FieldListResponse)
+	err := c.cc.Invoke(ctx, "/FieldService/AddressFieldList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,8 +57,8 @@ func (c *fieldServiceClient) ListAddressField(ctx context.Context, in *message.L
 // All implementations must embed UnimplementedFieldServiceServer
 // for forward compatibility
 type FieldServiceServer interface {
-	ListUserField(context.Context, *message.ListFieldMessage) (*message.ListFieldResponse, error)
-	ListAddressField(context.Context, *message.ListFieldMessage) (*message.ListFieldResponse, error)
+	UserFieldList(context.Context, *message.FieldListMessage) (*message.FieldListResponse, error)
+	AddressFieldList(context.Context, *message.FieldListMessage) (*message.FieldListResponse, error)
 	mustEmbedUnimplementedFieldServiceServer()
 }
 
@@ -66,11 +66,11 @@ type FieldServiceServer interface {
 type UnimplementedFieldServiceServer struct {
 }
 
-func (UnimplementedFieldServiceServer) ListUserField(context.Context, *message.ListFieldMessage) (*message.ListFieldResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUserField not implemented")
+func (UnimplementedFieldServiceServer) UserFieldList(context.Context, *message.FieldListMessage) (*message.FieldListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserFieldList not implemented")
 }
-func (UnimplementedFieldServiceServer) ListAddressField(context.Context, *message.ListFieldMessage) (*message.ListFieldResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAddressField not implemented")
+func (UnimplementedFieldServiceServer) AddressFieldList(context.Context, *message.FieldListMessage) (*message.FieldListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddressFieldList not implemented")
 }
 func (UnimplementedFieldServiceServer) mustEmbedUnimplementedFieldServiceServer() {}
 
@@ -85,38 +85,38 @@ func RegisterFieldServiceServer(s grpc.ServiceRegistrar, srv FieldServiceServer)
 	s.RegisterService(&FieldService_ServiceDesc, srv)
 }
 
-func _FieldService_ListUserField_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(message.ListFieldMessage)
+func _FieldService_UserFieldList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.FieldListMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FieldServiceServer).ListUserField(ctx, in)
+		return srv.(FieldServiceServer).UserFieldList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/FieldService/ListUserField",
+		FullMethod: "/FieldService/UserFieldList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FieldServiceServer).ListUserField(ctx, req.(*message.ListFieldMessage))
+		return srv.(FieldServiceServer).UserFieldList(ctx, req.(*message.FieldListMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FieldService_ListAddressField_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(message.ListFieldMessage)
+func _FieldService_AddressFieldList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.FieldListMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FieldServiceServer).ListAddressField(ctx, in)
+		return srv.(FieldServiceServer).AddressFieldList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/FieldService/ListAddressField",
+		FullMethod: "/FieldService/AddressFieldList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FieldServiceServer).ListAddressField(ctx, req.(*message.ListFieldMessage))
+		return srv.(FieldServiceServer).AddressFieldList(ctx, req.(*message.FieldListMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -129,12 +129,12 @@ var FieldService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*FieldServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListUserField",
-			Handler:    _FieldService_ListUserField_Handler,
+			MethodName: "UserFieldList",
+			Handler:    _FieldService_UserFieldList_Handler,
 		},
 		{
-			MethodName: "ListAddressField",
-			Handler:    _FieldService_ListAddressField_Handler,
+			MethodName: "AddressFieldList",
+			Handler:    _FieldService_AddressFieldList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

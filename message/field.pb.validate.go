@@ -35,22 +35,22 @@ var (
 	_ = sort.Sort
 )
 
-// Validate checks the field values on ListFieldMessage with the rules defined
+// Validate checks the field values on FieldListMessage with the rules defined
 // in the proto definition for this message. If any rules are violated, the
 // first error encountered is returned, or nil if there are no violations.
-func (m *ListFieldMessage) Validate() error {
+func (m *FieldListMessage) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ListFieldMessage with the rules
+// ValidateAll checks the field values on FieldListMessage with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ListFieldMessageMultiError, or nil if none found.
-func (m *ListFieldMessage) ValidateAll() error {
+// FieldListMessageMultiError, or nil if none found.
+func (m *FieldListMessage) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ListFieldMessage) validate(all bool) error {
+func (m *FieldListMessage) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -58,19 +58,19 @@ func (m *ListFieldMessage) validate(all bool) error {
 	var errors []error
 
 	if len(errors) > 0 {
-		return ListFieldMessageMultiError(errors)
+		return FieldListMessageMultiError(errors)
 	}
 
 	return nil
 }
 
-// ListFieldMessageMultiError is an error wrapping multiple validation errors
-// returned by ListFieldMessage.ValidateAll() if the designated constraints
+// FieldListMessageMultiError is an error wrapping multiple validation errors
+// returned by FieldListMessage.ValidateAll() if the designated constraints
 // aren't met.
-type ListFieldMessageMultiError []error
+type FieldListMessageMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ListFieldMessageMultiError) Error() string {
+func (m FieldListMessageMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -79,11 +79,11 @@ func (m ListFieldMessageMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ListFieldMessageMultiError) AllErrors() []error { return m }
+func (m FieldListMessageMultiError) AllErrors() []error { return m }
 
-// ListFieldMessageValidationError is the validation error returned by
-// ListFieldMessage.Validate if the designated constraints aren't met.
-type ListFieldMessageValidationError struct {
+// FieldListMessageValidationError is the validation error returned by
+// FieldListMessage.Validate if the designated constraints aren't met.
+type FieldListMessageValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -91,22 +91,22 @@ type ListFieldMessageValidationError struct {
 }
 
 // Field function returns field value.
-func (e ListFieldMessageValidationError) Field() string { return e.field }
+func (e FieldListMessageValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ListFieldMessageValidationError) Reason() string { return e.reason }
+func (e FieldListMessageValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ListFieldMessageValidationError) Cause() error { return e.cause }
+func (e FieldListMessageValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ListFieldMessageValidationError) Key() bool { return e.key }
+func (e FieldListMessageValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ListFieldMessageValidationError) ErrorName() string { return "ListFieldMessageValidationError" }
+func (e FieldListMessageValidationError) ErrorName() string { return "FieldListMessageValidationError" }
 
 // Error satisfies the builtin error interface
-func (e ListFieldMessageValidationError) Error() string {
+func (e FieldListMessageValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -118,14 +118,14 @@ func (e ListFieldMessageValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sListFieldMessage.%s: %s%s",
+		"invalid %sFieldListMessage.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ListFieldMessageValidationError{}
+var _ error = FieldListMessageValidationError{}
 
 var _ interface {
 	Field() string
@@ -133,24 +133,24 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ListFieldMessageValidationError{}
+} = FieldListMessageValidationError{}
 
-// Validate checks the field values on ListFieldResponse with the rules defined
+// Validate checks the field values on FieldListResponse with the rules defined
 // in the proto definition for this message. If any rules are violated, the
 // first error encountered is returned, or nil if there are no violations.
-func (m *ListFieldResponse) Validate() error {
+func (m *FieldListResponse) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ListFieldResponse with the rules
+// ValidateAll checks the field values on FieldListResponse with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ListFieldResponseMultiError, or nil if none found.
-func (m *ListFieldResponse) ValidateAll() error {
+// FieldListResponseMultiError, or nil if none found.
+func (m *FieldListResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ListFieldResponse) validate(all bool) error {
+func (m *FieldListResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -164,7 +164,7 @@ func (m *ListFieldResponse) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ListFieldResponseValidationError{
+					errors = append(errors, FieldListResponseValidationError{
 						field:  fmt.Sprintf("Fields[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -172,7 +172,7 @@ func (m *ListFieldResponse) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, ListFieldResponseValidationError{
+					errors = append(errors, FieldListResponseValidationError{
 						field:  fmt.Sprintf("Fields[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -181,7 +181,7 @@ func (m *ListFieldResponse) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return ListFieldResponseValidationError{
+				return FieldListResponseValidationError{
 					field:  fmt.Sprintf("Fields[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -192,19 +192,19 @@ func (m *ListFieldResponse) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return ListFieldResponseMultiError(errors)
+		return FieldListResponseMultiError(errors)
 	}
 
 	return nil
 }
 
-// ListFieldResponseMultiError is an error wrapping multiple validation errors
-// returned by ListFieldResponse.ValidateAll() if the designated constraints
+// FieldListResponseMultiError is an error wrapping multiple validation errors
+// returned by FieldListResponse.ValidateAll() if the designated constraints
 // aren't met.
-type ListFieldResponseMultiError []error
+type FieldListResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ListFieldResponseMultiError) Error() string {
+func (m FieldListResponseMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -213,11 +213,11 @@ func (m ListFieldResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ListFieldResponseMultiError) AllErrors() []error { return m }
+func (m FieldListResponseMultiError) AllErrors() []error { return m }
 
-// ListFieldResponseValidationError is the validation error returned by
-// ListFieldResponse.Validate if the designated constraints aren't met.
-type ListFieldResponseValidationError struct {
+// FieldListResponseValidationError is the validation error returned by
+// FieldListResponse.Validate if the designated constraints aren't met.
+type FieldListResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -225,24 +225,24 @@ type ListFieldResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e ListFieldResponseValidationError) Field() string { return e.field }
+func (e FieldListResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ListFieldResponseValidationError) Reason() string { return e.reason }
+func (e FieldListResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ListFieldResponseValidationError) Cause() error { return e.cause }
+func (e FieldListResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ListFieldResponseValidationError) Key() bool { return e.key }
+func (e FieldListResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ListFieldResponseValidationError) ErrorName() string {
-	return "ListFieldResponseValidationError"
+func (e FieldListResponseValidationError) ErrorName() string {
+	return "FieldListResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ListFieldResponseValidationError) Error() string {
+func (e FieldListResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -254,14 +254,14 @@ func (e ListFieldResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sListFieldResponse.%s: %s%s",
+		"invalid %sFieldListResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ListFieldResponseValidationError{}
+var _ error = FieldListResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -269,4 +269,4 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ListFieldResponseValidationError{}
+} = FieldListResponseValidationError{}
