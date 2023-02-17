@@ -343,6 +343,14 @@ func (m *ProductListResponse) validate(all bool) error {
 
 	}
 
+	if m.Page != nil {
+		// no validation rules for Page
+	}
+
+	if m.PageTotal != nil {
+		// no validation rules for PageTotal
+	}
+
 	if len(errors) > 0 {
 		return ProductListResponseMultiError(errors)
 	}
@@ -459,6 +467,10 @@ func (m *ProductListMessage) validate(all bool) error {
 
 	if m.CategoryId != nil {
 		// no validation rules for CategoryId
+	}
+
+	if m.Page != nil {
+		// no validation rules for Page
 	}
 
 	if len(errors) > 0 {
