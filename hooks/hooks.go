@@ -25,3 +25,7 @@ type PaymentHooks struct {
 type ProductHook struct {
 	hook.UnimplementedProductHooksServer
 }
+
+type FieldHook struct {
+	hook.UnimplementedFieldHooksServer
+}

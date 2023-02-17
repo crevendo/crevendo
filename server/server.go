@@ -81,3 +81,9 @@ func WithOrderHooks(hooks hook.OrderHooksServer) HooksServerOption {
 		hook.RegisterOrderHooksServer(server.GrpcServer, hooks)
 	}
 }
+
+func WithFieldHooks(hooks hook.FieldHooksServer) HooksServerOption {
+	return func(server *HooksServer) {
+		hook.RegisterFieldHooksServer(server.GrpcServer, hooks)
+	}
+}
