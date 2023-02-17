@@ -61,6 +61,8 @@ func (m *Integration) validate(all bool) error {
 
 	// no validation rules for Name
 
+	// no validation rules for Admin
+
 	// no validation rules for Enabled
 
 	if len(errors) > 0 {
