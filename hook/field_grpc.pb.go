@@ -8,6 +8,7 @@ package hook
 
 import (
 	context "context"
+	message "github.com/crevendo/crevendo/message"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -22,8 +23,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FieldHooksClient interface {
-	AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error)
-	UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error)
+	AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
+	UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
 }
 
 type fieldHooksClient struct {
@@ -34,8 +35,8 @@ func NewFieldHooksClient(cc grpc.ClientConnInterface) FieldHooksClient {
 	return &fieldHooksClient{cc}
 }
 
-func (c *fieldHooksClient) AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error) {
-	out := new(FieldListHookParams)
+func (c *fieldHooksClient) AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error) {
+	out := new(message.FieldListResponse)
 	err := c.cc.Invoke(ctx, "/FieldHooks/AddressFieldList", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -43,8 +44,8 @@ func (c *fieldHooksClient) AddressFieldList(ctx context.Context, in *FieldListHo
 	return out, nil
 }
 
-func (c *fieldHooksClient) UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error) {
-	out := new(FieldListHookParams)
+func (c *fieldHooksClient) UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error) {
+	out := new(message.FieldListResponse)
 	err := c.cc.Invoke(ctx, "/FieldHooks/UserFieldList", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -56,8 +57,8 @@ func (c *fieldHooksClient) UserFieldList(ctx context.Context, in *FieldListHookP
 // All implementations must embed UnimplementedFieldHooksServer
 // for forward compatibility
 type FieldHooksServer interface {
-	AddressFieldList(context.Context, *FieldListHookParams) (*FieldListHookParams, error)
-	UserFieldList(context.Context, *FieldListHookParams) (*FieldListHookParams, error)
+	AddressFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
+	UserFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
 	mustEmbedUnimplementedFieldHooksServer()
 }
 
@@ -65,10 +66,10 @@ type FieldHooksServer interface {
 type UnimplementedFieldHooksServer struct {
 }
 
-func (UnimplementedFieldHooksServer) AddressFieldList(context.Context, *FieldListHookParams) (*FieldListHookParams, error) {
+func (UnimplementedFieldHooksServer) AddressFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddressFieldList not implemented")
 }
-func (UnimplementedFieldHooksServer) UserFieldList(context.Context, *FieldListHookParams) (*FieldListHookParams, error) {
+func (UnimplementedFieldHooksServer) UserFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserFieldList not implemented")
 }
 func (UnimplementedFieldHooksServer) mustEmbedUnimplementedFieldHooksServer() {}
