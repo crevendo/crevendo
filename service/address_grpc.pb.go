@@ -27,7 +27,7 @@ type AddressServiceClient interface {
 	List(ctx context.Context, in *message.AddressListMessage, opts ...grpc.CallOption) (*message.AddressListResponse, error)
 	Create(ctx context.Context, in *message.AddressCreateMessage, opts ...grpc.CallOption) (*message.AddressCreateResponse, error)
 	Delete(ctx context.Context, in *message.AddressDeleteMessage, opts ...grpc.CallOption) (*message.AddressDeleteResponse, error)
-	Update(ctx context.Context, in *message.AddressUpdateMessage, opts ...grpc.CallOption) (*message.AddressUpdateMessage, error)
+	Update(ctx context.Context, in *message.AddressUpdateMessage, opts ...grpc.CallOption) (*message.AddressUpdateResponse, error)
 }
 
 type addressServiceClient struct {
@@ -74,8 +74,8 @@ func (c *addressServiceClient) Delete(ctx context.Context, in *message.AddressDe
 	return out, nil
 }
 
-func (c *addressServiceClient) Update(ctx context.Context, in *message.AddressUpdateMessage, opts ...grpc.CallOption) (*message.AddressUpdateMessage, error) {
-	out := new(message.AddressUpdateMessage)
+func (c *addressServiceClient) Update(ctx context.Context, in *message.AddressUpdateMessage, opts ...grpc.CallOption) (*message.AddressUpdateResponse, error) {
+	out := new(message.AddressUpdateResponse)
 	err := c.cc.Invoke(ctx, "/AddressService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -91,7 +91,7 @@ type AddressServiceServer interface {
 	List(context.Context, *message.AddressListMessage) (*message.AddressListResponse, error)
 	Create(context.Context, *message.AddressCreateMessage) (*message.AddressCreateResponse, error)
 	Delete(context.Context, *message.AddressDeleteMessage) (*message.AddressDeleteResponse, error)
-	Update(context.Context, *message.AddressUpdateMessage) (*message.AddressUpdateMessage, error)
+	Update(context.Context, *message.AddressUpdateMessage) (*message.AddressUpdateResponse, error)
 	mustEmbedUnimplementedAddressServiceServer()
 }
 
@@ -111,7 +111,7 @@ func (UnimplementedAddressServiceServer) Create(context.Context, *message.Addres
 func (UnimplementedAddressServiceServer) Delete(context.Context, *message.AddressDeleteMessage) (*message.AddressDeleteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedAddressServiceServer) Update(context.Context, *message.AddressUpdateMessage) (*message.AddressUpdateMessage, error) {
+func (UnimplementedAddressServiceServer) Update(context.Context, *message.AddressUpdateMessage) (*message.AddressUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedAddressServiceServer) mustEmbedUnimplementedAddressServiceServer() {}
