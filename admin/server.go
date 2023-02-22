@@ -1,10 +1,8 @@
 package admin
 
 import (
-	"encoding/json"
+	"fmt"
 	"github.com/labstack/echo/v4"
-	"html/template"
-	"net/http"
 	"os"
 	"strconv"
 )
@@ -17,8 +15,10 @@ type Server struct {
 }
 
 func NewServer(options ...func(*Server)) *Server {
+	fmt.Println("Serving admin...")
 	e := echo.New()
 	srv := &Server{echoServer: e}
+	InitDB()
 	srv.setEchoOptions()
 	for _, o := range options {
 		o(srv)
@@ -30,33 +30,9 @@ func (s Server) setEchoOptions() {
 	wd, _ := os.Getwd()
 	s.echoServer.Debug = true
 	s.echoServer.Static("/assets", wd+"/admin/dist/assets")
-	s.setIndex(wd + "/admin/dist/index.html")
-}
-
-func WithRoute(route string, controller ...TemplateController) func(*Server) {
-	return func(s *Server) {
-		s.echoServer.GET(route, func(c echo.Context) error {
-			status := http.StatusOK
-			data, err := controller[0]()
-			if err != nil {
-				s.echoServer.Logger.Error(err)
-				return err
-			}
-
-			jsonString, err := json.Marshal(&data)
-			if err != nil {
-				return err
-			}
-			return c.Render(status, "index.html", string(jsonString))
-		})
-	}
-}
-
-func (s Server) setIndex(index string) {
-	t := &Template{
-		templates: template.Must(template.ParseGlob(index)),
-	}
-	s.echoServer.Renderer = t
+	s.echoServer.File("/", wd+"/admin/dist/index.html")
+	s.echoServer.POST("/api/options", saveOptionsEndpoint)
+	s.echoServer.GET("/api/options", getOptionsEndpoint)
 }
 
 func (s Server) Listen(port int64) {
