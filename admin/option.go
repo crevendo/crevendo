@@ -34,3 +34,9 @@ func saveOption(option *Option) error {
 	db.Model(&actualOption).Update("Value", option.Value)
 	return nil
 }
+
+func GetOptionValue(key string) string {
+	var option Option
+	db.First(&option, "key = ?", key)
+	return option.Value
+}
