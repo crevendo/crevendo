@@ -37,6 +37,9 @@ func saveOption(option *Option) error {
 
 func GetOptionValue(key string) string {
 	var option Option
-	db.First(&option, "key = ?", key)
+	result := db.First(&option, "key = ?", key)
+	if result.RowsAffected < 1 {
+		return ""
+	}
 	return option.Value
 }
