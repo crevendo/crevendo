@@ -26,6 +26,18 @@ func NewServer(options ...func(*Server)) *Server {
 	return srv
 }
 
+func WithEndpoint(path string, fn func(ctx Context) error) func(*Server) {
+	return func(s *Server) {
+		s.echoServer.GET(path, adaptHandler(fn))
+	}
+}
+
+func adaptHandler(fn func(ctx Context) error) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		return fn(Context{c})
+	}
+}
+
 func (s Server) setEchoOptions() {
 	wd, _ := os.Getwd()
 	s.echoServer.Debug = true
