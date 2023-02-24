@@ -25,6 +25,7 @@ const _ = grpc.SupportPackageIsVersion7
 type FieldHooksClient interface {
 	AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
 	UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
+	FieldValidate(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
 }
 
 type fieldHooksClient struct {
@@ -53,12 +54,22 @@ func (c *fieldHooksClient) UserFieldList(ctx context.Context, in *FieldListHookP
 	return out, nil
 }
 
+func (c *fieldHooksClient) FieldValidate(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error) {
+	out := new(message.FieldListResponse)
+	err := c.cc.Invoke(ctx, "/FieldHooks/FieldValidate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FieldHooksServer is the server API for FieldHooks service.
 // All implementations must embed UnimplementedFieldHooksServer
 // for forward compatibility
 type FieldHooksServer interface {
 	AddressFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
 	UserFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
+	FieldValidate(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
 	mustEmbedUnimplementedFieldHooksServer()
 }
 
@@ -71,6 +82,9 @@ func (UnimplementedFieldHooksServer) AddressFieldList(context.Context, *FieldLis
 }
 func (UnimplementedFieldHooksServer) UserFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserFieldList not implemented")
+}
+func (UnimplementedFieldHooksServer) FieldValidate(context.Context, *FieldListHookParams) (*message.FieldListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FieldValidate not implemented")
 }
 func (UnimplementedFieldHooksServer) mustEmbedUnimplementedFieldHooksServer() {}
 
@@ -121,6 +135,24 @@ func _FieldHooks_UserFieldList_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FieldHooks_FieldValidate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FieldListHookParams)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FieldHooksServer).FieldValidate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/FieldHooks/FieldValidate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FieldHooksServer).FieldValidate(ctx, req.(*FieldListHookParams))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FieldHooks_ServiceDesc is the grpc.ServiceDesc for FieldHooks service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -135,6 +167,10 @@ var FieldHooks_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UserFieldList",
 			Handler:    _FieldHooks_UserFieldList_Handler,
+		},
+		{
+			MethodName: "FieldValidate",
+			Handler:    _FieldHooks_FieldValidate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
