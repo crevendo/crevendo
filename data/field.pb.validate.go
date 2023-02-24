@@ -60,6 +60,8 @@ func (m *Field) validate(all bool) error {
 
 	// no validation rules for Type
 
+	// no validation rules for Label
+
 	// no validation rules for Value
 
 	if len(errors) > 0 {
