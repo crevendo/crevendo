@@ -12,6 +12,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -25,7 +26,7 @@ const _ = grpc.SupportPackageIsVersion7
 type FieldHooksClient interface {
 	AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
 	UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
-	FieldHandle(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error)
+	FieldHandle(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type fieldHooksClient struct {
@@ -54,8 +55,8 @@ func (c *fieldHooksClient) UserFieldList(ctx context.Context, in *FieldListHookP
 	return out, nil
 }
 
-func (c *fieldHooksClient) FieldHandle(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*FieldListHookParams, error) {
-	out := new(FieldListHookParams)
+func (c *fieldHooksClient) FieldHandle(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/FieldHooks/FieldHandle", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -69,7 +70,7 @@ func (c *fieldHooksClient) FieldHandle(ctx context.Context, in *FieldListHookPar
 type FieldHooksServer interface {
 	AddressFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
 	UserFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
-	FieldHandle(context.Context, *FieldListHookParams) (*FieldListHookParams, error)
+	FieldHandle(context.Context, *FieldListHookParams) (*emptypb.Empty, error)
 	mustEmbedUnimplementedFieldHooksServer()
 }
 
@@ -83,7 +84,7 @@ func (UnimplementedFieldHooksServer) AddressFieldList(context.Context, *FieldLis
 func (UnimplementedFieldHooksServer) UserFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserFieldList not implemented")
 }
-func (UnimplementedFieldHooksServer) FieldHandle(context.Context, *FieldListHookParams) (*FieldListHookParams, error) {
+func (UnimplementedFieldHooksServer) FieldHandle(context.Context, *FieldListHookParams) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FieldHandle not implemented")
 }
 func (UnimplementedFieldHooksServer) mustEmbedUnimplementedFieldHooksServer() {}
