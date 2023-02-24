@@ -25,7 +25,7 @@ const _ = grpc.SupportPackageIsVersion7
 type FieldHooksClient interface {
 	AddressFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
 	UserFieldList(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
-	FieldValidate(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
+	FieldHandle(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error)
 }
 
 type fieldHooksClient struct {
@@ -54,9 +54,9 @@ func (c *fieldHooksClient) UserFieldList(ctx context.Context, in *FieldListHookP
 	return out, nil
 }
 
-func (c *fieldHooksClient) FieldValidate(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error) {
+func (c *fieldHooksClient) FieldHandle(ctx context.Context, in *FieldListHookParams, opts ...grpc.CallOption) (*message.FieldListResponse, error) {
 	out := new(message.FieldListResponse)
-	err := c.cc.Invoke(ctx, "/FieldHooks/FieldValidate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/FieldHooks/FieldHandle", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ func (c *fieldHooksClient) FieldValidate(ctx context.Context, in *FieldListHookP
 type FieldHooksServer interface {
 	AddressFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
 	UserFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
-	FieldValidate(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
+	FieldHandle(context.Context, *FieldListHookParams) (*message.FieldListResponse, error)
 	mustEmbedUnimplementedFieldHooksServer()
 }
 
@@ -83,8 +83,8 @@ func (UnimplementedFieldHooksServer) AddressFieldList(context.Context, *FieldLis
 func (UnimplementedFieldHooksServer) UserFieldList(context.Context, *FieldListHookParams) (*message.FieldListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserFieldList not implemented")
 }
-func (UnimplementedFieldHooksServer) FieldValidate(context.Context, *FieldListHookParams) (*message.FieldListResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FieldValidate not implemented")
+func (UnimplementedFieldHooksServer) FieldHandle(context.Context, *FieldListHookParams) (*message.FieldListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FieldHandle not implemented")
 }
 func (UnimplementedFieldHooksServer) mustEmbedUnimplementedFieldHooksServer() {}
 
@@ -135,20 +135,20 @@ func _FieldHooks_UserFieldList_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FieldHooks_FieldValidate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _FieldHooks_FieldHandle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FieldListHookParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FieldHooksServer).FieldValidate(ctx, in)
+		return srv.(FieldHooksServer).FieldHandle(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/FieldHooks/FieldValidate",
+		FullMethod: "/FieldHooks/FieldHandle",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FieldHooksServer).FieldValidate(ctx, req.(*FieldListHookParams))
+		return srv.(FieldHooksServer).FieldHandle(ctx, req.(*FieldListHookParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -169,8 +169,8 @@ var FieldHooks_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _FieldHooks_UserFieldList_Handler,
 		},
 		{
-			MethodName: "FieldValidate",
-			Handler:    _FieldHooks_FieldValidate_Handler,
+			MethodName: "FieldHandle",
+			Handler:    _FieldHooks_FieldHandle_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
