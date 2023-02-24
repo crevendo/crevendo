@@ -62,6 +62,8 @@ func (m *Fee) validate(all bool) error {
 
 	// no validation rules for Included
 
+	// no validation rules for Public
+
 	if len(errors) > 0 {
 		return FeeMultiError(errors)
 	}
