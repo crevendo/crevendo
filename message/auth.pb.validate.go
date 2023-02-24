@@ -541,6 +541,8 @@ func (m *RegisterMessage) validate(all bool) error {
 
 	}
 
+	// no validation rules for IsQuick
+
 	if len(errors) > 0 {
 		return RegisterMessageMultiError(errors)
 	}
