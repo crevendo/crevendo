@@ -27,6 +27,8 @@ type AuthServiceClient interface {
 	QuickLogin(ctx context.Context, in *message.QuickLoginMessage, opts ...grpc.CallOption) (*message.QuickLoginResponse, error)
 	Verify(ctx context.Context, in *message.VerifyMessage, opts ...grpc.CallOption) (*message.VerifyResponse, error)
 	Register(ctx context.Context, in *message.RegisterMessage, opts ...grpc.CallOption) (*message.RegisterResponse, error)
+	ForgotPassword(ctx context.Context, in *message.ForgotPasswordMessage, opts ...grpc.CallOption) (*message.ForgotPasswordResponse, error)
+	ResetPassword(ctx context.Context, in *message.ResetPasswordMessage, opts ...grpc.CallOption) (*message.ResetPasswordResponse, error)
 }
 
 type authServiceClient struct {
@@ -73,6 +75,24 @@ func (c *authServiceClient) Register(ctx context.Context, in *message.RegisterMe
 	return out, nil
 }
 
+func (c *authServiceClient) ForgotPassword(ctx context.Context, in *message.ForgotPasswordMessage, opts ...grpc.CallOption) (*message.ForgotPasswordResponse, error) {
+	out := new(message.ForgotPasswordResponse)
+	err := c.cc.Invoke(ctx, "/AuthService/ForgotPassword", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ResetPassword(ctx context.Context, in *message.ResetPasswordMessage, opts ...grpc.CallOption) (*message.ResetPasswordResponse, error) {
+	out := new(message.ResetPasswordResponse)
+	err := c.cc.Invoke(ctx, "/AuthService/ResetPassword", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility
@@ -81,6 +101,8 @@ type AuthServiceServer interface {
 	QuickLogin(context.Context, *message.QuickLoginMessage) (*message.QuickLoginResponse, error)
 	Verify(context.Context, *message.VerifyMessage) (*message.VerifyResponse, error)
 	Register(context.Context, *message.RegisterMessage) (*message.RegisterResponse, error)
+	ForgotPassword(context.Context, *message.ForgotPasswordMessage) (*message.ForgotPasswordResponse, error)
+	ResetPassword(context.Context, *message.ResetPasswordMessage) (*message.ResetPasswordResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -99,6 +121,12 @@ func (UnimplementedAuthServiceServer) Verify(context.Context, *message.VerifyMes
 }
 func (UnimplementedAuthServiceServer) Register(context.Context, *message.RegisterMessage) (*message.RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
+}
+func (UnimplementedAuthServiceServer) ForgotPassword(context.Context, *message.ForgotPasswordMessage) (*message.ForgotPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ForgotPassword not implemented")
+}
+func (UnimplementedAuthServiceServer) ResetPassword(context.Context, *message.ResetPasswordMessage) (*message.ResetPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 
@@ -185,6 +213,42 @@ func _AuthService_Register_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_ForgotPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.ForgotPasswordMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ForgotPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/AuthService/ForgotPassword",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ForgotPassword(ctx, req.(*message.ForgotPasswordMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.ResetPasswordMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ResetPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/AuthService/ResetPassword",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ResetPassword(ctx, req.(*message.ResetPasswordMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -207,6 +271,14 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Register",
 			Handler:    _AuthService_Register_Handler,
+		},
+		{
+			MethodName: "ForgotPassword",
+			Handler:    _AuthService_ForgotPassword_Handler,
+		},
+		{
+			MethodName: "ResetPassword",
+			Handler:    _AuthService_ResetPassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

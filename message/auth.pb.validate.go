@@ -949,3 +949,417 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = VerifyResponseValidationError{}
+
+// Validate checks the field values on ForgotPasswordMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ForgotPasswordMessage) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ForgotPasswordMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ForgotPasswordMessageMultiError, or nil if none found.
+func (m *ForgotPasswordMessage) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ForgotPasswordMessage) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Email
+
+	if len(errors) > 0 {
+		return ForgotPasswordMessageMultiError(errors)
+	}
+
+	return nil
+}
+
+// ForgotPasswordMessageMultiError is an error wrapping multiple validation
+// errors returned by ForgotPasswordMessage.ValidateAll() if the designated
+// constraints aren't met.
+type ForgotPasswordMessageMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ForgotPasswordMessageMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ForgotPasswordMessageMultiError) AllErrors() []error { return m }
+
+// ForgotPasswordMessageValidationError is the validation error returned by
+// ForgotPasswordMessage.Validate if the designated constraints aren't met.
+type ForgotPasswordMessageValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ForgotPasswordMessageValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ForgotPasswordMessageValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ForgotPasswordMessageValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ForgotPasswordMessageValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ForgotPasswordMessageValidationError) ErrorName() string {
+	return "ForgotPasswordMessageValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ForgotPasswordMessageValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sForgotPasswordMessage.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ForgotPasswordMessageValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ForgotPasswordMessageValidationError{}
+
+// Validate checks the field values on ForgotPasswordResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ForgotPasswordResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ForgotPasswordResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ForgotPasswordResponseMultiError, or nil if none found.
+func (m *ForgotPasswordResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ForgotPasswordResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return ForgotPasswordResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ForgotPasswordResponseMultiError is an error wrapping multiple validation
+// errors returned by ForgotPasswordResponse.ValidateAll() if the designated
+// constraints aren't met.
+type ForgotPasswordResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ForgotPasswordResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ForgotPasswordResponseMultiError) AllErrors() []error { return m }
+
+// ForgotPasswordResponseValidationError is the validation error returned by
+// ForgotPasswordResponse.Validate if the designated constraints aren't met.
+type ForgotPasswordResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ForgotPasswordResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ForgotPasswordResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ForgotPasswordResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ForgotPasswordResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ForgotPasswordResponseValidationError) ErrorName() string {
+	return "ForgotPasswordResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ForgotPasswordResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sForgotPasswordResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ForgotPasswordResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ForgotPasswordResponseValidationError{}
+
+// Validate checks the field values on ResetPasswordMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ResetPasswordMessage) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ResetPasswordMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ResetPasswordMessageMultiError, or nil if none found.
+func (m *ResetPasswordMessage) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ResetPasswordMessage) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Token
+
+	// no validation rules for Password
+
+	if len(errors) > 0 {
+		return ResetPasswordMessageMultiError(errors)
+	}
+
+	return nil
+}
+
+// ResetPasswordMessageMultiError is an error wrapping multiple validation
+// errors returned by ResetPasswordMessage.ValidateAll() if the designated
+// constraints aren't met.
+type ResetPasswordMessageMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ResetPasswordMessageMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ResetPasswordMessageMultiError) AllErrors() []error { return m }
+
+// ResetPasswordMessageValidationError is the validation error returned by
+// ResetPasswordMessage.Validate if the designated constraints aren't met.
+type ResetPasswordMessageValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ResetPasswordMessageValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ResetPasswordMessageValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ResetPasswordMessageValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ResetPasswordMessageValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ResetPasswordMessageValidationError) ErrorName() string {
+	return "ResetPasswordMessageValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ResetPasswordMessageValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sResetPasswordMessage.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ResetPasswordMessageValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ResetPasswordMessageValidationError{}
+
+// Validate checks the field values on ResetPasswordResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ResetPasswordResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ResetPasswordResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ResetPasswordResponseMultiError, or nil if none found.
+func (m *ResetPasswordResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ResetPasswordResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return ResetPasswordResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ResetPasswordResponseMultiError is an error wrapping multiple validation
+// errors returned by ResetPasswordResponse.ValidateAll() if the designated
+// constraints aren't met.
+type ResetPasswordResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ResetPasswordResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ResetPasswordResponseMultiError) AllErrors() []error { return m }
+
+// ResetPasswordResponseValidationError is the validation error returned by
+// ResetPasswordResponse.Validate if the designated constraints aren't met.
+type ResetPasswordResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ResetPasswordResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ResetPasswordResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ResetPasswordResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ResetPasswordResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ResetPasswordResponseValidationError) ErrorName() string {
+	return "ResetPasswordResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ResetPasswordResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sResetPasswordResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ResetPasswordResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ResetPasswordResponseValidationError{}
