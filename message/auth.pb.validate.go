@@ -974,6 +974,8 @@ func (m *ForgotPasswordMessage) validate(all bool) error {
 
 	// no validation rules for Email
 
+	// no validation rules for Url
+
 	if len(errors) > 0 {
 		return ForgotPasswordMessageMultiError(errors)
 	}
