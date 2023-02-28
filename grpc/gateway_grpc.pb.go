@@ -8,6 +8,7 @@ package grpc
 
 import (
 	context "context"
+	message "github.com/crevendo/crevendo/message"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -22,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GatewayServiceClient interface {
-	List(ctx context.Context, in *GatewayListMessage, opts ...grpc.CallOption) (*GatewayListResponse, error)
+	List(ctx context.Context, in *message.GatewayListMessage, opts ...grpc.CallOption) (*message.GatewayListResponse, error)
 }
 
 type gatewayServiceClient struct {
@@ -33,8 +34,8 @@ func NewGatewayServiceClient(cc grpc.ClientConnInterface) GatewayServiceClient {
 	return &gatewayServiceClient{cc}
 }
 
-func (c *gatewayServiceClient) List(ctx context.Context, in *GatewayListMessage, opts ...grpc.CallOption) (*GatewayListResponse, error) {
-	out := new(GatewayListResponse)
+func (c *gatewayServiceClient) List(ctx context.Context, in *message.GatewayListMessage, opts ...grpc.CallOption) (*message.GatewayListResponse, error) {
+	out := new(message.GatewayListResponse)
 	err := c.cc.Invoke(ctx, "/GatewayService/List", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -46,7 +47,7 @@ func (c *gatewayServiceClient) List(ctx context.Context, in *GatewayListMessage,
 // All implementations must embed UnimplementedGatewayServiceServer
 // for forward compatibility
 type GatewayServiceServer interface {
-	List(context.Context, *GatewayListMessage) (*GatewayListResponse, error)
+	List(context.Context, *message.GatewayListMessage) (*message.GatewayListResponse, error)
 	mustEmbedUnimplementedGatewayServiceServer()
 }
 
@@ -54,7 +55,7 @@ type GatewayServiceServer interface {
 type UnimplementedGatewayServiceServer struct {
 }
 
-func (UnimplementedGatewayServiceServer) List(context.Context, *GatewayListMessage) (*GatewayListResponse, error) {
+func (UnimplementedGatewayServiceServer) List(context.Context, *message.GatewayListMessage) (*message.GatewayListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 func (UnimplementedGatewayServiceServer) mustEmbedUnimplementedGatewayServiceServer() {}
@@ -71,7 +72,7 @@ func RegisterGatewayServiceServer(s grpc.ServiceRegistrar, srv GatewayServiceSer
 }
 
 func _GatewayService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GatewayListMessage)
+	in := new(message.GatewayListMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -83,7 +84,7 @@ func _GatewayService_List_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/GatewayService/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServiceServer).List(ctx, req.(*GatewayListMessage))
+		return srv.(GatewayServiceServer).List(ctx, req.(*message.GatewayListMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
