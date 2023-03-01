@@ -543,6 +543,10 @@ func (m *OrderListMessage) validate(all bool) error {
 		// no validation rules for PaymentId
 	}
 
+	if m.UserId != nil {
+		// no validation rules for UserId
+	}
+
 	if m.Id != nil {
 		// no validation rules for Id
 	}
