@@ -525,6 +525,8 @@ func (m *AddItemMessage) validate(all bool) error {
 
 	// no validation rules for CartId
 
+	// no validation rules for Quantity
+
 	if m.ProductId != nil {
 		// no validation rules for ProductId
 	}
