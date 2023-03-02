@@ -1,6 +1,9 @@
 package admin
 
-import "gorm.io/gorm"
+import (
+	"fmt"
+	"gorm.io/gorm"
+)
 
 type Option struct {
 	gorm.Model
@@ -28,9 +31,11 @@ func saveOption(option *Option) error {
 	var actualOption Option
 	result := db.First(&actualOption, "key = ?", option.Key)
 	if result.RowsAffected == 0 {
+		fmt.Println("creating")
 		db.Create(option)
 		return nil
 	}
+	fmt.Println("saving:", option.Value)
 	db.Model(&actualOption).Update("Value", option.Value)
 	return nil
 }
