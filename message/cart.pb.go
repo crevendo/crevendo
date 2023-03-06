@@ -547,7 +547,7 @@ func (x *UpdateItemQuantityResponse) GetCart() *data.Cart {
 	return nil
 }
 
-type GetOrderPriceResponse struct {
+type GetOrderTotalResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -555,8 +555,8 @@ type GetOrderPriceResponse struct {
 	Price float32 `protobuf:"fixed32,1,opt,name=price,proto3" json:"price,omitempty"`
 }
 
-func (x *GetOrderPriceResponse) Reset() {
-	*x = GetOrderPriceResponse{}
+func (x *GetOrderTotalResponse) Reset() {
+	*x = GetOrderTotalResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_message_cart_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -564,13 +564,13 @@ func (x *GetOrderPriceResponse) Reset() {
 	}
 }
 
-func (x *GetOrderPriceResponse) String() string {
+func (x *GetOrderTotalResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetOrderPriceResponse) ProtoMessage() {}
+func (*GetOrderTotalResponse) ProtoMessage() {}
 
-func (x *GetOrderPriceResponse) ProtoReflect() protoreflect.Message {
+func (x *GetOrderTotalResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_message_cart_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -582,12 +582,12 @@ func (x *GetOrderPriceResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetOrderPriceResponse.ProtoReflect.Descriptor instead.
-func (*GetOrderPriceResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetOrderTotalResponse.ProtoReflect.Descriptor instead.
+func (*GetOrderTotalResponse) Descriptor() ([]byte, []int) {
 	return file_proto_message_cart_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *GetOrderPriceResponse) GetPrice() float32 {
+func (x *GetOrderTotalResponse) GetPrice() float32 {
 	if x != nil {
 		return x.Price
 	}
@@ -649,7 +649,7 @@ var file_proto_message_cart_proto_rawDesc = []byte{
 	0x75, 0x61, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x19, 0x0a, 0x04, 0x63, 0x61, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x05, 0x2e,
 	0x43, 0x61, 0x72, 0x74, 0x52, 0x04, 0x63, 0x61, 0x72, 0x74, 0x22, 0x2d, 0x0a, 0x15, 0x47, 0x65,
-	0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x50, 0x72, 0x69, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x74, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x72, 0x69, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x02, 0x52, 0x05, 0x70, 0x72, 0x69, 0x63, 0x65, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74,
 	0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f,
@@ -681,7 +681,7 @@ var file_proto_message_cart_proto_goTypes = []interface{}{
 	(*RemoveItemResponse)(nil),         // 7: RemoveItemResponse
 	(*UpdateItemQuantityMessage)(nil),  // 8: UpdateItemQuantityMessage
 	(*UpdateItemQuantityResponse)(nil), // 9: UpdateItemQuantityResponse
-	(*GetOrderPriceResponse)(nil),      // 10: GetOrderPriceResponse
+	(*GetOrderTotalResponse)(nil),      // 10: GetOrderTotalResponse
 	(*data.Cart)(nil),                  // 11: Cart
 }
 var file_proto_message_cart_proto_depIdxs = []int32{
@@ -824,7 +824,7 @@ func file_proto_message_cart_proto_init() {
 			}
 		}
 		file_proto_message_cart_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetOrderPriceResponse); i {
+			switch v := v.(*GetOrderTotalResponse); i {
 			case 0:
 				return &v.state
 			case 1:

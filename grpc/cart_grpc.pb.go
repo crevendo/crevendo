@@ -28,7 +28,7 @@ type CartServiceClient interface {
 	AddItem(ctx context.Context, in *message.AddItemMessage, opts ...grpc.CallOption) (*message.AddItemResponse, error)
 	RemoveItem(ctx context.Context, in *message.RemoveItemMessage, opts ...grpc.CallOption) (*message.RemoveItemResponse, error)
 	UpdateItemQuantity(ctx context.Context, in *message.UpdateItemQuantityMessage, opts ...grpc.CallOption) (*message.UpdateItemQuantityResponse, error)
-	GetOrderPrice(ctx context.Context, in *message.CartGetMessage, opts ...grpc.CallOption) (*message.GetOrderPriceResponse, error)
+	GetOrderTotal(ctx context.Context, in *message.CartGetMessage, opts ...grpc.CallOption) (*message.GetOrderTotalResponse, error)
 }
 
 type cartServiceClient struct {
@@ -84,9 +84,9 @@ func (c *cartServiceClient) UpdateItemQuantity(ctx context.Context, in *message.
 	return out, nil
 }
 
-func (c *cartServiceClient) GetOrderPrice(ctx context.Context, in *message.CartGetMessage, opts ...grpc.CallOption) (*message.GetOrderPriceResponse, error) {
-	out := new(message.GetOrderPriceResponse)
-	err := c.cc.Invoke(ctx, "/CartService/GetOrderPrice", in, out, opts...)
+func (c *cartServiceClient) GetOrderTotal(ctx context.Context, in *message.CartGetMessage, opts ...grpc.CallOption) (*message.GetOrderTotalResponse, error) {
+	out := new(message.GetOrderTotalResponse)
+	err := c.cc.Invoke(ctx, "/CartService/GetOrderTotal", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +102,7 @@ type CartServiceServer interface {
 	AddItem(context.Context, *message.AddItemMessage) (*message.AddItemResponse, error)
 	RemoveItem(context.Context, *message.RemoveItemMessage) (*message.RemoveItemResponse, error)
 	UpdateItemQuantity(context.Context, *message.UpdateItemQuantityMessage) (*message.UpdateItemQuantityResponse, error)
-	GetOrderPrice(context.Context, *message.CartGetMessage) (*message.GetOrderPriceResponse, error)
+	GetOrderTotal(context.Context, *message.CartGetMessage) (*message.GetOrderTotalResponse, error)
 	mustEmbedUnimplementedCartServiceServer()
 }
 
@@ -125,8 +125,8 @@ func (UnimplementedCartServiceServer) RemoveItem(context.Context, *message.Remov
 func (UnimplementedCartServiceServer) UpdateItemQuantity(context.Context, *message.UpdateItemQuantityMessage) (*message.UpdateItemQuantityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateItemQuantity not implemented")
 }
-func (UnimplementedCartServiceServer) GetOrderPrice(context.Context, *message.CartGetMessage) (*message.GetOrderPriceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetOrderPrice not implemented")
+func (UnimplementedCartServiceServer) GetOrderTotal(context.Context, *message.CartGetMessage) (*message.GetOrderTotalResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOrderTotal not implemented")
 }
 func (UnimplementedCartServiceServer) mustEmbedUnimplementedCartServiceServer() {}
 
@@ -231,20 +231,20 @@ func _CartService_UpdateItemQuantity_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CartService_GetOrderPrice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CartService_GetOrderTotal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(message.CartGetMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CartServiceServer).GetOrderPrice(ctx, in)
+		return srv.(CartServiceServer).GetOrderTotal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/CartService/GetOrderPrice",
+		FullMethod: "/CartService/GetOrderTotal",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CartServiceServer).GetOrderPrice(ctx, req.(*message.CartGetMessage))
+		return srv.(CartServiceServer).GetOrderTotal(ctx, req.(*message.CartGetMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -277,8 +277,8 @@ var CartService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CartService_UpdateItemQuantity_Handler,
 		},
 		{
-			MethodName: "GetOrderPrice",
-			Handler:    _CartService_GetOrderPrice_Handler,
+			MethodName: "GetOrderTotal",
+			Handler:    _CartService_GetOrderTotal_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
