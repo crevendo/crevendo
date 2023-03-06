@@ -1246,7 +1246,7 @@ func (m *GetOrderTotalResponse) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Price
+	// no validation rules for Total
 
 	if len(errors) > 0 {
 		return GetOrderTotalResponseMultiError(errors)
