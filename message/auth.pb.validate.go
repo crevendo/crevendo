@@ -543,6 +543,10 @@ func (m *RegisterMessage) validate(all bool) error {
 
 	// no validation rules for IsQuick
 
+	if m.ChangePasswordUrl != nil {
+		// no validation rules for ChangePasswordUrl
+	}
+
 	if len(errors) > 0 {
 		return RegisterMessageMultiError(errors)
 	}
