@@ -351,10 +351,6 @@ func (m *ProductListResponse) validate(all bool) error {
 		// no validation rules for PageTotal
 	}
 
-	if m.OrderBy != nil {
-		// no validation rules for OrderBy
-	}
-
 	if len(errors) > 0 {
 		return ProductListResponseMultiError(errors)
 	}
@@ -475,6 +471,10 @@ func (m *ProductListMessage) validate(all bool) error {
 
 	if m.Page != nil {
 		// no validation rules for Page
+	}
+
+	if m.OrderBy != nil {
+		// no validation rules for OrderBy
 	}
 
 	if len(errors) > 0 {
