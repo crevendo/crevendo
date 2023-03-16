@@ -57,7 +57,7 @@ func (m *EventCreateRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Name
+	// no validation rules for Type
 
 	// no validation rules for UserId
 
