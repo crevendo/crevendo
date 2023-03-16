@@ -299,6 +299,14 @@ func (m *EventListRequest) validate(all bool) error {
 
 	var errors []error
 
+	if m.Type != nil {
+		// no validation rules for Type
+	}
+
+	if m.UserId != nil {
+		// no validation rules for UserId
+	}
+
 	if len(errors) > 0 {
 		return EventListRequestMultiError(errors)
 	}
