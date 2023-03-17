@@ -23,9 +23,9 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CacheServiceClient interface {
-	Clean(ctx context.Context, in *message.CacheCleanRequest, opts ...grpc.CallOption) (*message.CacheCleanResponse, error)
-	CacheProduct(ctx context.Context, in *message.CacheProductGenerateRequest, opts ...grpc.CallOption) (*message.CacheProductGenerateResponse, error)
-	CacheSearch(ctx context.Context, in *message.CacheSearchGenerateRequest, opts ...grpc.CallOption) (*message.CacheSearchGenerateResponse, error)
+	Clear(ctx context.Context, in *message.CacheCleanRequest, opts ...grpc.CallOption) (*message.CacheCleanResponse, error)
+	ClearProduct(ctx context.Context, in *message.CacheProductGenerateRequest, opts ...grpc.CallOption) (*message.CacheProductGenerateResponse, error)
+	ClearSearch(ctx context.Context, in *message.CacheSearchGenerateRequest, opts ...grpc.CallOption) (*message.CacheSearchGenerateResponse, error)
 }
 
 type cacheServiceClient struct {
@@ -36,27 +36,27 @@ func NewCacheServiceClient(cc grpc.ClientConnInterface) CacheServiceClient {
 	return &cacheServiceClient{cc}
 }
 
-func (c *cacheServiceClient) Clean(ctx context.Context, in *message.CacheCleanRequest, opts ...grpc.CallOption) (*message.CacheCleanResponse, error) {
+func (c *cacheServiceClient) Clear(ctx context.Context, in *message.CacheCleanRequest, opts ...grpc.CallOption) (*message.CacheCleanResponse, error) {
 	out := new(message.CacheCleanResponse)
-	err := c.cc.Invoke(ctx, "/CacheService/Clean", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/CacheService/Clear", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cacheServiceClient) CacheProduct(ctx context.Context, in *message.CacheProductGenerateRequest, opts ...grpc.CallOption) (*message.CacheProductGenerateResponse, error) {
+func (c *cacheServiceClient) ClearProduct(ctx context.Context, in *message.CacheProductGenerateRequest, opts ...grpc.CallOption) (*message.CacheProductGenerateResponse, error) {
 	out := new(message.CacheProductGenerateResponse)
-	err := c.cc.Invoke(ctx, "/CacheService/CacheProduct", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/CacheService/ClearProduct", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cacheServiceClient) CacheSearch(ctx context.Context, in *message.CacheSearchGenerateRequest, opts ...grpc.CallOption) (*message.CacheSearchGenerateResponse, error) {
+func (c *cacheServiceClient) ClearSearch(ctx context.Context, in *message.CacheSearchGenerateRequest, opts ...grpc.CallOption) (*message.CacheSearchGenerateResponse, error) {
 	out := new(message.CacheSearchGenerateResponse)
-	err := c.cc.Invoke(ctx, "/CacheService/CacheSearch", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/CacheService/ClearSearch", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,9 +67,9 @@ func (c *cacheServiceClient) CacheSearch(ctx context.Context, in *message.CacheS
 // All implementations must embed UnimplementedCacheServiceServer
 // for forward compatibility
 type CacheServiceServer interface {
-	Clean(context.Context, *message.CacheCleanRequest) (*message.CacheCleanResponse, error)
-	CacheProduct(context.Context, *message.CacheProductGenerateRequest) (*message.CacheProductGenerateResponse, error)
-	CacheSearch(context.Context, *message.CacheSearchGenerateRequest) (*message.CacheSearchGenerateResponse, error)
+	Clear(context.Context, *message.CacheCleanRequest) (*message.CacheCleanResponse, error)
+	ClearProduct(context.Context, *message.CacheProductGenerateRequest) (*message.CacheProductGenerateResponse, error)
+	ClearSearch(context.Context, *message.CacheSearchGenerateRequest) (*message.CacheSearchGenerateResponse, error)
 	mustEmbedUnimplementedCacheServiceServer()
 }
 
@@ -77,14 +77,14 @@ type CacheServiceServer interface {
 type UnimplementedCacheServiceServer struct {
 }
 
-func (UnimplementedCacheServiceServer) Clean(context.Context, *message.CacheCleanRequest) (*message.CacheCleanResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Clean not implemented")
+func (UnimplementedCacheServiceServer) Clear(context.Context, *message.CacheCleanRequest) (*message.CacheCleanResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Clear not implemented")
 }
-func (UnimplementedCacheServiceServer) CacheProduct(context.Context, *message.CacheProductGenerateRequest) (*message.CacheProductGenerateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CacheProduct not implemented")
+func (UnimplementedCacheServiceServer) ClearProduct(context.Context, *message.CacheProductGenerateRequest) (*message.CacheProductGenerateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClearProduct not implemented")
 }
-func (UnimplementedCacheServiceServer) CacheSearch(context.Context, *message.CacheSearchGenerateRequest) (*message.CacheSearchGenerateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CacheSearch not implemented")
+func (UnimplementedCacheServiceServer) ClearSearch(context.Context, *message.CacheSearchGenerateRequest) (*message.CacheSearchGenerateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClearSearch not implemented")
 }
 func (UnimplementedCacheServiceServer) mustEmbedUnimplementedCacheServiceServer() {}
 
@@ -99,56 +99,56 @@ func RegisterCacheServiceServer(s grpc.ServiceRegistrar, srv CacheServiceServer)
 	s.RegisterService(&CacheService_ServiceDesc, srv)
 }
 
-func _CacheService_Clean_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CacheService_Clear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(message.CacheCleanRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CacheServiceServer).Clean(ctx, in)
+		return srv.(CacheServiceServer).Clear(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/CacheService/Clean",
+		FullMethod: "/CacheService/Clear",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).Clean(ctx, req.(*message.CacheCleanRequest))
+		return srv.(CacheServiceServer).Clear(ctx, req.(*message.CacheCleanRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CacheService_CacheProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CacheService_ClearProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(message.CacheProductGenerateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CacheServiceServer).CacheProduct(ctx, in)
+		return srv.(CacheServiceServer).ClearProduct(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/CacheService/CacheProduct",
+		FullMethod: "/CacheService/ClearProduct",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).CacheProduct(ctx, req.(*message.CacheProductGenerateRequest))
+		return srv.(CacheServiceServer).ClearProduct(ctx, req.(*message.CacheProductGenerateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CacheService_CacheSearch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CacheService_ClearSearch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(message.CacheSearchGenerateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CacheServiceServer).CacheSearch(ctx, in)
+		return srv.(CacheServiceServer).ClearSearch(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/CacheService/CacheSearch",
+		FullMethod: "/CacheService/ClearSearch",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).CacheSearch(ctx, req.(*message.CacheSearchGenerateRequest))
+		return srv.(CacheServiceServer).ClearSearch(ctx, req.(*message.CacheSearchGenerateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -161,16 +161,16 @@ var CacheService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CacheServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Clean",
-			Handler:    _CacheService_Clean_Handler,
+			MethodName: "Clear",
+			Handler:    _CacheService_Clear_Handler,
 		},
 		{
-			MethodName: "CacheProduct",
-			Handler:    _CacheService_CacheProduct_Handler,
+			MethodName: "ClearProduct",
+			Handler:    _CacheService_ClearProduct_Handler,
 		},
 		{
-			MethodName: "CacheSearch",
-			Handler:    _CacheService_CacheSearch_Handler,
+			MethodName: "ClearSearch",
+			Handler:    _CacheService_ClearSearch_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
