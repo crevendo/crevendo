@@ -238,3 +238,424 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = CacheCleanResponseValidationError{}
+
+// Validate checks the field values on CacheProductGenerateRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CacheProductGenerateRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CacheProductGenerateRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CacheProductGenerateRequestMultiError, or nil if none found.
+func (m *CacheProductGenerateRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CacheProductGenerateRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.Id != nil {
+		// no validation rules for Id
+	}
+
+	if m.CustomId != nil {
+		// no validation rules for CustomId
+	}
+
+	if len(errors) > 0 {
+		return CacheProductGenerateRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// CacheProductGenerateRequestMultiError is an error wrapping multiple
+// validation errors returned by CacheProductGenerateRequest.ValidateAll() if
+// the designated constraints aren't met.
+type CacheProductGenerateRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CacheProductGenerateRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CacheProductGenerateRequestMultiError) AllErrors() []error { return m }
+
+// CacheProductGenerateRequestValidationError is the validation error returned
+// by CacheProductGenerateRequest.Validate if the designated constraints
+// aren't met.
+type CacheProductGenerateRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CacheProductGenerateRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CacheProductGenerateRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CacheProductGenerateRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CacheProductGenerateRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CacheProductGenerateRequestValidationError) ErrorName() string {
+	return "CacheProductGenerateRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CacheProductGenerateRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCacheProductGenerateRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CacheProductGenerateRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CacheProductGenerateRequestValidationError{}
+
+// Validate checks the field values on CacheProductGenerateResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CacheProductGenerateResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CacheProductGenerateResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CacheProductGenerateResponseMultiError, or nil if none found.
+func (m *CacheProductGenerateResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CacheProductGenerateResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return CacheProductGenerateResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// CacheProductGenerateResponseMultiError is an error wrapping multiple
+// validation errors returned by CacheProductGenerateResponse.ValidateAll() if
+// the designated constraints aren't met.
+type CacheProductGenerateResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CacheProductGenerateResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CacheProductGenerateResponseMultiError) AllErrors() []error { return m }
+
+// CacheProductGenerateResponseValidationError is the validation error returned
+// by CacheProductGenerateResponse.Validate if the designated constraints
+// aren't met.
+type CacheProductGenerateResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CacheProductGenerateResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CacheProductGenerateResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CacheProductGenerateResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CacheProductGenerateResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CacheProductGenerateResponseValidationError) ErrorName() string {
+	return "CacheProductGenerateResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CacheProductGenerateResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCacheProductGenerateResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CacheProductGenerateResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CacheProductGenerateResponseValidationError{}
+
+// Validate checks the field values on CacheSearchGenerateRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CacheSearchGenerateRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CacheSearchGenerateRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CacheSearchGenerateRequestMultiError, or nil if none found.
+func (m *CacheSearchGenerateRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CacheSearchGenerateRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for SearchTerm
+
+	if len(errors) > 0 {
+		return CacheSearchGenerateRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// CacheSearchGenerateRequestMultiError is an error wrapping multiple
+// validation errors returned by CacheSearchGenerateRequest.ValidateAll() if
+// the designated constraints aren't met.
+type CacheSearchGenerateRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CacheSearchGenerateRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CacheSearchGenerateRequestMultiError) AllErrors() []error { return m }
+
+// CacheSearchGenerateRequestValidationError is the validation error returned
+// by CacheSearchGenerateRequest.Validate if the designated constraints aren't met.
+type CacheSearchGenerateRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CacheSearchGenerateRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CacheSearchGenerateRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CacheSearchGenerateRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CacheSearchGenerateRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CacheSearchGenerateRequestValidationError) ErrorName() string {
+	return "CacheSearchGenerateRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CacheSearchGenerateRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCacheSearchGenerateRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CacheSearchGenerateRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CacheSearchGenerateRequestValidationError{}
+
+// Validate checks the field values on CacheSearchGenerateResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CacheSearchGenerateResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CacheSearchGenerateResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CacheSearchGenerateResponseMultiError, or nil if none found.
+func (m *CacheSearchGenerateResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CacheSearchGenerateResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return CacheSearchGenerateResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// CacheSearchGenerateResponseMultiError is an error wrapping multiple
+// validation errors returned by CacheSearchGenerateResponse.ValidateAll() if
+// the designated constraints aren't met.
+type CacheSearchGenerateResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CacheSearchGenerateResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CacheSearchGenerateResponseMultiError) AllErrors() []error { return m }
+
+// CacheSearchGenerateResponseValidationError is the validation error returned
+// by CacheSearchGenerateResponse.Validate if the designated constraints
+// aren't met.
+type CacheSearchGenerateResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CacheSearchGenerateResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CacheSearchGenerateResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CacheSearchGenerateResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CacheSearchGenerateResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CacheSearchGenerateResponseValidationError) ErrorName() string {
+	return "CacheSearchGenerateResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CacheSearchGenerateResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCacheSearchGenerateResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CacheSearchGenerateResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CacheSearchGenerateResponseValidationError{}

@@ -96,6 +96,184 @@ func (*CacheCleanResponse) Descriptor() ([]byte, []int) {
 	return file_proto_message_cache_proto_rawDescGZIP(), []int{1}
 }
 
+type CacheProductGenerateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id       *uint32 `protobuf:"varint,1,opt,name=Id,proto3,oneof" json:"Id,omitempty"`
+	CustomId *string `protobuf:"bytes,2,opt,name=customId,proto3,oneof" json:"customId,omitempty"`
+}
+
+func (x *CacheProductGenerateRequest) Reset() {
+	*x = CacheProductGenerateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_cache_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CacheProductGenerateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CacheProductGenerateRequest) ProtoMessage() {}
+
+func (x *CacheProductGenerateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_cache_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CacheProductGenerateRequest.ProtoReflect.Descriptor instead.
+func (*CacheProductGenerateRequest) Descriptor() ([]byte, []int) {
+	return file_proto_message_cache_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CacheProductGenerateRequest) GetId() uint32 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CacheProductGenerateRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+type CacheProductGenerateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *CacheProductGenerateResponse) Reset() {
+	*x = CacheProductGenerateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_cache_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CacheProductGenerateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CacheProductGenerateResponse) ProtoMessage() {}
+
+func (x *CacheProductGenerateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_cache_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CacheProductGenerateResponse.ProtoReflect.Descriptor instead.
+func (*CacheProductGenerateResponse) Descriptor() ([]byte, []int) {
+	return file_proto_message_cache_proto_rawDescGZIP(), []int{3}
+}
+
+type CacheSearchGenerateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	SearchTerm string `protobuf:"bytes,1,opt,name=searchTerm,proto3" json:"searchTerm,omitempty"`
+}
+
+func (x *CacheSearchGenerateRequest) Reset() {
+	*x = CacheSearchGenerateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_cache_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CacheSearchGenerateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CacheSearchGenerateRequest) ProtoMessage() {}
+
+func (x *CacheSearchGenerateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_cache_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CacheSearchGenerateRequest.ProtoReflect.Descriptor instead.
+func (*CacheSearchGenerateRequest) Descriptor() ([]byte, []int) {
+	return file_proto_message_cache_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CacheSearchGenerateRequest) GetSearchTerm() string {
+	if x != nil {
+		return x.SearchTerm
+	}
+	return ""
+}
+
+type CacheSearchGenerateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *CacheSearchGenerateResponse) Reset() {
+	*x = CacheSearchGenerateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_cache_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CacheSearchGenerateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CacheSearchGenerateResponse) ProtoMessage() {}
+
+func (x *CacheSearchGenerateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_cache_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CacheSearchGenerateResponse.ProtoReflect.Descriptor instead.
+func (*CacheSearchGenerateResponse) Descriptor() ([]byte, []int) {
+	return file_proto_message_cache_proto_rawDescGZIP(), []int{5}
+}
+
 var File_proto_message_cache_proto protoreflect.FileDescriptor
 
 var file_proto_message_cache_proto_rawDesc = []byte{
@@ -103,10 +281,24 @@ var file_proto_message_cache_proto_rawDesc = []byte{
 	0x63, 0x61, 0x63, 0x68, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x13, 0x0a, 0x11, 0x43,
 	0x61, 0x63, 0x68, 0x65, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x22, 0x14, 0x0a, 0x12, 0x43, 0x61, 0x63, 0x68, 0x65, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
-	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x63, 0x72,
-	0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x67, 0x0a, 0x1b, 0x43, 0x61, 0x63, 0x68, 0x65, 0x50,
+	0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x47, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x13, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0d, 0x48, 0x00, 0x52, 0x02, 0x49, 0x64, 0x88, 0x01, 0x01, 0x12, 0x1f, 0x0a, 0x08, 0x63, 0x75,
+	0x73, 0x74, 0x6f, 0x6d, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x48, 0x01, 0x52, 0x08,
+	0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x49, 0x64, 0x88, 0x01, 0x01, 0x42, 0x05, 0x0a, 0x03, 0x5f,
+	0x49, 0x64, 0x42, 0x0b, 0x0a, 0x09, 0x5f, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x49, 0x64, 0x22,
+	0x1e, 0x0a, 0x1c, 0x43, 0x61, 0x63, 0x68, 0x65, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x47,
+	0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x3c, 0x0a, 0x1a, 0x43, 0x61, 0x63, 0x68, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x47, 0x65,
+	0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1e, 0x0a,
+	0x0a, 0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x54, 0x65, 0x72, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0a, 0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x54, 0x65, 0x72, 0x6d, 0x22, 0x1d, 0x0a,
+	0x1b, 0x43, 0x61, 0x63, 0x68, 0x65, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x47, 0x65, 0x6e, 0x65,
+	0x72, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x26, 0x5a, 0x24,
+	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65,
+	0x6e, 0x64, 0x6f, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x6d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -121,10 +313,14 @@ func file_proto_message_cache_proto_rawDescGZIP() []byte {
 	return file_proto_message_cache_proto_rawDescData
 }
 
-var file_proto_message_cache_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_message_cache_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_proto_message_cache_proto_goTypes = []interface{}{
-	(*CacheCleanRequest)(nil),  // 0: CacheCleanRequest
-	(*CacheCleanResponse)(nil), // 1: CacheCleanResponse
+	(*CacheCleanRequest)(nil),            // 0: CacheCleanRequest
+	(*CacheCleanResponse)(nil),           // 1: CacheCleanResponse
+	(*CacheProductGenerateRequest)(nil),  // 2: CacheProductGenerateRequest
+	(*CacheProductGenerateResponse)(nil), // 3: CacheProductGenerateResponse
+	(*CacheSearchGenerateRequest)(nil),   // 4: CacheSearchGenerateRequest
+	(*CacheSearchGenerateResponse)(nil),  // 5: CacheSearchGenerateResponse
 }
 var file_proto_message_cache_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -164,14 +360,63 @@ func file_proto_message_cache_proto_init() {
 				return nil
 			}
 		}
+		file_proto_message_cache_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CacheProductGenerateRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_cache_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CacheProductGenerateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_cache_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CacheSearchGenerateRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_cache_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CacheSearchGenerateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
+	file_proto_message_cache_proto_msgTypes[2].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_message_cache_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
