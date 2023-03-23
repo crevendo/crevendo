@@ -57,7 +57,7 @@ func (m *OrderStatus) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Status
+	// no validation rules for Id
 
 	// no validation rules for Label
 
