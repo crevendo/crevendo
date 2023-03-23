@@ -345,6 +345,8 @@ func (m *OrderItem) validate(all bool) error {
 
 	}
 
+	// no validation rules for Status
+
 	if len(errors) > 0 {
 		return OrderItemMultiError(errors)
 	}
