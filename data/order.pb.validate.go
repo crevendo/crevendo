@@ -59,6 +59,8 @@ func (m *OrderStatus) validate(all bool) error {
 
 	// no validation rules for Id
 
+	// no validation rules for Key
+
 	// no validation rules for Label
 
 	if len(errors) > 0 {
@@ -160,7 +162,9 @@ func (m *OrderItemStatus) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Status
+	// no validation rules for Id
+
+	// no validation rules for Key
 
 	// no validation rules for Label
 
