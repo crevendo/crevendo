@@ -26,6 +26,8 @@ type OrderServiceClient interface {
 	Get(ctx context.Context, in *message.OrderGetMessage, opts ...grpc.CallOption) (*message.OrderGetResponse, error)
 	Create(ctx context.Context, in *message.OrderCreateMessage, opts ...grpc.CallOption) (*message.OrderCreateResponse, error)
 	List(ctx context.Context, in *message.OrderListMessage, opts ...grpc.CallOption) (*message.OrderListResponse, error)
+	Update(ctx context.Context, in *message.OrderUpdateMessage, opts ...grpc.CallOption) (*message.OrderUpdateResponse, error)
+	StatusList(ctx context.Context, in *message.OrderStatusListMessage, opts ...grpc.CallOption) (*message.OrderStatusListResponse, error)
 }
 
 type orderServiceClient struct {
@@ -63,6 +65,24 @@ func (c *orderServiceClient) List(ctx context.Context, in *message.OrderListMess
 	return out, nil
 }
 
+func (c *orderServiceClient) Update(ctx context.Context, in *message.OrderUpdateMessage, opts ...grpc.CallOption) (*message.OrderUpdateResponse, error) {
+	out := new(message.OrderUpdateResponse)
+	err := c.cc.Invoke(ctx, "/OrderService/Update", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *orderServiceClient) StatusList(ctx context.Context, in *message.OrderStatusListMessage, opts ...grpc.CallOption) (*message.OrderStatusListResponse, error) {
+	out := new(message.OrderStatusListResponse)
+	err := c.cc.Invoke(ctx, "/OrderService/StatusList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OrderServiceServer is the server API for OrderService service.
 // All implementations must embed UnimplementedOrderServiceServer
 // for forward compatibility
@@ -70,6 +90,8 @@ type OrderServiceServer interface {
 	Get(context.Context, *message.OrderGetMessage) (*message.OrderGetResponse, error)
 	Create(context.Context, *message.OrderCreateMessage) (*message.OrderCreateResponse, error)
 	List(context.Context, *message.OrderListMessage) (*message.OrderListResponse, error)
+	Update(context.Context, *message.OrderUpdateMessage) (*message.OrderUpdateResponse, error)
+	StatusList(context.Context, *message.OrderStatusListMessage) (*message.OrderStatusListResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
 }
 
@@ -85,6 +107,12 @@ func (UnimplementedOrderServiceServer) Create(context.Context, *message.OrderCre
 }
 func (UnimplementedOrderServiceServer) List(context.Context, *message.OrderListMessage) (*message.OrderListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (UnimplementedOrderServiceServer) Update(context.Context, *message.OrderUpdateMessage) (*message.OrderUpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+func (UnimplementedOrderServiceServer) StatusList(context.Context, *message.OrderStatusListMessage) (*message.OrderStatusListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StatusList not implemented")
 }
 func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
 
@@ -153,6 +181,42 @@ func _OrderService_List_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrderService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.OrderUpdateMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServiceServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/OrderService/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServiceServer).Update(ctx, req.(*message.OrderUpdateMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OrderService_StatusList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.OrderStatusListMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServiceServer).StatusList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/OrderService/StatusList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServiceServer).StatusList(ctx, req.(*message.OrderStatusListMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OrderService_ServiceDesc is the grpc.ServiceDesc for OrderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -171,6 +235,14 @@ var OrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _OrderService_List_Handler,
+		},
+		{
+			MethodName: "Update",
+			Handler:    _OrderService_Update_Handler,
+		},
+		{
+			MethodName: "StatusList",
+			Handler:    _OrderService_StatusList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

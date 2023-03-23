@@ -375,6 +375,184 @@ func (x *OrderListResponse) GetOrders() []*data.Order {
 	return nil
 }
 
+type OrderUpdateMessage struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id     uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Status string `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+}
+
+func (x *OrderUpdateMessage) Reset() {
+	*x = OrderUpdateMessage{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_order_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *OrderUpdateMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderUpdateMessage) ProtoMessage() {}
+
+func (x *OrderUpdateMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_order_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderUpdateMessage.ProtoReflect.Descriptor instead.
+func (*OrderUpdateMessage) Descriptor() ([]byte, []int) {
+	return file_proto_message_order_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *OrderUpdateMessage) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *OrderUpdateMessage) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type OrderUpdateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *OrderUpdateResponse) Reset() {
+	*x = OrderUpdateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_order_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *OrderUpdateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderUpdateResponse) ProtoMessage() {}
+
+func (x *OrderUpdateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_order_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderUpdateResponse.ProtoReflect.Descriptor instead.
+func (*OrderUpdateResponse) Descriptor() ([]byte, []int) {
+	return file_proto_message_order_proto_rawDescGZIP(), []int{7}
+}
+
+type OrderStatusListMessage struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *OrderStatusListMessage) Reset() {
+	*x = OrderStatusListMessage{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_order_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *OrderStatusListMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderStatusListMessage) ProtoMessage() {}
+
+func (x *OrderStatusListMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_order_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderStatusListMessage.ProtoReflect.Descriptor instead.
+func (*OrderStatusListMessage) Descriptor() ([]byte, []int) {
+	return file_proto_message_order_proto_rawDescGZIP(), []int{8}
+}
+
+type OrderStatusListResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	OrderStatuses []string `protobuf:"bytes,1,rep,name=orderStatuses,proto3" json:"orderStatuses,omitempty"`
+}
+
+func (x *OrderStatusListResponse) Reset() {
+	*x = OrderStatusListResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_order_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *OrderStatusListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderStatusListResponse) ProtoMessage() {}
+
+func (x *OrderStatusListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_order_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderStatusListResponse.ProtoReflect.Descriptor instead.
+func (*OrderStatusListResponse) Descriptor() ([]byte, []int) {
+	return file_proto_message_order_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *OrderStatusListResponse) GetOrderStatuses() []string {
+	if x != nil {
+		return x.OrderStatuses
+	}
+	return nil
+}
+
 var File_proto_message_order_proto protoreflect.FileDescriptor
 
 var file_proto_message_order_proto_rawDesc = []byte{
@@ -416,7 +594,18 @@ var file_proto_message_order_proto_rawDesc = []byte{
 	0x69, 0x64, 0x22, 0x33, 0x0a, 0x11, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1e, 0x0a, 0x06, 0x6f, 0x72, 0x64, 0x65, 0x72,
 	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x06, 0x2e, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x52,
-	0x06, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x73, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75,
+	0x06, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x73, 0x22, 0x3c, 0x0a, 0x12, 0x4f, 0x72, 0x64, 0x65, 0x72,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x0e, 0x0a,
+	0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x02, 0x69, 0x64, 0x12, 0x16, 0x0a,
+	0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73,
+	0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x15, 0x0a, 0x13, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x18, 0x0a, 0x16,
+	0x4f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x4c, 0x69, 0x73, 0x74, 0x4d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x3f, 0x0a, 0x17, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x53,
+	0x74, 0x61, 0x74, 0x75, 0x73, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x12, 0x24, 0x0a, 0x0d, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0d, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x53,
+	0x74, 0x61, 0x74, 0x75, 0x73, 0x65, 0x73, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75,
 	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x63,
 	0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x62,
 	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
@@ -434,25 +623,29 @@ func file_proto_message_order_proto_rawDescGZIP() []byte {
 	return file_proto_message_order_proto_rawDescData
 }
 
-var file_proto_message_order_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_proto_message_order_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_proto_message_order_proto_goTypes = []interface{}{
-	(*OrderCreateMessage)(nil),  // 0: OrderCreateMessage
-	(*OrderCreateResponse)(nil), // 1: OrderCreateResponse
-	(*OrderGetMessage)(nil),     // 2: OrderGetMessage
-	(*OrderGetResponse)(nil),    // 3: OrderGetResponse
-	(*OrderListMessage)(nil),    // 4: OrderListMessage
-	(*OrderListResponse)(nil),   // 5: OrderListResponse
-	(*data.Order)(nil),          // 6: Order
+	(*OrderCreateMessage)(nil),      // 0: OrderCreateMessage
+	(*OrderCreateResponse)(nil),     // 1: OrderCreateResponse
+	(*OrderGetMessage)(nil),         // 2: OrderGetMessage
+	(*OrderGetResponse)(nil),        // 3: OrderGetResponse
+	(*OrderListMessage)(nil),        // 4: OrderListMessage
+	(*OrderListResponse)(nil),       // 5: OrderListResponse
+	(*OrderUpdateMessage)(nil),      // 6: OrderUpdateMessage
+	(*OrderUpdateResponse)(nil),     // 7: OrderUpdateResponse
+	(*OrderStatusListMessage)(nil),  // 8: OrderStatusListMessage
+	(*OrderStatusListResponse)(nil), // 9: OrderStatusListResponse
+	(*data.Order)(nil),              // 10: Order
 }
 var file_proto_message_order_proto_depIdxs = []int32{
-	6, // 0: OrderCreateResponse.order:type_name -> Order
-	6, // 1: OrderGetResponse.order:type_name -> Order
-	6, // 2: OrderListResponse.orders:type_name -> Order
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	10, // 0: OrderCreateResponse.order:type_name -> Order
+	10, // 1: OrderGetResponse.order:type_name -> Order
+	10, // 2: OrderListResponse.orders:type_name -> Order
+	3,  // [3:3] is the sub-list for method output_type
+	3,  // [3:3] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_proto_message_order_proto_init() }
@@ -533,6 +726,54 @@ func file_proto_message_order_proto_init() {
 				return nil
 			}
 		}
+		file_proto_message_order_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OrderUpdateMessage); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_order_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OrderUpdateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_order_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OrderStatusListMessage); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_order_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OrderStatusListResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_proto_message_order_proto_msgTypes[0].OneofWrappers = []interface{}{}
 	file_proto_message_order_proto_msgTypes[4].OneofWrappers = []interface{}{}
@@ -542,7 +783,7 @@ func file_proto_message_order_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_message_order_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
