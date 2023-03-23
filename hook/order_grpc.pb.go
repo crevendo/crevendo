@@ -23,6 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OrderHooksClient interface {
 	OrderCreated(ctx context.Context, in *OrderCreateHookParams, opts ...grpc.CallOption) (*OrderCreateHookParams, error)
+	OrderStatuses(ctx context.Context, in *OrderStatusesHookParams, opts ...grpc.CallOption) (*OrderStatusesHookParams, error)
 }
 
 type orderHooksClient struct {
@@ -42,11 +43,21 @@ func (c *orderHooksClient) OrderCreated(ctx context.Context, in *OrderCreateHook
 	return out, nil
 }
 
+func (c *orderHooksClient) OrderStatuses(ctx context.Context, in *OrderStatusesHookParams, opts ...grpc.CallOption) (*OrderStatusesHookParams, error) {
+	out := new(OrderStatusesHookParams)
+	err := c.cc.Invoke(ctx, "/OrderHooks/OrderStatuses", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OrderHooksServer is the server API for OrderHooks service.
 // All implementations must embed UnimplementedOrderHooksServer
 // for forward compatibility
 type OrderHooksServer interface {
 	OrderCreated(context.Context, *OrderCreateHookParams) (*OrderCreateHookParams, error)
+	OrderStatuses(context.Context, *OrderStatusesHookParams) (*OrderStatusesHookParams, error)
 	mustEmbedUnimplementedOrderHooksServer()
 }
 
@@ -56,6 +67,9 @@ type UnimplementedOrderHooksServer struct {
 
 func (UnimplementedOrderHooksServer) OrderCreated(context.Context, *OrderCreateHookParams) (*OrderCreateHookParams, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrderCreated not implemented")
+}
+func (UnimplementedOrderHooksServer) OrderStatuses(context.Context, *OrderStatusesHookParams) (*OrderStatusesHookParams, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method OrderStatuses not implemented")
 }
 func (UnimplementedOrderHooksServer) mustEmbedUnimplementedOrderHooksServer() {}
 
@@ -88,6 +102,24 @@ func _OrderHooks_OrderCreated_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrderHooks_OrderStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OrderStatusesHookParams)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderHooksServer).OrderStatuses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/OrderHooks/OrderStatuses",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderHooksServer).OrderStatuses(ctx, req.(*OrderStatusesHookParams))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OrderHooks_ServiceDesc is the grpc.ServiceDesc for OrderHooks service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +130,10 @@ var OrderHooks_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "OrderCreated",
 			Handler:    _OrderHooks_OrderCreated_Handler,
+		},
+		{
+			MethodName: "OrderStatuses",
+			Handler:    _OrderHooks_OrderStatuses_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
