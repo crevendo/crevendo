@@ -24,7 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type OrderHooksClient interface {
 	OrderCreated(ctx context.Context, in *OrderCreateHookParams, opts ...grpc.CallOption) (*OrderCreateHookParams, error)
 	OrderStatuses(ctx context.Context, in *OrderStatusesHookParams, opts ...grpc.CallOption) (*OrderStatusesHookParams, error)
-	OrderItemStatuses(ctx context.Context, in *OrderStatusesHookParams, opts ...grpc.CallOption) (*OrderStatusesHookParams, error)
+	OrderItemStatuses(ctx context.Context, in *OrderItemStatusesHookParams, opts ...grpc.CallOption) (*OrderItemStatusesHookParams, error)
 }
 
 type orderHooksClient struct {
@@ -53,8 +53,8 @@ func (c *orderHooksClient) OrderStatuses(ctx context.Context, in *OrderStatusesH
 	return out, nil
 }
 
-func (c *orderHooksClient) OrderItemStatuses(ctx context.Context, in *OrderStatusesHookParams, opts ...grpc.CallOption) (*OrderStatusesHookParams, error) {
-	out := new(OrderStatusesHookParams)
+func (c *orderHooksClient) OrderItemStatuses(ctx context.Context, in *OrderItemStatusesHookParams, opts ...grpc.CallOption) (*OrderItemStatusesHookParams, error) {
+	out := new(OrderItemStatusesHookParams)
 	err := c.cc.Invoke(ctx, "/OrderHooks/OrderItemStatuses", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -68,7 +68,7 @@ func (c *orderHooksClient) OrderItemStatuses(ctx context.Context, in *OrderStatu
 type OrderHooksServer interface {
 	OrderCreated(context.Context, *OrderCreateHookParams) (*OrderCreateHookParams, error)
 	OrderStatuses(context.Context, *OrderStatusesHookParams) (*OrderStatusesHookParams, error)
-	OrderItemStatuses(context.Context, *OrderStatusesHookParams) (*OrderStatusesHookParams, error)
+	OrderItemStatuses(context.Context, *OrderItemStatusesHookParams) (*OrderItemStatusesHookParams, error)
 	mustEmbedUnimplementedOrderHooksServer()
 }
 
@@ -82,7 +82,7 @@ func (UnimplementedOrderHooksServer) OrderCreated(context.Context, *OrderCreateH
 func (UnimplementedOrderHooksServer) OrderStatuses(context.Context, *OrderStatusesHookParams) (*OrderStatusesHookParams, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrderStatuses not implemented")
 }
-func (UnimplementedOrderHooksServer) OrderItemStatuses(context.Context, *OrderStatusesHookParams) (*OrderStatusesHookParams, error) {
+func (UnimplementedOrderHooksServer) OrderItemStatuses(context.Context, *OrderItemStatusesHookParams) (*OrderItemStatusesHookParams, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrderItemStatuses not implemented")
 }
 func (UnimplementedOrderHooksServer) mustEmbedUnimplementedOrderHooksServer() {}
@@ -135,7 +135,7 @@ func _OrderHooks_OrderStatuses_Handler(srv interface{}, ctx context.Context, dec
 }
 
 func _OrderHooks_OrderItemStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OrderStatusesHookParams)
+	in := new(OrderItemStatusesHookParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -147,7 +147,7 @@ func _OrderHooks_OrderItemStatuses_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/OrderHooks/OrderItemStatuses",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderHooksServer).OrderItemStatuses(ctx, req.(*OrderStatusesHookParams))
+		return srv.(OrderHooksServer).OrderItemStatuses(ctx, req.(*OrderItemStatusesHookParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
