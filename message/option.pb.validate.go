@@ -480,3 +480,238 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = OptionUpdateResponseValidationError{}
+
+// Validate checks the field values on OptionGetByNameMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *OptionGetByNameMessage) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on OptionGetByNameMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// OptionGetByNameMessageMultiError, or nil if none found.
+func (m *OptionGetByNameMessage) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *OptionGetByNameMessage) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Name
+
+	if len(errors) > 0 {
+		return OptionGetByNameMessageMultiError(errors)
+	}
+
+	return nil
+}
+
+// OptionGetByNameMessageMultiError is an error wrapping multiple validation
+// errors returned by OptionGetByNameMessage.ValidateAll() if the designated
+// constraints aren't met.
+type OptionGetByNameMessageMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m OptionGetByNameMessageMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m OptionGetByNameMessageMultiError) AllErrors() []error { return m }
+
+// OptionGetByNameMessageValidationError is the validation error returned by
+// OptionGetByNameMessage.Validate if the designated constraints aren't met.
+type OptionGetByNameMessageValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e OptionGetByNameMessageValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e OptionGetByNameMessageValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e OptionGetByNameMessageValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e OptionGetByNameMessageValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e OptionGetByNameMessageValidationError) ErrorName() string {
+	return "OptionGetByNameMessageValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e OptionGetByNameMessageValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sOptionGetByNameMessage.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = OptionGetByNameMessageValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = OptionGetByNameMessageValidationError{}
+
+// Validate checks the field values on OptionGetByNameResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *OptionGetByNameResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on OptionGetByNameResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// OptionGetByNameResponseMultiError, or nil if none found.
+func (m *OptionGetByNameResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *OptionGetByNameResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetOption()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, OptionGetByNameResponseValidationError{
+					field:  "Option",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, OptionGetByNameResponseValidationError{
+					field:  "Option",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetOption()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return OptionGetByNameResponseValidationError{
+				field:  "Option",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return OptionGetByNameResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// OptionGetByNameResponseMultiError is an error wrapping multiple validation
+// errors returned by OptionGetByNameResponse.ValidateAll() if the designated
+// constraints aren't met.
+type OptionGetByNameResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m OptionGetByNameResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m OptionGetByNameResponseMultiError) AllErrors() []error { return m }
+
+// OptionGetByNameResponseValidationError is the validation error returned by
+// OptionGetByNameResponse.Validate if the designated constraints aren't met.
+type OptionGetByNameResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e OptionGetByNameResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e OptionGetByNameResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e OptionGetByNameResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e OptionGetByNameResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e OptionGetByNameResponseValidationError) ErrorName() string {
+	return "OptionGetByNameResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e OptionGetByNameResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sOptionGetByNameResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = OptionGetByNameResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = OptionGetByNameResponseValidationError{}

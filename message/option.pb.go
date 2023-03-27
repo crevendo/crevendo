@@ -199,6 +199,100 @@ func (*OptionUpdateResponse) Descriptor() ([]byte, []int) {
 	return file_proto_message_option_proto_rawDescGZIP(), []int{3}
 }
 
+type OptionGetByNameMessage struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *OptionGetByNameMessage) Reset() {
+	*x = OptionGetByNameMessage{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_option_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *OptionGetByNameMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OptionGetByNameMessage) ProtoMessage() {}
+
+func (x *OptionGetByNameMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_option_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OptionGetByNameMessage.ProtoReflect.Descriptor instead.
+func (*OptionGetByNameMessage) Descriptor() ([]byte, []int) {
+	return file_proto_message_option_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *OptionGetByNameMessage) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type OptionGetByNameResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Option *data.Option `protobuf:"bytes,1,opt,name=option,proto3" json:"option,omitempty"`
+}
+
+func (x *OptionGetByNameResponse) Reset() {
+	*x = OptionGetByNameResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_option_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *OptionGetByNameResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OptionGetByNameResponse) ProtoMessage() {}
+
+func (x *OptionGetByNameResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_option_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OptionGetByNameResponse.ProtoReflect.Descriptor instead.
+func (*OptionGetByNameResponse) Descriptor() ([]byte, []int) {
+	return file_proto_message_option_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *OptionGetByNameResponse) GetOption() *data.Option {
+	if x != nil {
+		return x.Option
+	}
+	return nil
+}
+
 var File_proto_message_option_proto protoreflect.FileDescriptor
 
 var file_proto_message_option_proto_rawDesc = []byte{
@@ -215,10 +309,17 @@ var file_proto_message_option_proto_rawDesc = []byte{
 	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c,
 	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22,
 	0x16, 0x0a, 0x14, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x63,
-	0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2c, 0x0a, 0x16, 0x4f, 0x70, 0x74, 0x69, 0x6f,
+	0x6e, 0x47, 0x65, 0x74, 0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x3a, 0x0a, 0x17, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x47,
+	0x65, 0x74, 0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x1f, 0x0a, 0x06, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x07, 0x2e, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x06, 0x6f, 0x70, 0x74, 0x69, 0x6f,
+	0x6e, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64,
+	0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -233,21 +334,24 @@ func file_proto_message_option_proto_rawDescGZIP() []byte {
 	return file_proto_message_option_proto_rawDescData
 }
 
-var file_proto_message_option_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_proto_message_option_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_proto_message_option_proto_goTypes = []interface{}{
-	(*OptionListMessage)(nil),    // 0: OptionListMessage
-	(*OptionListResponse)(nil),   // 1: OptionListResponse
-	(*OptionUpdateMessage)(nil),  // 2: OptionUpdateMessage
-	(*OptionUpdateResponse)(nil), // 3: OptionUpdateResponse
-	(*data.Option)(nil),          // 4: Option
+	(*OptionListMessage)(nil),       // 0: OptionListMessage
+	(*OptionListResponse)(nil),      // 1: OptionListResponse
+	(*OptionUpdateMessage)(nil),     // 2: OptionUpdateMessage
+	(*OptionUpdateResponse)(nil),    // 3: OptionUpdateResponse
+	(*OptionGetByNameMessage)(nil),  // 4: OptionGetByNameMessage
+	(*OptionGetByNameResponse)(nil), // 5: OptionGetByNameResponse
+	(*data.Option)(nil),             // 6: Option
 }
 var file_proto_message_option_proto_depIdxs = []int32{
-	4, // 0: OptionListResponse.options:type_name -> Option
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	6, // 0: OptionListResponse.options:type_name -> Option
+	6, // 1: OptionGetByNameResponse.option:type_name -> Option
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_proto_message_option_proto_init() }
@@ -304,6 +408,30 @@ func file_proto_message_option_proto_init() {
 				return nil
 			}
 		}
+		file_proto_message_option_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OptionGetByNameMessage); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_option_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OptionGetByNameResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -311,7 +439,7 @@ func file_proto_message_option_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_message_option_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

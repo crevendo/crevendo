@@ -23,6 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OptionServiceClient interface {
+	GetByName(ctx context.Context, in *message.OptionGetByNameMessage, opts ...grpc.CallOption) (*message.OptionGetByNameResponse, error)
 	List(ctx context.Context, in *message.OptionListMessage, opts ...grpc.CallOption) (*message.OptionListResponse, error)
 	Update(ctx context.Context, in *message.OptionUpdateMessage, opts ...grpc.CallOption) (*message.OptionUpdateResponse, error)
 }
@@ -33,6 +34,15 @@ type optionServiceClient struct {
 
 func NewOptionServiceClient(cc grpc.ClientConnInterface) OptionServiceClient {
 	return &optionServiceClient{cc}
+}
+
+func (c *optionServiceClient) GetByName(ctx context.Context, in *message.OptionGetByNameMessage, opts ...grpc.CallOption) (*message.OptionGetByNameResponse, error) {
+	out := new(message.OptionGetByNameResponse)
+	err := c.cc.Invoke(ctx, "/OptionService/GetByName", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *optionServiceClient) List(ctx context.Context, in *message.OptionListMessage, opts ...grpc.CallOption) (*message.OptionListResponse, error) {
@@ -57,6 +67,7 @@ func (c *optionServiceClient) Update(ctx context.Context, in *message.OptionUpda
 // All implementations must embed UnimplementedOptionServiceServer
 // for forward compatibility
 type OptionServiceServer interface {
+	GetByName(context.Context, *message.OptionGetByNameMessage) (*message.OptionGetByNameResponse, error)
 	List(context.Context, *message.OptionListMessage) (*message.OptionListResponse, error)
 	Update(context.Context, *message.OptionUpdateMessage) (*message.OptionUpdateResponse, error)
 	mustEmbedUnimplementedOptionServiceServer()
@@ -66,6 +77,9 @@ type OptionServiceServer interface {
 type UnimplementedOptionServiceServer struct {
 }
 
+func (UnimplementedOptionServiceServer) GetByName(context.Context, *message.OptionGetByNameMessage) (*message.OptionGetByNameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByName not implemented")
+}
 func (UnimplementedOptionServiceServer) List(context.Context, *message.OptionListMessage) (*message.OptionListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
@@ -83,6 +97,24 @@ type UnsafeOptionServiceServer interface {
 
 func RegisterOptionServiceServer(s grpc.ServiceRegistrar, srv OptionServiceServer) {
 	s.RegisterService(&OptionService_ServiceDesc, srv)
+}
+
+func _OptionService_GetByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.OptionGetByNameMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OptionServiceServer).GetByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/OptionService/GetByName",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OptionServiceServer).GetByName(ctx, req.(*message.OptionGetByNameMessage))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _OptionService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -128,6 +160,10 @@ var OptionService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "OptionService",
 	HandlerType: (*OptionServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetByName",
+			Handler:    _OptionService_GetByName_Handler,
+		},
 		{
 			MethodName: "List",
 			Handler:    _OptionService_List_Handler,
