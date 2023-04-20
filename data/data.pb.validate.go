@@ -60,9 +60,7 @@ func (m *Data) validate(all bool) error {
 
 	// no validation rules for Value
 
-	if m.Type != nil {
-		// no validation rules for Type
-	}
+	// no validation rules for Type
 
 	if len(errors) > 0 {
 		return DataMultiError(errors)
