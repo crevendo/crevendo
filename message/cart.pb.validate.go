@@ -527,7 +527,39 @@ func (m *AddItemMessage) validate(all bool) error {
 
 	// no validation rules for Quantity
 
-	// no validation rules for CustomData
+	for idx, item := range m.GetCustomData() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, AddItemMessageValidationError{
+						field:  fmt.Sprintf("CustomData[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, AddItemMessageValidationError{
+						field:  fmt.Sprintf("CustomData[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return AddItemMessageValidationError{
+					field:  fmt.Sprintf("CustomData[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
 
 	if m.ProductId != nil {
 		// no validation rules for ProductId
