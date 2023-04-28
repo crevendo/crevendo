@@ -57,7 +57,9 @@ func (m *PaymentMethodDeleteMessage) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Id
+	// no validation rules for UserId
+
+	// no validation rules for PaymentMethodId
 
 	if len(errors) > 0 {
 		return PaymentMethodDeleteMessageMultiError(errors)
