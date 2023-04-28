@@ -23,8 +23,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PaymentServiceClient interface {
-	MethodList(ctx context.Context, in *message.PaymentMethodListMessage, opts ...grpc.CallOption) (*message.PaymentMethodListResponse, error)
-	MethodDelete(ctx context.Context, in *message.PaymentMethodDeleteMessage, opts ...grpc.CallOption) (*message.PaymentMethodDeleteResponse, error)
+	PaymentMethodList(ctx context.Context, in *message.PaymentMethodListMessage, opts ...grpc.CallOption) (*message.PaymentMethodListResponse, error)
+	PaymentMethodDelete(ctx context.Context, in *message.PaymentMethodDeleteMessage, opts ...grpc.CallOption) (*message.PaymentMethodDeleteResponse, error)
 }
 
 type paymentServiceClient struct {
@@ -35,18 +35,18 @@ func NewPaymentServiceClient(cc grpc.ClientConnInterface) PaymentServiceClient {
 	return &paymentServiceClient{cc}
 }
 
-func (c *paymentServiceClient) MethodList(ctx context.Context, in *message.PaymentMethodListMessage, opts ...grpc.CallOption) (*message.PaymentMethodListResponse, error) {
+func (c *paymentServiceClient) PaymentMethodList(ctx context.Context, in *message.PaymentMethodListMessage, opts ...grpc.CallOption) (*message.PaymentMethodListResponse, error) {
 	out := new(message.PaymentMethodListResponse)
-	err := c.cc.Invoke(ctx, "/PaymentService/MethodList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/PaymentService/PaymentMethodList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *paymentServiceClient) MethodDelete(ctx context.Context, in *message.PaymentMethodDeleteMessage, opts ...grpc.CallOption) (*message.PaymentMethodDeleteResponse, error) {
+func (c *paymentServiceClient) PaymentMethodDelete(ctx context.Context, in *message.PaymentMethodDeleteMessage, opts ...grpc.CallOption) (*message.PaymentMethodDeleteResponse, error) {
 	out := new(message.PaymentMethodDeleteResponse)
-	err := c.cc.Invoke(ctx, "/PaymentService/MethodDelete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/PaymentService/PaymentMethodDelete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,8 +57,8 @@ func (c *paymentServiceClient) MethodDelete(ctx context.Context, in *message.Pay
 // All implementations must embed UnimplementedPaymentServiceServer
 // for forward compatibility
 type PaymentServiceServer interface {
-	MethodList(context.Context, *message.PaymentMethodListMessage) (*message.PaymentMethodListResponse, error)
-	MethodDelete(context.Context, *message.PaymentMethodDeleteMessage) (*message.PaymentMethodDeleteResponse, error)
+	PaymentMethodList(context.Context, *message.PaymentMethodListMessage) (*message.PaymentMethodListResponse, error)
+	PaymentMethodDelete(context.Context, *message.PaymentMethodDeleteMessage) (*message.PaymentMethodDeleteResponse, error)
 	mustEmbedUnimplementedPaymentServiceServer()
 }
 
@@ -66,11 +66,11 @@ type PaymentServiceServer interface {
 type UnimplementedPaymentServiceServer struct {
 }
 
-func (UnimplementedPaymentServiceServer) MethodList(context.Context, *message.PaymentMethodListMessage) (*message.PaymentMethodListResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MethodList not implemented")
+func (UnimplementedPaymentServiceServer) PaymentMethodList(context.Context, *message.PaymentMethodListMessage) (*message.PaymentMethodListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentMethodList not implemented")
 }
-func (UnimplementedPaymentServiceServer) MethodDelete(context.Context, *message.PaymentMethodDeleteMessage) (*message.PaymentMethodDeleteResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MethodDelete not implemented")
+func (UnimplementedPaymentServiceServer) PaymentMethodDelete(context.Context, *message.PaymentMethodDeleteMessage) (*message.PaymentMethodDeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentMethodDelete not implemented")
 }
 func (UnimplementedPaymentServiceServer) mustEmbedUnimplementedPaymentServiceServer() {}
 
@@ -85,38 +85,38 @@ func RegisterPaymentServiceServer(s grpc.ServiceRegistrar, srv PaymentServiceSer
 	s.RegisterService(&PaymentService_ServiceDesc, srv)
 }
 
-func _PaymentService_MethodList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _PaymentService_PaymentMethodList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(message.PaymentMethodListMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PaymentServiceServer).MethodList(ctx, in)
+		return srv.(PaymentServiceServer).PaymentMethodList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/PaymentService/MethodList",
+		FullMethod: "/PaymentService/PaymentMethodList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentServiceServer).MethodList(ctx, req.(*message.PaymentMethodListMessage))
+		return srv.(PaymentServiceServer).PaymentMethodList(ctx, req.(*message.PaymentMethodListMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PaymentService_MethodDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _PaymentService_PaymentMethodDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(message.PaymentMethodDeleteMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PaymentServiceServer).MethodDelete(ctx, in)
+		return srv.(PaymentServiceServer).PaymentMethodDelete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/PaymentService/MethodDelete",
+		FullMethod: "/PaymentService/PaymentMethodDelete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentServiceServer).MethodDelete(ctx, req.(*message.PaymentMethodDeleteMessage))
+		return srv.(PaymentServiceServer).PaymentMethodDelete(ctx, req.(*message.PaymentMethodDeleteMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -129,12 +129,12 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*PaymentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "MethodList",
-			Handler:    _PaymentService_MethodList_Handler,
+			MethodName: "PaymentMethodList",
+			Handler:    _PaymentService_PaymentMethodList_Handler,
 		},
 		{
-			MethodName: "MethodDelete",
-			Handler:    _PaymentService_MethodDelete_Handler,
+			MethodName: "PaymentMethodDelete",
+			Handler:    _PaymentService_PaymentMethodDelete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
