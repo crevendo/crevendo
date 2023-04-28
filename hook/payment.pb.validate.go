@@ -363,7 +363,9 @@ func (m *PaymentMethodDeleteHookParams) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Id
+	// no validation rules for UserUUID
+
+	// no validation rules for MethodId
 
 	if len(errors) > 0 {
 		return PaymentMethodDeleteHookParamsMultiError(errors)
