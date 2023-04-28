@@ -23,6 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PaymentHooksClient interface {
 	MethodList(ctx context.Context, in *PaymentMethodListHookParams, opts ...grpc.CallOption) (*PaymentMethodListHookParams, error)
+	MethodDelete(ctx context.Context, in *PaymentMethodDeleteHookParams, opts ...grpc.CallOption) (*PaymentMethodDeleteHookParams, error)
 	ProcessPayment(ctx context.Context, in *PaymentProcessHookParams, opts ...grpc.CallOption) (*PaymentProcessHookParams, error)
 }
 
@@ -43,6 +44,15 @@ func (c *paymentHooksClient) MethodList(ctx context.Context, in *PaymentMethodLi
 	return out, nil
 }
 
+func (c *paymentHooksClient) MethodDelete(ctx context.Context, in *PaymentMethodDeleteHookParams, opts ...grpc.CallOption) (*PaymentMethodDeleteHookParams, error) {
+	out := new(PaymentMethodDeleteHookParams)
+	err := c.cc.Invoke(ctx, "/PaymentHooks/MethodDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *paymentHooksClient) ProcessPayment(ctx context.Context, in *PaymentProcessHookParams, opts ...grpc.CallOption) (*PaymentProcessHookParams, error) {
 	out := new(PaymentProcessHookParams)
 	err := c.cc.Invoke(ctx, "/PaymentHooks/ProcessPayment", in, out, opts...)
@@ -57,6 +67,7 @@ func (c *paymentHooksClient) ProcessPayment(ctx context.Context, in *PaymentProc
 // for forward compatibility
 type PaymentHooksServer interface {
 	MethodList(context.Context, *PaymentMethodListHookParams) (*PaymentMethodListHookParams, error)
+	MethodDelete(context.Context, *PaymentMethodDeleteHookParams) (*PaymentMethodDeleteHookParams, error)
 	ProcessPayment(context.Context, *PaymentProcessHookParams) (*PaymentProcessHookParams, error)
 	mustEmbedUnimplementedPaymentHooksServer()
 }
@@ -67,6 +78,9 @@ type UnimplementedPaymentHooksServer struct {
 
 func (UnimplementedPaymentHooksServer) MethodList(context.Context, *PaymentMethodListHookParams) (*PaymentMethodListHookParams, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MethodList not implemented")
+}
+func (UnimplementedPaymentHooksServer) MethodDelete(context.Context, *PaymentMethodDeleteHookParams) (*PaymentMethodDeleteHookParams, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MethodDelete not implemented")
 }
 func (UnimplementedPaymentHooksServer) ProcessPayment(context.Context, *PaymentProcessHookParams) (*PaymentProcessHookParams, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProcessPayment not implemented")
@@ -102,6 +116,24 @@ func _PaymentHooks_MethodList_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PaymentHooks_MethodDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PaymentMethodDeleteHookParams)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentHooksServer).MethodDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/PaymentHooks/MethodDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentHooksServer).MethodDelete(ctx, req.(*PaymentMethodDeleteHookParams))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _PaymentHooks_ProcessPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PaymentProcessHookParams)
 	if err := dec(in); err != nil {
@@ -130,6 +162,10 @@ var PaymentHooks_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "MethodList",
 			Handler:    _PaymentHooks_MethodList_Handler,
+		},
+		{
+			MethodName: "MethodDelete",
+			Handler:    _PaymentHooks_MethodDelete_Handler,
 		},
 		{
 			MethodName: "ProcessPayment",
