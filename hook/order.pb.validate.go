@@ -525,3 +525,221 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = OrderCreateHookParamsValidationError{}
+
+// Validate checks the field values on OrderProcessHookParams with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *OrderProcessHookParams) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on OrderProcessHookParams with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// OrderProcessHookParamsMultiError, or nil if none found.
+func (m *OrderProcessHookParams) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *OrderProcessHookParams) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetOrder()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, OrderProcessHookParamsValidationError{
+					field:  "Order",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, OrderProcessHookParamsValidationError{
+					field:  "Order",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetOrder()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return OrderProcessHookParamsValidationError{
+				field:  "Order",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUser()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, OrderProcessHookParamsValidationError{
+					field:  "User",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, OrderProcessHookParamsValidationError{
+					field:  "User",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUser()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return OrderProcessHookParamsValidationError{
+				field:  "User",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetPayment()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, OrderProcessHookParamsValidationError{
+					field:  "Payment",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, OrderProcessHookParamsValidationError{
+					field:  "Payment",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPayment()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return OrderProcessHookParamsValidationError{
+				field:  "Payment",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetAddress()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, OrderProcessHookParamsValidationError{
+					field:  "Address",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, OrderProcessHookParamsValidationError{
+					field:  "Address",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetAddress()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return OrderProcessHookParamsValidationError{
+				field:  "Address",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return OrderProcessHookParamsMultiError(errors)
+	}
+
+	return nil
+}
+
+// OrderProcessHookParamsMultiError is an error wrapping multiple validation
+// errors returned by OrderProcessHookParams.ValidateAll() if the designated
+// constraints aren't met.
+type OrderProcessHookParamsMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m OrderProcessHookParamsMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m OrderProcessHookParamsMultiError) AllErrors() []error { return m }
+
+// OrderProcessHookParamsValidationError is the validation error returned by
+// OrderProcessHookParams.Validate if the designated constraints aren't met.
+type OrderProcessHookParamsValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e OrderProcessHookParamsValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e OrderProcessHookParamsValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e OrderProcessHookParamsValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e OrderProcessHookParamsValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e OrderProcessHookParamsValidationError) ErrorName() string {
+	return "OrderProcessHookParamsValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e OrderProcessHookParamsValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sOrderProcessHookParams.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = OrderProcessHookParamsValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = OrderProcessHookParamsValidationError{}
