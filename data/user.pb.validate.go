@@ -68,6 +68,8 @@ func (m *User) validate(all bool) error {
 
 	// no validation rules for Username
 
+	// no validation rules for Email
+
 	// no validation rules for Password
 
 	// no validation rules for Role
