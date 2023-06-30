@@ -76,6 +76,10 @@ func (m *ProductGetMessage) validate(all bool) error {
 		// no validation rules for CustomId
 	}
 
+	if m.WithVariants != nil {
+		// no validation rules for WithVariants
+	}
+
 	if len(errors) > 0 {
 		return ProductGetMessageMultiError(errors)
 	}
