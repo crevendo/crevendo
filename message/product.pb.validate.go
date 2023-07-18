@@ -481,6 +481,10 @@ func (m *ProductListMessage) validate(all bool) error {
 		// no validation rules for OrderBy
 	}
 
+	if m.TimeLimit != nil {
+		// no validation rules for TimeLimit
+	}
+
 	if len(errors) > 0 {
 		return ProductListMessageMultiError(errors)
 	}
