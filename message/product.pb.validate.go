@@ -461,12 +461,12 @@ func (m *ProductListMessage) validate(all bool) error {
 		// no validation rules for Id
 	}
 
-	if m.SearchTerm != nil {
-		// no validation rules for SearchTerm
-	}
-
 	if m.CategoryId != nil {
 		// no validation rules for CategoryId
+	}
+
+	if m.Type != nil {
+		// no validation rules for Type
 	}
 
 	if m.Query != nil {

@@ -72,6 +72,10 @@ func (m *Query) validate(all bool) error {
 		// no validation rules for SessionUUID
 	}
 
+	if m.SearchTerm != nil {
+		// no validation rules for SearchTerm
+	}
+
 	if len(errors) > 0 {
 		return QueryMultiError(errors)
 	}
