@@ -61,7 +61,7 @@ func (m *EventCreateRequest) validate(all bool) error {
 
 	// no validation rules for UserId
 
-	// no validation rules for SessionId
+	// no validation rules for SessionUUID
 
 	for idx, item := range m.GetData() {
 		_, _ = idx, item
