@@ -163,6 +163,8 @@ func (m *Event) validate(all bool) error {
 
 	// no validation rules for UserId
 
+	// no validation rules for SessionId
+
 	for idx, item := range m.GetData() {
 		_, _ = idx, item
 
