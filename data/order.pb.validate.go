@@ -569,8 +569,6 @@ func (m *OrderItem) validate(all bool) error {
 
 	// no validation rules for Id
 
-	// no validation rules for StoreId
-
 	// no validation rules for OrderId
 
 	// no validation rules for Name

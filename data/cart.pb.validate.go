@@ -60,8 +60,6 @@ func (m *Cart) validate(all bool) error {
 
 	// no validation rules for UserId
 
-	// no validation rules for StoreId
-
 	for idx, item := range m.GetItems() {
 		_, _ = idx, item
 
@@ -236,8 +234,6 @@ func (m *CartItem) validate(all bool) error {
 	var errors []error
 
 	// no validation rules for Id
-
-	// no validation rules for StoreId
 
 	// no validation rules for CartID
 

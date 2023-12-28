@@ -58,6 +58,8 @@ func (m *Session) validate(all bool) error {
 
 	// no validation rules for Id
 
+	// no validation rules for Uuid
+
 	if all {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:

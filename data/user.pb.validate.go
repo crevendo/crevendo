@@ -60,8 +60,6 @@ func (m *User) validate(all bool) error {
 
 	// no validation rules for Uuid
 
-	// no validation rules for StoreId
-
 	// no validation rules for FirstName
 
 	// no validation rules for LastName

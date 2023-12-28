@@ -58,8 +58,6 @@ func (m *Payment) validate(all bool) error {
 
 	// no validation rules for Id
 
-	// no validation rules for StoreId
-
 	// no validation rules for CartId
 
 	if all {
