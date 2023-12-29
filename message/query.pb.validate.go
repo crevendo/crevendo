@@ -76,6 +76,10 @@ func (m *Query) validate(all bool) error {
 		// no validation rules for SearchTerm
 	}
 
+	if m.IgnoreCache != nil {
+		// no validation rules for IgnoreCache
+	}
+
 	if len(errors) > 0 {
 		return QueryMultiError(errors)
 	}
