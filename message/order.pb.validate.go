@@ -75,6 +75,10 @@ func (m *OrderCreateMessage) validate(all bool) error {
 		// no validation rules for Cvv
 	}
 
+	if m.Installments != nil {
+		// no validation rules for Installments
+	}
+
 	if len(errors) > 0 {
 		return OrderCreateMessageMultiError(errors)
 	}
