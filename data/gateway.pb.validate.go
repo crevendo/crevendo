@@ -60,6 +60,8 @@ func (m *Gateway) validate(all bool) error {
 
 	// no validation rules for CreationUrl
 
+	// no validation rules for ApplyInstallments
+
 	if len(errors) > 0 {
 		return GatewayMultiError(errors)
 	}

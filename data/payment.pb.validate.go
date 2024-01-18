@@ -130,6 +130,8 @@ func (m *Payment) validate(all bool) error {
 
 	// no validation rules for OrderId
 
+	// no validation rules for Installments
+
 	for idx, item := range m.GetData() {
 		_, _ = idx, item
 
