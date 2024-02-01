@@ -19,27 +19,27 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// SearchServiceClient is the client API for SearchService service.
+// InvoiceServiceClient is the client API for InvoiceService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type SearchServiceClient interface {
-	GetFile(ctx context.Context, in *message.InvoiceRequest, opts ...grpc.CallOption) (SearchService_GetFileClient, error)
+type InvoiceServiceClient interface {
+	GetInvoice(ctx context.Context, in *message.InvoiceRequest, opts ...grpc.CallOption) (InvoiceService_GetInvoiceClient, error)
 }
 
-type searchServiceClient struct {
+type invoiceServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewSearchServiceClient(cc grpc.ClientConnInterface) SearchServiceClient {
-	return &searchServiceClient{cc}
+func NewInvoiceServiceClient(cc grpc.ClientConnInterface) InvoiceServiceClient {
+	return &invoiceServiceClient{cc}
 }
 
-func (c *searchServiceClient) GetFile(ctx context.Context, in *message.InvoiceRequest, opts ...grpc.CallOption) (SearchService_GetFileClient, error) {
-	stream, err := c.cc.NewStream(ctx, &SearchService_ServiceDesc.Streams[0], "/SearchService/GetFile", opts...)
+func (c *invoiceServiceClient) GetInvoice(ctx context.Context, in *message.InvoiceRequest, opts ...grpc.CallOption) (InvoiceService_GetInvoiceClient, error) {
+	stream, err := c.cc.NewStream(ctx, &InvoiceService_ServiceDesc.Streams[0], "/InvoiceService/GetInvoice", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &searchServiceGetFileClient{stream}
+	x := &invoiceServiceGetInvoiceClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -49,16 +49,16 @@ func (c *searchServiceClient) GetFile(ctx context.Context, in *message.InvoiceRe
 	return x, nil
 }
 
-type SearchService_GetFileClient interface {
+type InvoiceService_GetInvoiceClient interface {
 	Recv() (*message.FileResponse, error)
 	grpc.ClientStream
 }
 
-type searchServiceGetFileClient struct {
+type invoiceServiceGetInvoiceClient struct {
 	grpc.ClientStream
 }
 
-func (x *searchServiceGetFileClient) Recv() (*message.FileResponse, error) {
+func (x *invoiceServiceGetInvoiceClient) Recv() (*message.FileResponse, error) {
 	m := new(message.FileResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -66,66 +66,66 @@ func (x *searchServiceGetFileClient) Recv() (*message.FileResponse, error) {
 	return m, nil
 }
 
-// SearchServiceServer is the server API for SearchService service.
-// All implementations must embed UnimplementedSearchServiceServer
+// InvoiceServiceServer is the server API for InvoiceService service.
+// All implementations must embed UnimplementedInvoiceServiceServer
 // for forward compatibility
-type SearchServiceServer interface {
-	GetFile(*message.InvoiceRequest, SearchService_GetFileServer) error
-	mustEmbedUnimplementedSearchServiceServer()
+type InvoiceServiceServer interface {
+	GetInvoice(*message.InvoiceRequest, InvoiceService_GetInvoiceServer) error
+	mustEmbedUnimplementedInvoiceServiceServer()
 }
 
-// UnimplementedSearchServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedSearchServiceServer struct {
+// UnimplementedInvoiceServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedInvoiceServiceServer struct {
 }
 
-func (UnimplementedSearchServiceServer) GetFile(*message.InvoiceRequest, SearchService_GetFileServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetFile not implemented")
+func (UnimplementedInvoiceServiceServer) GetInvoice(*message.InvoiceRequest, InvoiceService_GetInvoiceServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetInvoice not implemented")
 }
-func (UnimplementedSearchServiceServer) mustEmbedUnimplementedSearchServiceServer() {}
+func (UnimplementedInvoiceServiceServer) mustEmbedUnimplementedInvoiceServiceServer() {}
 
-// UnsafeSearchServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to SearchServiceServer will
+// UnsafeInvoiceServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to InvoiceServiceServer will
 // result in compilation errors.
-type UnsafeSearchServiceServer interface {
-	mustEmbedUnimplementedSearchServiceServer()
+type UnsafeInvoiceServiceServer interface {
+	mustEmbedUnimplementedInvoiceServiceServer()
 }
 
-func RegisterSearchServiceServer(s grpc.ServiceRegistrar, srv SearchServiceServer) {
-	s.RegisterService(&SearchService_ServiceDesc, srv)
+func RegisterInvoiceServiceServer(s grpc.ServiceRegistrar, srv InvoiceServiceServer) {
+	s.RegisterService(&InvoiceService_ServiceDesc, srv)
 }
 
-func _SearchService_GetFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _InvoiceService_GetInvoice_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(message.InvoiceRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(SearchServiceServer).GetFile(m, &searchServiceGetFileServer{stream})
+	return srv.(InvoiceServiceServer).GetInvoice(m, &invoiceServiceGetInvoiceServer{stream})
 }
 
-type SearchService_GetFileServer interface {
+type InvoiceService_GetInvoiceServer interface {
 	Send(*message.FileResponse) error
 	grpc.ServerStream
 }
 
-type searchServiceGetFileServer struct {
+type invoiceServiceGetInvoiceServer struct {
 	grpc.ServerStream
 }
 
-func (x *searchServiceGetFileServer) Send(m *message.FileResponse) error {
+func (x *invoiceServiceGetInvoiceServer) Send(m *message.FileResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-// SearchService_ServiceDesc is the grpc.ServiceDesc for SearchService service.
+// InvoiceService_ServiceDesc is the grpc.ServiceDesc for InvoiceService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var SearchService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "SearchService",
-	HandlerType: (*SearchServiceServer)(nil),
+var InvoiceService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "InvoiceService",
+	HandlerType: (*InvoiceServiceServer)(nil),
 	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GetFile",
-			Handler:       _SearchService_GetFile_Handler,
+			StreamName:    "GetInvoice",
+			Handler:       _InvoiceService_GetInvoice_Handler,
 			ServerStreams: true,
 		},
 	},
