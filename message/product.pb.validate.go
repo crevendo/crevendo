@@ -457,10 +457,6 @@ func (m *ProductListMessage) validate(all bool) error {
 
 	var errors []error
 
-	if m.Id != nil {
-		// no validation rules for Id
-	}
-
 	if m.CategoryId != nil {
 		// no validation rules for CategoryId
 	}
