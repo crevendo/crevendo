@@ -595,34 +595,19 @@ func (m *ProductUpdateMessage) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetProduct()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ProductUpdateMessageValidationError{
-					field:  "Product",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, ProductUpdateMessageValidationError{
-					field:  "Product",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetProduct()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ProductUpdateMessageValidationError{
-				field:  "Product",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Name
+
+	// no validation rules for Image
+
+	// no validation rules for Description
+
+	// no validation rules for Excerpt
+
+	// no validation rules for CategoryId
+
+	// no validation rules for BrandId
+
+	// no validation rules for Stock
 
 	if len(errors) > 0 {
 		return ProductUpdateMessageMultiError(errors)
@@ -857,34 +842,19 @@ func (m *ProductCreateMessage) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetProduct()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ProductCreateMessageValidationError{
-					field:  "Product",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, ProductCreateMessageValidationError{
-					field:  "Product",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetProduct()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ProductCreateMessageValidationError{
-				field:  "Product",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Name
+
+	// no validation rules for Image
+
+	// no validation rules for Description
+
+	// no validation rules for Excerpt
+
+	// no validation rules for CategoryId
+
+	// no validation rules for BrandId
+
+	// no validation rules for Stock
 
 	if len(errors) > 0 {
 		return ProductCreateMessageMultiError(errors)
