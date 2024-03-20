@@ -599,6 +599,8 @@ func (m *ProductUpdateMessage) validate(all bool) error {
 
 	// no validation rules for Name
 
+	// no validation rules for Price
+
 	// no validation rules for Image
 
 	// no validation rules for Description
