@@ -80,6 +80,10 @@ func (m *ProductGetMessage) validate(all bool) error {
 		// no validation rules for WithVariants
 	}
 
+	if m.IgnoreCache != nil {
+		// no validation rules for IgnoreCache
+	}
+
 	if len(errors) > 0 {
 		return ProductGetMessageMultiError(errors)
 	}
