@@ -532,7 +532,9 @@ func (m *CategoryCreateMessage) validate(all bool) error {
 
 	// no validation rules for Name
 
-	// no validation rules for ParentId
+	if m.ParentId != nil {
+		// no validation rules for ParentId
+	}
 
 	if len(errors) > 0 {
 		return CategoryCreateMessageMultiError(errors)
