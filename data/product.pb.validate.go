@@ -70,8 +70,6 @@ func (m *Product) validate(all bool) error {
 
 	// no validation rules for Excerpt
 
-	// no validation rules for CategoryId
-
 	for idx, item := range m.GetRatings() {
 		_, _ = idx, item
 

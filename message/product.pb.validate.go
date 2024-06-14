@@ -611,8 +611,6 @@ func (m *ProductUpdateMessage) validate(all bool) error {
 
 	// no validation rules for Excerpt
 
-	// no validation rules for CategoryId
-
 	// no validation rules for BrandId
 
 	// no validation rules for Stock
@@ -857,8 +855,6 @@ func (m *ProductCreateMessage) validate(all bool) error {
 	// no validation rules for Description
 
 	// no validation rules for Excerpt
-
-	// no validation rules for CategoryId
 
 	// no validation rules for BrandId
 
