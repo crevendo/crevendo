@@ -200,6 +200,108 @@ func (x *CategoryGetResponse) GetCategory() *data.Category {
 	return nil
 }
 
+type CategoryCreateMessage struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name     string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	ParentId uint32 `protobuf:"varint,2,opt,name=parentId,proto3" json:"parentId,omitempty"`
+}
+
+func (x *CategoryCreateMessage) Reset() {
+	*x = CategoryCreateMessage{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_category_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CategoryCreateMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CategoryCreateMessage) ProtoMessage() {}
+
+func (x *CategoryCreateMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_category_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CategoryCreateMessage.ProtoReflect.Descriptor instead.
+func (*CategoryCreateMessage) Descriptor() ([]byte, []int) {
+	return file_proto_message_category_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CategoryCreateMessage) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CategoryCreateMessage) GetParentId() uint32 {
+	if x != nil {
+		return x.ParentId
+	}
+	return 0
+}
+
+type CategoryCreateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Category *data.Category `protobuf:"bytes,1,opt,name=category,proto3" json:"category,omitempty"`
+}
+
+func (x *CategoryCreateResponse) Reset() {
+	*x = CategoryCreateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_message_category_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CategoryCreateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CategoryCreateResponse) ProtoMessage() {}
+
+func (x *CategoryCreateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_message_category_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CategoryCreateResponse.ProtoReflect.Descriptor instead.
+func (*CategoryCreateResponse) Descriptor() ([]byte, []int) {
+	return file_proto_message_category_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CategoryCreateResponse) GetCategory() *data.Category {
+	if x != nil {
+		return x.Category
+	}
+	return nil
+}
+
 var File_proto_message_category_proto protoreflect.FileDescriptor
 
 var file_proto_message_category_proto_rawDesc = []byte{
@@ -218,10 +320,18 @@ var file_proto_message_category_proto_rawDesc = []byte{
 	0x47, 0x65, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x08, 0x63,
 	0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x09, 0x2e,
 	0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f,
-	0x72, 0x79, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
-	0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e,
-	0x64, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x72, 0x79, 0x22, 0x47, 0x0a, 0x15, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12,
+	0x1a, 0x0a, 0x08, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0d, 0x52, 0x08, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x22, 0x3f, 0x0a, 0x16, 0x43,
+	0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72,
+	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x09, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f,
+	0x72, 0x79, 0x52, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x42, 0x26, 0x5a, 0x24,
+	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65,
+	0x6e, 0x64, 0x6f, 0x2f, 0x63, 0x72, 0x65, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x2f, 0x6d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -236,22 +346,25 @@ func file_proto_message_category_proto_rawDescGZIP() []byte {
 	return file_proto_message_category_proto_rawDescData
 }
 
-var file_proto_message_category_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_proto_message_category_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_proto_message_category_proto_goTypes = []interface{}{
-	(*CategoryListMessage)(nil),  // 0: CategoryListMessage
-	(*CategoryListResponse)(nil), // 1: CategoryListResponse
-	(*CategoryGetMessage)(nil),   // 2: CategoryGetMessage
-	(*CategoryGetResponse)(nil),  // 3: CategoryGetResponse
-	(*data.Category)(nil),        // 4: Category
+	(*CategoryListMessage)(nil),    // 0: CategoryListMessage
+	(*CategoryListResponse)(nil),   // 1: CategoryListResponse
+	(*CategoryGetMessage)(nil),     // 2: CategoryGetMessage
+	(*CategoryGetResponse)(nil),    // 3: CategoryGetResponse
+	(*CategoryCreateMessage)(nil),  // 4: CategoryCreateMessage
+	(*CategoryCreateResponse)(nil), // 5: CategoryCreateResponse
+	(*data.Category)(nil),          // 6: Category
 }
 var file_proto_message_category_proto_depIdxs = []int32{
-	4, // 0: CategoryListResponse.categories:type_name -> Category
-	4, // 1: CategoryGetResponse.category:type_name -> Category
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	6, // 0: CategoryListResponse.categories:type_name -> Category
+	6, // 1: CategoryGetResponse.category:type_name -> Category
+	6, // 2: CategoryCreateResponse.category:type_name -> Category
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_proto_message_category_proto_init() }
@@ -308,6 +421,30 @@ func file_proto_message_category_proto_init() {
 				return nil
 			}
 		}
+		file_proto_message_category_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CategoryCreateMessage); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_message_category_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CategoryCreateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -315,7 +452,7 @@ func file_proto_message_category_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_message_category_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

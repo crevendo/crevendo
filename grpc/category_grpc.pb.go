@@ -25,6 +25,7 @@ const _ = grpc.SupportPackageIsVersion7
 type CategoryServiceClient interface {
 	Get(ctx context.Context, in *message.CategoryGetMessage, opts ...grpc.CallOption) (*message.CategoryGetResponse, error)
 	List(ctx context.Context, in *message.CategoryListMessage, opts ...grpc.CallOption) (*message.CategoryListResponse, error)
+	Create(ctx context.Context, in *message.CategoryCreateMessage, opts ...grpc.CallOption) (*message.CategoryCreateResponse, error)
 }
 
 type categoryServiceClient struct {
@@ -53,12 +54,22 @@ func (c *categoryServiceClient) List(ctx context.Context, in *message.CategoryLi
 	return out, nil
 }
 
+func (c *categoryServiceClient) Create(ctx context.Context, in *message.CategoryCreateMessage, opts ...grpc.CallOption) (*message.CategoryCreateResponse, error) {
+	out := new(message.CategoryCreateResponse)
+	err := c.cc.Invoke(ctx, "/CategoryService/Create", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CategoryServiceServer is the server API for CategoryService service.
 // All implementations must embed UnimplementedCategoryServiceServer
 // for forward compatibility
 type CategoryServiceServer interface {
 	Get(context.Context, *message.CategoryGetMessage) (*message.CategoryGetResponse, error)
 	List(context.Context, *message.CategoryListMessage) (*message.CategoryListResponse, error)
+	Create(context.Context, *message.CategoryCreateMessage) (*message.CategoryCreateResponse, error)
 	mustEmbedUnimplementedCategoryServiceServer()
 }
 
@@ -71,6 +82,9 @@ func (UnimplementedCategoryServiceServer) Get(context.Context, *message.Category
 }
 func (UnimplementedCategoryServiceServer) List(context.Context, *message.CategoryListMessage) (*message.CategoryListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (UnimplementedCategoryServiceServer) Create(context.Context, *message.CategoryCreateMessage) (*message.CategoryCreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
 func (UnimplementedCategoryServiceServer) mustEmbedUnimplementedCategoryServiceServer() {}
 
@@ -121,6 +135,24 @@ func _CategoryService_List_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CategoryService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.CategoryCreateMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CategoryServiceServer).Create(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CategoryService/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CategoryServiceServer).Create(ctx, req.(*message.CategoryCreateMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CategoryService_ServiceDesc is the grpc.ServiceDesc for CategoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -135,6 +167,10 @@ var CategoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _CategoryService_List_Handler,
+		},
+		{
+			MethodName: "Create",
+			Handler:    _CategoryService_Create_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
