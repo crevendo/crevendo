@@ -57,6 +57,10 @@ func (m *CategoryListMessage) validate(all bool) error {
 
 	var errors []error
 
+	if m.IgnoreCache != nil {
+		// no validation rules for IgnoreCache
+	}
+
 	if len(errors) > 0 {
 		return CategoryListMessageMultiError(errors)
 	}
