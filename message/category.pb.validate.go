@@ -301,6 +301,8 @@ func (m *CategoryGetMessage) validate(all bool) error {
 
 	// no validation rules for Id
 
+	// no validation rules for IgnoreCache
+
 	if len(errors) > 0 {
 		return CategoryGetMessageMultiError(errors)
 	}
