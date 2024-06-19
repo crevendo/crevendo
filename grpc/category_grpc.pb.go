@@ -26,6 +26,8 @@ type CategoryServiceClient interface {
 	Get(ctx context.Context, in *message.CategoryGetMessage, opts ...grpc.CallOption) (*message.CategoryGetResponse, error)
 	List(ctx context.Context, in *message.CategoryListMessage, opts ...grpc.CallOption) (*message.CategoryListResponse, error)
 	Create(ctx context.Context, in *message.CategoryCreateMessage, opts ...grpc.CallOption) (*message.CategoryCreateResponse, error)
+	Update(ctx context.Context, in *message.CategoryUpdateMessage, opts ...grpc.CallOption) (*message.CategoryUpdateResponse, error)
+	Delete(ctx context.Context, in *message.CategoryDeleteMessage, opts ...grpc.CallOption) (*message.CategoryDeleteResponse, error)
 }
 
 type categoryServiceClient struct {
@@ -63,6 +65,24 @@ func (c *categoryServiceClient) Create(ctx context.Context, in *message.Category
 	return out, nil
 }
 
+func (c *categoryServiceClient) Update(ctx context.Context, in *message.CategoryUpdateMessage, opts ...grpc.CallOption) (*message.CategoryUpdateResponse, error) {
+	out := new(message.CategoryUpdateResponse)
+	err := c.cc.Invoke(ctx, "/CategoryService/Update", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *categoryServiceClient) Delete(ctx context.Context, in *message.CategoryDeleteMessage, opts ...grpc.CallOption) (*message.CategoryDeleteResponse, error) {
+	out := new(message.CategoryDeleteResponse)
+	err := c.cc.Invoke(ctx, "/CategoryService/Delete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CategoryServiceServer is the server API for CategoryService service.
 // All implementations must embed UnimplementedCategoryServiceServer
 // for forward compatibility
@@ -70,6 +90,8 @@ type CategoryServiceServer interface {
 	Get(context.Context, *message.CategoryGetMessage) (*message.CategoryGetResponse, error)
 	List(context.Context, *message.CategoryListMessage) (*message.CategoryListResponse, error)
 	Create(context.Context, *message.CategoryCreateMessage) (*message.CategoryCreateResponse, error)
+	Update(context.Context, *message.CategoryUpdateMessage) (*message.CategoryUpdateResponse, error)
+	Delete(context.Context, *message.CategoryDeleteMessage) (*message.CategoryDeleteResponse, error)
 	mustEmbedUnimplementedCategoryServiceServer()
 }
 
@@ -85,6 +107,12 @@ func (UnimplementedCategoryServiceServer) List(context.Context, *message.Categor
 }
 func (UnimplementedCategoryServiceServer) Create(context.Context, *message.CategoryCreateMessage) (*message.CategoryCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedCategoryServiceServer) Update(context.Context, *message.CategoryUpdateMessage) (*message.CategoryUpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+func (UnimplementedCategoryServiceServer) Delete(context.Context, *message.CategoryDeleteMessage) (*message.CategoryDeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedCategoryServiceServer) mustEmbedUnimplementedCategoryServiceServer() {}
 
@@ -153,6 +181,42 @@ func _CategoryService_Create_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CategoryService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.CategoryUpdateMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CategoryServiceServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CategoryService/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CategoryServiceServer).Update(ctx, req.(*message.CategoryUpdateMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CategoryService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(message.CategoryDeleteMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CategoryServiceServer).Delete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CategoryService/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CategoryServiceServer).Delete(ctx, req.(*message.CategoryDeleteMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CategoryService_ServiceDesc is the grpc.ServiceDesc for CategoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -171,6 +235,14 @@ var CategoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Create",
 			Handler:    _CategoryService_Create_Handler,
+		},
+		{
+			MethodName: "Update",
+			Handler:    _CategoryService_Update_Handler,
+		},
+		{
+			MethodName: "Delete",
+			Handler:    _CategoryService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

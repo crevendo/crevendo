@@ -750,3 +750,452 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = CategoryCreateResponseValidationError{}
+
+// Validate checks the field values on CategoryUpdateMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CategoryUpdateMessage) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CategoryUpdateMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CategoryUpdateMessageMultiError, or nil if none found.
+func (m *CategoryUpdateMessage) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CategoryUpdateMessage) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for Name
+
+	if m.ParentId != nil {
+		// no validation rules for ParentId
+	}
+
+	if len(errors) > 0 {
+		return CategoryUpdateMessageMultiError(errors)
+	}
+
+	return nil
+}
+
+// CategoryUpdateMessageMultiError is an error wrapping multiple validation
+// errors returned by CategoryUpdateMessage.ValidateAll() if the designated
+// constraints aren't met.
+type CategoryUpdateMessageMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CategoryUpdateMessageMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CategoryUpdateMessageMultiError) AllErrors() []error { return m }
+
+// CategoryUpdateMessageValidationError is the validation error returned by
+// CategoryUpdateMessage.Validate if the designated constraints aren't met.
+type CategoryUpdateMessageValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CategoryUpdateMessageValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CategoryUpdateMessageValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CategoryUpdateMessageValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CategoryUpdateMessageValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CategoryUpdateMessageValidationError) ErrorName() string {
+	return "CategoryUpdateMessageValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CategoryUpdateMessageValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCategoryUpdateMessage.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CategoryUpdateMessageValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CategoryUpdateMessageValidationError{}
+
+// Validate checks the field values on CategoryUpdateResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CategoryUpdateResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CategoryUpdateResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CategoryUpdateResponseMultiError, or nil if none found.
+func (m *CategoryUpdateResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CategoryUpdateResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetCategory()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, CategoryUpdateResponseValidationError{
+					field:  "Category",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, CategoryUpdateResponseValidationError{
+					field:  "Category",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCategory()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return CategoryUpdateResponseValidationError{
+				field:  "Category",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return CategoryUpdateResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// CategoryUpdateResponseMultiError is an error wrapping multiple validation
+// errors returned by CategoryUpdateResponse.ValidateAll() if the designated
+// constraints aren't met.
+type CategoryUpdateResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CategoryUpdateResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CategoryUpdateResponseMultiError) AllErrors() []error { return m }
+
+// CategoryUpdateResponseValidationError is the validation error returned by
+// CategoryUpdateResponse.Validate if the designated constraints aren't met.
+type CategoryUpdateResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CategoryUpdateResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CategoryUpdateResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CategoryUpdateResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CategoryUpdateResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CategoryUpdateResponseValidationError) ErrorName() string {
+	return "CategoryUpdateResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CategoryUpdateResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCategoryUpdateResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CategoryUpdateResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CategoryUpdateResponseValidationError{}
+
+// Validate checks the field values on CategoryDeleteMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CategoryDeleteMessage) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CategoryDeleteMessage with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CategoryDeleteMessageMultiError, or nil if none found.
+func (m *CategoryDeleteMessage) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CategoryDeleteMessage) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	if len(errors) > 0 {
+		return CategoryDeleteMessageMultiError(errors)
+	}
+
+	return nil
+}
+
+// CategoryDeleteMessageMultiError is an error wrapping multiple validation
+// errors returned by CategoryDeleteMessage.ValidateAll() if the designated
+// constraints aren't met.
+type CategoryDeleteMessageMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CategoryDeleteMessageMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CategoryDeleteMessageMultiError) AllErrors() []error { return m }
+
+// CategoryDeleteMessageValidationError is the validation error returned by
+// CategoryDeleteMessage.Validate if the designated constraints aren't met.
+type CategoryDeleteMessageValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CategoryDeleteMessageValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CategoryDeleteMessageValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CategoryDeleteMessageValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CategoryDeleteMessageValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CategoryDeleteMessageValidationError) ErrorName() string {
+	return "CategoryDeleteMessageValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CategoryDeleteMessageValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCategoryDeleteMessage.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CategoryDeleteMessageValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CategoryDeleteMessageValidationError{}
+
+// Validate checks the field values on CategoryDeleteResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *CategoryDeleteResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on CategoryDeleteResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// CategoryDeleteResponseMultiError, or nil if none found.
+func (m *CategoryDeleteResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *CategoryDeleteResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return CategoryDeleteResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// CategoryDeleteResponseMultiError is an error wrapping multiple validation
+// errors returned by CategoryDeleteResponse.ValidateAll() if the designated
+// constraints aren't met.
+type CategoryDeleteResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m CategoryDeleteResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m CategoryDeleteResponseMultiError) AllErrors() []error { return m }
+
+// CategoryDeleteResponseValidationError is the validation error returned by
+// CategoryDeleteResponse.Validate if the designated constraints aren't met.
+type CategoryDeleteResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e CategoryDeleteResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e CategoryDeleteResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e CategoryDeleteResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e CategoryDeleteResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e CategoryDeleteResponseValidationError) ErrorName() string {
+	return "CategoryDeleteResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e CategoryDeleteResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sCategoryDeleteResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = CategoryDeleteResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = CategoryDeleteResponseValidationError{}
