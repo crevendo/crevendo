@@ -284,7 +284,7 @@ type AddressCreateMessage struct {
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
 	PostalCode    int32                  `protobuf:"varint,6,opt,name=postalCode,proto3" json:"postalCode,omitempty"`
-	Phone         int32                  `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	Phone         string                 `protobuf:"bytes,7,opt,name=phone,proto3" json:"phone,omitempty"`
 	Notes         string                 `protobuf:"bytes,8,opt,name=notes,proto3" json:"notes,omitempty"`
 	Fields        []*data.Field          `protobuf:"bytes,9,rep,name=fields,proto3" json:"fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -349,11 +349,11 @@ func (x *AddressCreateMessage) GetPostalCode() int32 {
 	return 0
 }
 
-func (x *AddressCreateMessage) GetPhone() int32 {
+func (x *AddressCreateMessage) GetPhone() string {
 	if x != nil {
 		return x.Phone
 	}
-	return 0
+	return ""
 }
 
 func (x *AddressCreateMessage) GetNotes() string {
@@ -565,7 +565,7 @@ const file_proto_message_address_proto_rawDesc = "" +
 	"\n" +
 	"postalCode\x18\x06 \x01(\x05R\n" +
 	"postalCode\x12\x14\n" +
-	"\x05phone\x18\a \x01(\x05R\x05phone\x12\x14\n" +
+	"\x05phone\x18\a \x01(\tR\x05phone\x12\x14\n" +
 	"\x05notes\x18\b \x01(\tR\x05notes\x12\x1e\n" +
 	"\x06fields\x18\t \x03(\v2\x06.FieldR\x06fields\"\x17\n" +
 	"\x15AddressCreateResponse\"\xc0\x01\n" +
