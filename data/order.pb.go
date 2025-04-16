@@ -282,7 +282,7 @@ type OrderItem struct {
 	Image         string                 `protobuf:"bytes,5,opt,name=image,proto3" json:"image,omitempty"`
 	Quantity      int32                  `protobuf:"varint,6,opt,name=quantity,proto3" json:"quantity,omitempty"`
 	Price         float64                `protobuf:"fixed64,7,opt,name=price,proto3" json:"price,omitempty"`
-	ProductId     string                 `protobuf:"bytes,8,opt,name=productId,proto3" json:"productId,omitempty"`
+	ProductId     int32                  `protobuf:"varint,8,opt,name=productId,proto3" json:"productId,omitempty"`
 	Data          []*Data                `protobuf:"bytes,9,rep,name=data,proto3" json:"data,omitempty"`
 	Status        *OrderItemStatus       `protobuf:"bytes,10,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -361,11 +361,11 @@ func (x *OrderItem) GetPrice() float64 {
 	return 0
 }
 
-func (x *OrderItem) GetProductId() string {
+func (x *OrderItem) GetProductId() int32 {
 	if x != nil {
 		return x.ProductId
 	}
-	return ""
+	return 0
 }
 
 func (x *OrderItem) GetData() []*Data {
@@ -416,7 +416,7 @@ const file_proto_order_proto_rawDesc = "" +
 	"\x05image\x18\x05 \x01(\tR\x05image\x12\x1a\n" +
 	"\bquantity\x18\x06 \x01(\x05R\bquantity\x12\x14\n" +
 	"\x05price\x18\a \x01(\x01R\x05price\x12\x1c\n" +
-	"\tproductId\x18\b \x01(\tR\tproductId\x12\x19\n" +
+	"\tproductId\x18\b \x01(\x05R\tproductId\x12\x19\n" +
 	"\x04data\x18\t \x03(\v2\x05.DataR\x04data\x12(\n" +
 	"\x06status\x18\n" +
 	" \x01(\v2\x10.OrderItemStatusR\x06statusB#Z!github.com/crevendo/crevendo/datab\x06proto3"
