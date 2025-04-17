@@ -796,15 +796,7 @@ func (m *RemoveItemMessage) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for CartId
-
-	if m.ProductId != nil {
-		// no validation rules for ProductId
-	}
-
-	if m.ProductCustomId != nil {
-		// no validation rules for ProductCustomId
-	}
+	// no validation rules for ItemId
 
 	if len(errors) > 0 {
 		return RemoveItemMessageMultiError(errors)
