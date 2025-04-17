@@ -356,7 +356,6 @@ func (x *RemoveItemMessage) GetItemId() int32 {
 
 type RemoveItemResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Cart          *data.Cart             `protobuf:"bytes,1,opt,name=cart,proto3" json:"cart,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -389,13 +388,6 @@ func (x *RemoveItemResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RemoveItemResponse.ProtoReflect.Descriptor instead.
 func (*RemoveItemResponse) Descriptor() ([]byte, []int) {
 	return file_proto_message_cart_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *RemoveItemResponse) GetCart() *data.Cart {
-	if x != nil {
-		return x.Cart
-	}
-	return nil
 }
 
 type UpdateItemQuantityMessage struct {
@@ -572,9 +564,8 @@ const file_proto_message_cart_proto_rawDesc = "" +
 	"\x0fAddItemResponse\x12\x19\n" +
 	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"+\n" +
 	"\x11RemoveItemMessage\x12\x16\n" +
-	"\x06itemId\x18\x01 \x01(\x05R\x06itemId\"/\n" +
-	"\x12RemoveItemResponse\x12\x19\n" +
-	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"g\n" +
+	"\x06itemId\x18\x01 \x01(\x05R\x06itemId\"\x14\n" +
+	"\x12RemoveItemResponse\"g\n" +
 	"\x19UpdateItemQuantityMessage\x12\x16\n" +
 	"\x06cartId\x18\x01 \x01(\x05R\x06cartId\x12\x16\n" +
 	"\x06itemId\x18\x02 \x01(\x05R\x06itemId\x12\x1a\n" +
@@ -617,13 +608,12 @@ var file_proto_message_cart_proto_depIdxs = []int32{
 	11, // 1: CartCreateResponse.cart:type_name -> Cart
 	12, // 2: AddItemMessage.customData:type_name -> Data
 	11, // 3: AddItemResponse.cart:type_name -> Cart
-	11, // 4: RemoveItemResponse.cart:type_name -> Cart
-	11, // 5: UpdateItemQuantityResponse.cart:type_name -> Cart
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	11, // 4: UpdateItemQuantityResponse.cart:type_name -> Cart
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_proto_message_cart_proto_init() }
