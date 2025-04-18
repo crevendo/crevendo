@@ -237,15 +237,15 @@ func (m *CartItem) validate(all bool) error {
 
 	// no validation rules for CartID
 
+	// no validation rules for Quantity
+
 	// no validation rules for Name
 
 	// no validation rules for Image
 
-	// no validation rules for Quantity
+	// no validation rules for ProductId
 
 	// no validation rules for Price
-
-	// no validation rules for ProductId
 
 	for idx, item := range m.GetData() {
 		_, _ = idx, item
