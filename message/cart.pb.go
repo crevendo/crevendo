@@ -311,12 +311,11 @@ func (x *AddItemResponse) GetCart() *data.Cart {
 }
 
 type RemoveItemMessage struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	CartId          uint32                 `protobuf:"varint,1,opt,name=cartId,proto3" json:"cartId,omitempty"`
-	ProductId       *uint32                `protobuf:"varint,2,opt,name=productId,proto3,oneof" json:"productId,omitempty"`
-	ProductCustomId *string                `protobuf:"bytes,3,opt,name=productCustomId,proto3,oneof" json:"productCustomId,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CartId        uint32                 `protobuf:"varint,1,opt,name=cartId,proto3" json:"cartId,omitempty"`
+	ItemId        uint32                 `protobuf:"varint,2,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RemoveItemMessage) Reset() {
@@ -356,18 +355,11 @@ func (x *RemoveItemMessage) GetCartId() uint32 {
 	return 0
 }
 
-func (x *RemoveItemMessage) GetProductId() uint32 {
-	if x != nil && x.ProductId != nil {
-		return *x.ProductId
+func (x *RemoveItemMessage) GetItemId() uint32 {
+	if x != nil {
+		return x.ItemId
 	}
 	return 0
-}
-
-func (x *RemoveItemMessage) GetProductCustomId() string {
-	if x != nil && x.ProductCustomId != nil {
-		return *x.ProductCustomId
-	}
-	return ""
 }
 
 type RemoveItemResponse struct {
@@ -586,14 +578,10 @@ const file_proto_message_cart_proto_rawDesc = "" +
 	"_productIdB\x12\n" +
 	"\x10_productCustomId\",\n" +
 	"\x0fAddItemResponse\x12\x19\n" +
-	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"\x9f\x01\n" +
+	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"C\n" +
 	"\x11RemoveItemMessage\x12\x16\n" +
-	"\x06cartId\x18\x01 \x01(\rR\x06cartId\x12!\n" +
-	"\tproductId\x18\x02 \x01(\rH\x00R\tproductId\x88\x01\x01\x12-\n" +
-	"\x0fproductCustomId\x18\x03 \x01(\tH\x01R\x0fproductCustomId\x88\x01\x01B\f\n" +
-	"\n" +
-	"_productIdB\x12\n" +
-	"\x10_productCustomId\"/\n" +
+	"\x06cartId\x18\x01 \x01(\rR\x06cartId\x12\x16\n" +
+	"\x06itemId\x18\x02 \x01(\rR\x06itemId\"/\n" +
 	"\x12RemoveItemResponse\x12\x19\n" +
 	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"g\n" +
 	"\x19UpdateItemQuantityMessage\x12\x16\n" +
@@ -653,7 +641,6 @@ func file_proto_message_cart_proto_init() {
 		return
 	}
 	file_proto_message_cart_proto_msgTypes[4].OneofWrappers = []any{}
-	file_proto_message_cart_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
