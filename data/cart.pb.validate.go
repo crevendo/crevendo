@@ -239,11 +239,11 @@ func (m *CartItem) validate(all bool) error {
 
 	// no validation rules for CartID
 
+	// no validation rules for Quantity
+
 	// no validation rules for Name
 
 	// no validation rules for Image
-
-	// no validation rules for Quantity
 
 	// no validation rules for Price
 
