@@ -23,7 +23,7 @@ const (
 
 type Product struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id             uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	CustomId       string                 `protobuf:"bytes,3,opt,name=customId,proto3" json:"customId,omitempty"`
 	Name           string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Price          float64                `protobuf:"fixed64,5,opt,name=price,proto3" json:"price,omitempty"`
@@ -33,11 +33,11 @@ type Product struct {
 	Excerpt        string                 `protobuf:"bytes,9,opt,name=excerpt,proto3" json:"excerpt,omitempty"`
 	Categories     []*Category            `protobuf:"bytes,10,rep,name=categories,proto3" json:"categories,omitempty"`
 	Ratings        []*Rating              `protobuf:"bytes,11,rep,name=ratings,proto3" json:"ratings,omitempty"`
-	RatingsTotal   int32                  `protobuf:"varint,12,opt,name=ratingsTotal,proto3" json:"ratingsTotal,omitempty"`
+	RatingsTotal   uint32                 `protobuf:"varint,12,opt,name=ratingsTotal,proto3" json:"ratingsTotal,omitempty"`
 	RatingsOverall float64                `protobuf:"fixed64,13,opt,name=ratingsOverall,proto3" json:"ratingsOverall,omitempty"`
 	Variants       []*Variant             `protobuf:"bytes,14,rep,name=variants,proto3" json:"variants,omitempty"`
-	Stock          int32                  `protobuf:"varint,15,opt,name=stock,proto3" json:"stock,omitempty"`
-	ParentId       int32                  `protobuf:"varint,16,opt,name=parentId,proto3" json:"parentId,omitempty"`
+	Stock          uint32                 `protobuf:"varint,15,opt,name=stock,proto3" json:"stock,omitempty"`
+	ParentId       uint32                 `protobuf:"varint,16,opt,name=parentId,proto3" json:"parentId,omitempty"`
 	Type           string                 `protobuf:"bytes,17,opt,name=type,proto3" json:"type,omitempty"`
 	Data           []*Data                `protobuf:"bytes,18,rep,name=data,proto3" json:"data,omitempty"`
 	Attributes     []*Attribute           `protobuf:"bytes,19,rep,name=attributes,proto3" json:"attributes,omitempty"`
@@ -75,7 +75,7 @@ func (*Product) Descriptor() ([]byte, []int) {
 	return file_proto_product_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Product) GetId() int32 {
+func (x *Product) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -145,7 +145,7 @@ func (x *Product) GetRatings() []*Rating {
 	return nil
 }
 
-func (x *Product) GetRatingsTotal() int32 {
+func (x *Product) GetRatingsTotal() uint32 {
 	if x != nil {
 		return x.RatingsTotal
 	}
@@ -166,14 +166,14 @@ func (x *Product) GetVariants() []*Variant {
 	return nil
 }
 
-func (x *Product) GetStock() int32 {
+func (x *Product) GetStock() uint32 {
 	if x != nil {
 		return x.Stock
 	}
 	return 0
 }
 
-func (x *Product) GetParentId() int32 {
+func (x *Product) GetParentId() uint32 {
 	if x != nil {
 		return x.ParentId
 	}
@@ -207,7 +207,7 @@ const file_proto_product_proto_rawDesc = "" +
 	"\n" +
 	"\x13proto/product.proto\x1a\x10proto/data.proto\x1a\x12proto/rating.proto\x1a\x15proto/attribute.proto\x1a\x13proto/variant.proto\x1a\x14proto/category.proto\"\x96\x04\n" +
 	"\aProduct\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1a\n" +
 	"\bcustomId\x18\x03 \x01(\tR\bcustomId\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x14\n" +
 	"\x05price\x18\x05 \x01(\x01R\x05price\x12\x14\n" +
@@ -220,11 +220,11 @@ const file_proto_product_proto_rawDesc = "" +
 	" \x03(\v2\t.CategoryR\n" +
 	"categories\x12!\n" +
 	"\aratings\x18\v \x03(\v2\a.RatingR\aratings\x12\"\n" +
-	"\fratingsTotal\x18\f \x01(\x05R\fratingsTotal\x12&\n" +
+	"\fratingsTotal\x18\f \x01(\rR\fratingsTotal\x12&\n" +
 	"\x0eratingsOverall\x18\r \x01(\x01R\x0eratingsOverall\x12$\n" +
 	"\bvariants\x18\x0e \x03(\v2\b.VariantR\bvariants\x12\x14\n" +
-	"\x05stock\x18\x0f \x01(\x05R\x05stock\x12\x1a\n" +
-	"\bparentId\x18\x10 \x01(\x05R\bparentId\x12\x12\n" +
+	"\x05stock\x18\x0f \x01(\rR\x05stock\x12\x1a\n" +
+	"\bparentId\x18\x10 \x01(\rR\bparentId\x12\x12\n" +
 	"\x04type\x18\x11 \x01(\tR\x04type\x12\x19\n" +
 	"\x04data\x18\x12 \x03(\v2\x05.DataR\x04data\x12*\n" +
 	"\n" +

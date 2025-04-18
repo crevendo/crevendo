@@ -23,10 +23,10 @@ const (
 
 type Category struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Parent        *Category              `protobuf:"bytes,4,opt,name=parent,proto3" json:"parent,omitempty"`
-	ParentId      int32                  `protobuf:"varint,5,opt,name=parentId,proto3" json:"parentId,omitempty"`
+	ParentId      uint32                 `protobuf:"varint,5,opt,name=parentId,proto3" json:"parentId,omitempty"`
 	Children      []*Category            `protobuf:"bytes,6,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -62,7 +62,7 @@ func (*Category) Descriptor() ([]byte, []int) {
 	return file_proto_category_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Category) GetId() int32 {
+func (x *Category) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -83,7 +83,7 @@ func (x *Category) GetParent() *Category {
 	return nil
 }
 
-func (x *Category) GetParentId() int32 {
+func (x *Category) GetParentId() uint32 {
 	if x != nil {
 		return x.ParentId
 	}
@@ -103,10 +103,10 @@ const file_proto_category_proto_rawDesc = "" +
 	"\n" +
 	"\x14proto/category.proto\"\x94\x01\n" +
 	"\bCategory\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12!\n" +
 	"\x06parent\x18\x04 \x01(\v2\t.CategoryR\x06parent\x12\x1a\n" +
-	"\bparentId\x18\x05 \x01(\x05R\bparentId\x12%\n" +
+	"\bparentId\x18\x05 \x01(\rR\bparentId\x12%\n" +
 	"\bchildren\x18\x06 \x03(\v2\t.CategoryR\bchildrenB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 
 var (

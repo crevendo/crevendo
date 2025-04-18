@@ -24,8 +24,8 @@ const (
 
 type EventCreateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          int32                  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
-	UserId        int32                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	Type          uint32                 `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	UserId        uint32                 `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	SessionUUID   string                 `protobuf:"bytes,4,opt,name=sessionUUID,proto3" json:"sessionUUID,omitempty"`
 	Data          []*data.EventData      `protobuf:"bytes,5,rep,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -62,14 +62,14 @@ func (*EventCreateRequest) Descriptor() ([]byte, []int) {
 	return file_proto_message_event_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EventCreateRequest) GetType() int32 {
+func (x *EventCreateRequest) GetType() uint32 {
 	if x != nil {
 		return x.Type
 	}
 	return 0
 }
 
-func (x *EventCreateRequest) GetUserId() int32 {
+func (x *EventCreateRequest) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -128,8 +128,8 @@ func (*EventCreateResponse) Descriptor() ([]byte, []int) {
 
 type EventListRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          *int32                 `protobuf:"varint,1,opt,name=type,proto3,oneof" json:"type,omitempty"`
-	UserId        *int32                 `protobuf:"varint,2,opt,name=userId,proto3,oneof" json:"userId,omitempty"`
+	Type          *uint32                `protobuf:"varint,1,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	UserId        *uint32                `protobuf:"varint,2,opt,name=userId,proto3,oneof" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -164,14 +164,14 @@ func (*EventListRequest) Descriptor() ([]byte, []int) {
 	return file_proto_message_event_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *EventListRequest) GetType() int32 {
+func (x *EventListRequest) GetType() uint32 {
 	if x != nil && x.Type != nil {
 		return *x.Type
 	}
 	return 0
 }
 
-func (x *EventListRequest) GetUserId() int32 {
+func (x *EventListRequest) GetUserId() uint32 {
 	if x != nil && x.UserId != nil {
 		return *x.UserId
 	}
@@ -228,15 +228,15 @@ const file_proto_message_event_proto_rawDesc = "" +
 	"\n" +
 	"\x19proto/message/event.proto\x1a\x11proto/event.proto\"\x82\x01\n" +
 	"\x12EventCreateRequest\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\x05R\x04type\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\x05R\x06userId\x12 \n" +
+	"\x04type\x18\x01 \x01(\rR\x04type\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\rR\x06userId\x12 \n" +
 	"\vsessionUUID\x18\x04 \x01(\tR\vsessionUUID\x12\x1e\n" +
 	"\x04data\x18\x05 \x03(\v2\n" +
 	".EventDataR\x04data\"\x15\n" +
 	"\x13EventCreateResponse\"\\\n" +
 	"\x10EventListRequest\x12\x17\n" +
-	"\x04type\x18\x01 \x01(\x05H\x00R\x04type\x88\x01\x01\x12\x1b\n" +
-	"\x06userId\x18\x02 \x01(\x05H\x01R\x06userId\x88\x01\x01B\a\n" +
+	"\x04type\x18\x01 \x01(\rH\x00R\x04type\x88\x01\x01\x12\x1b\n" +
+	"\x06userId\x18\x02 \x01(\rH\x01R\x06userId\x88\x01\x01B\a\n" +
 	"\x05_typeB\t\n" +
 	"\a_userId\"3\n" +
 	"\x11EventListResponse\x12\x1e\n" +

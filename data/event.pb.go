@@ -76,9 +76,9 @@ func (x *EventData) GetValue() string {
 
 type Event struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          int32                  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
-	UserId        int32                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	SessionId     int32                  `protobuf:"varint,3,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
+	Type          uint32                 `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	UserId        uint32                 `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	SessionId     uint32                 `protobuf:"varint,3,opt,name=sessionId,proto3" json:"sessionId,omitempty"`
 	Data          []*EventData           `protobuf:"bytes,4,rep,name=data,proto3" json:"data,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -115,21 +115,21 @@ func (*Event) Descriptor() ([]byte, []int) {
 	return file_proto_event_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Event) GetType() int32 {
+func (x *Event) GetType() uint32 {
 	if x != nil {
 		return x.Type
 	}
 	return 0
 }
 
-func (x *Event) GetUserId() int32 {
+func (x *Event) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-func (x *Event) GetSessionId() int32 {
+func (x *Event) GetSessionId() uint32 {
 	if x != nil {
 		return x.SessionId
 	}
@@ -159,9 +159,9 @@ const file_proto_event_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value\"\xab\x01\n" +
 	"\x05Event\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\x05R\x04type\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\x05R\x06userId\x12\x1c\n" +
-	"\tsessionId\x18\x03 \x01(\x05R\tsessionId\x12\x1e\n" +
+	"\x04type\x18\x01 \x01(\rR\x04type\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\rR\x06userId\x12\x1c\n" +
+	"\tsessionId\x18\x03 \x01(\rR\tsessionId\x12\x1e\n" +
 	"\x04data\x18\x04 \x03(\v2\n" +
 	".EventDataR\x04data\x128\n" +
 	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB#Z!github.com/crevendo/crevendo/datab\x06proto3"

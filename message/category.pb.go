@@ -112,7 +112,7 @@ func (x *CategoryListResponse) GetCategories() []*data.Category {
 
 type CategoryGetMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	IgnoreCache   bool                   `protobuf:"varint,2,opt,name=ignoreCache,proto3" json:"ignoreCache,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -148,7 +148,7 @@ func (*CategoryGetMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_category_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CategoryGetMessage) GetId() int32 {
+func (x *CategoryGetMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -209,7 +209,7 @@ func (x *CategoryGetResponse) GetCategory() *data.Category {
 type CategoryCreateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	ParentId      *int32                 `protobuf:"varint,2,opt,name=parentId,proto3,oneof" json:"parentId,omitempty"`
+	ParentId      *uint32                `protobuf:"varint,2,opt,name=parentId,proto3,oneof" json:"parentId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *CategoryCreateMessage) GetName() string {
 	return ""
 }
 
-func (x *CategoryCreateMessage) GetParentId() int32 {
+func (x *CategoryCreateMessage) GetParentId() uint32 {
 	if x != nil && x.ParentId != nil {
 		return *x.ParentId
 	}
@@ -304,9 +304,9 @@ func (x *CategoryCreateResponse) GetCategory() *data.Category {
 
 type CategoryUpdateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	ParentId      *int32                 `protobuf:"varint,3,opt,name=parentId,proto3,oneof" json:"parentId,omitempty"`
+	ParentId      *uint32                `protobuf:"varint,3,opt,name=parentId,proto3,oneof" json:"parentId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -341,7 +341,7 @@ func (*CategoryUpdateMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_category_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *CategoryUpdateMessage) GetId() int32 {
+func (x *CategoryUpdateMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -355,7 +355,7 @@ func (x *CategoryUpdateMessage) GetName() string {
 	return ""
 }
 
-func (x *CategoryUpdateMessage) GetParentId() int32 {
+func (x *CategoryUpdateMessage) GetParentId() uint32 {
 	if x != nil && x.ParentId != nil {
 		return *x.ParentId
 	}
@@ -408,7 +408,7 @@ func (x *CategoryUpdateResponse) GetCategory() *data.Category {
 
 type CategoryDeleteMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -443,7 +443,7 @@ func (*CategoryDeleteMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_category_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *CategoryDeleteMessage) GetId() int32 {
+func (x *CategoryDeleteMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -507,25 +507,25 @@ const file_proto_message_category_proto_rawDesc = "" +
 	"categories\x18\x01 \x03(\v2\t.CategoryR\n" +
 	"categories\"F\n" +
 	"\x12CategoryGetMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12 \n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12 \n" +
 	"\vignoreCache\x18\x02 \x01(\bR\vignoreCache\"<\n" +
 	"\x13CategoryGetResponse\x12%\n" +
 	"\bcategory\x18\x01 \x01(\v2\t.CategoryR\bcategory\"Y\n" +
 	"\x15CategoryCreateMessage\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1f\n" +
-	"\bparentId\x18\x02 \x01(\x05H\x00R\bparentId\x88\x01\x01B\v\n" +
+	"\bparentId\x18\x02 \x01(\rH\x00R\bparentId\x88\x01\x01B\v\n" +
 	"\t_parentId\"?\n" +
 	"\x16CategoryCreateResponse\x12%\n" +
 	"\bcategory\x18\x01 \x01(\v2\t.CategoryR\bcategory\"i\n" +
 	"\x15CategoryUpdateMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
-	"\bparentId\x18\x03 \x01(\x05H\x00R\bparentId\x88\x01\x01B\v\n" +
+	"\bparentId\x18\x03 \x01(\rH\x00R\bparentId\x88\x01\x01B\v\n" +
 	"\t_parentId\"?\n" +
 	"\x16CategoryUpdateResponse\x12%\n" +
 	"\bcategory\x18\x01 \x01(\v2\t.CategoryR\bcategory\"'\n" +
 	"\x15CategoryDeleteMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"2\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"2\n" +
 	"\x16CategoryDeleteResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccessB&Z$github.com/crevendo/crevendo/messageb\x06proto3"
 

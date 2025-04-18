@@ -957,31 +957,31 @@ func (x *Int64Rules) GetIgnoreEmpty() bool {
 	return false
 }
 
-// UInt32Rules describes the constraints applied to `int32` values
+// UInt32Rules describes the constraints applied to `uint32` values
 type UInt32Rules struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Const specifies that this field must be exactly the specified value
-	Const *int32 `protobuf:"varint,1,opt,name=const" json:"const,omitempty"`
+	Const *uint32 `protobuf:"varint,1,opt,name=const" json:"const,omitempty"`
 	// Lt specifies that this field must be less than the specified value,
 	// exclusive
-	Lt *int32 `protobuf:"varint,2,opt,name=lt" json:"lt,omitempty"`
+	Lt *uint32 `protobuf:"varint,2,opt,name=lt" json:"lt,omitempty"`
 	// Lte specifies that this field must be less than or equal to the
 	// specified value, inclusive
-	Lte *int32 `protobuf:"varint,3,opt,name=lte" json:"lte,omitempty"`
+	Lte *uint32 `protobuf:"varint,3,opt,name=lte" json:"lte,omitempty"`
 	// Gt specifies that this field must be greater than the specified value,
 	// exclusive. If the value of Gt is larger than a specified Lt or Lte, the
 	// range is reversed.
-	Gt *int32 `protobuf:"varint,4,opt,name=gt" json:"gt,omitempty"`
+	Gt *uint32 `protobuf:"varint,4,opt,name=gt" json:"gt,omitempty"`
 	// Gte specifies that this field must be greater than or equal to the
 	// specified value, inclusive. If the value of Gte is larger than a
 	// specified Lt or Lte, the range is reversed.
-	Gte *int32 `protobuf:"varint,5,opt,name=gte" json:"gte,omitempty"`
+	Gte *uint32 `protobuf:"varint,5,opt,name=gte" json:"gte,omitempty"`
 	// In specifies that this field must be equal to one of the specified
 	// values
-	In []int32 `protobuf:"varint,6,rep,name=in" json:"in,omitempty"`
+	In []uint32 `protobuf:"varint,6,rep,name=in" json:"in,omitempty"`
 	// NotIn specifies that this field cannot be equal to one of the specified
 	// values
-	NotIn []int32 `protobuf:"varint,7,rep,name=not_in,json=notIn" json:"not_in,omitempty"`
+	NotIn []uint32 `protobuf:"varint,7,rep,name=not_in,json=notIn" json:"not_in,omitempty"`
 	// IgnoreEmpty specifies that the validation rules of this field should be
 	// evaluated only if the field is not empty
 	IgnoreEmpty   *bool `protobuf:"varint,8,opt,name=ignore_empty,json=ignoreEmpty" json:"ignore_empty,omitempty"`
@@ -1019,49 +1019,49 @@ func (*UInt32Rules) Descriptor() ([]byte, []int) {
 	return file_proto_validate_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UInt32Rules) GetConst() int32 {
+func (x *UInt32Rules) GetConst() uint32 {
 	if x != nil && x.Const != nil {
 		return *x.Const
 	}
 	return 0
 }
 
-func (x *UInt32Rules) GetLt() int32 {
+func (x *UInt32Rules) GetLt() uint32 {
 	if x != nil && x.Lt != nil {
 		return *x.Lt
 	}
 	return 0
 }
 
-func (x *UInt32Rules) GetLte() int32 {
+func (x *UInt32Rules) GetLte() uint32 {
 	if x != nil && x.Lte != nil {
 		return *x.Lte
 	}
 	return 0
 }
 
-func (x *UInt32Rules) GetGt() int32 {
+func (x *UInt32Rules) GetGt() uint32 {
 	if x != nil && x.Gt != nil {
 		return *x.Gt
 	}
 	return 0
 }
 
-func (x *UInt32Rules) GetGte() int32 {
+func (x *UInt32Rules) GetGte() uint32 {
 	if x != nil && x.Gte != nil {
 		return *x.Gte
 	}
 	return 0
 }
 
-func (x *UInt32Rules) GetIn() []int32 {
+func (x *UInt32Rules) GetIn() []uint32 {
 	if x != nil {
 		return x.In
 	}
 	return nil
 }
 
-func (x *UInt32Rules) GetNotIn() []int32 {
+func (x *UInt32Rules) GetNotIn() []uint32 {
 	if x != nil {
 		return x.NotIn
 	}
@@ -3334,13 +3334,13 @@ const file_proto_validate_proto_rawDesc = "" +
 	"\x06not_in\x18\a \x03(\x03R\x05notIn\x12!\n" +
 	"\fignore_empty\x18\b \x01(\bR\vignoreEmpty\"\xb1\x01\n" +
 	"\vUInt32Rules\x12\x14\n" +
-	"\x05const\x18\x01 \x01(\x05R\x05const\x12\x0e\n" +
-	"\x02lt\x18\x02 \x01(\x05R\x02lt\x12\x10\n" +
-	"\x03lte\x18\x03 \x01(\x05R\x03lte\x12\x0e\n" +
-	"\x02gt\x18\x04 \x01(\x05R\x02gt\x12\x10\n" +
-	"\x03gte\x18\x05 \x01(\x05R\x03gte\x12\x0e\n" +
-	"\x02in\x18\x06 \x03(\x05R\x02in\x12\x15\n" +
-	"\x06not_in\x18\a \x03(\x05R\x05notIn\x12!\n" +
+	"\x05const\x18\x01 \x01(\rR\x05const\x12\x0e\n" +
+	"\x02lt\x18\x02 \x01(\rR\x02lt\x12\x10\n" +
+	"\x03lte\x18\x03 \x01(\rR\x03lte\x12\x0e\n" +
+	"\x02gt\x18\x04 \x01(\rR\x02gt\x12\x10\n" +
+	"\x03gte\x18\x05 \x01(\rR\x03gte\x12\x0e\n" +
+	"\x02in\x18\x06 \x03(\rR\x02in\x12\x15\n" +
+	"\x06not_in\x18\a \x03(\rR\x05notIn\x12!\n" +
 	"\fignore_empty\x18\b \x01(\bR\vignoreEmpty\"\xb1\x01\n" +
 	"\vUInt64Rules\x12\x14\n" +
 	"\x05const\x18\x01 \x01(\x04R\x05const\x12\x0e\n" +

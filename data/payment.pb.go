@@ -23,17 +23,17 @@ const (
 
 type Payment struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CartId        int32                  `protobuf:"varint,3,opt,name=cartId,proto3" json:"cartId,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	CartId        uint32                 `protobuf:"varint,3,opt,name=cartId,proto3" json:"cartId,omitempty"`
 	Cart          *Cart                  `protobuf:"bytes,4,opt,name=cart,proto3" json:"cart,omitempty"`
-	UserId        int32                  `protobuf:"varint,5,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        uint32                 `protobuf:"varint,5,opt,name=userId,proto3" json:"userId,omitempty"`
 	User          *User                  `protobuf:"bytes,6,opt,name=user,proto3" json:"user,omitempty"`
 	Gateway       string                 `protobuf:"bytes,7,opt,name=gateway,proto3" json:"gateway,omitempty"`
 	Total         float64                `protobuf:"fixed64,8,opt,name=total,proto3" json:"total,omitempty"`
-	Status        int32                  `protobuf:"varint,9,opt,name=status,proto3" json:"status,omitempty"`
+	Status        uint32                 `protobuf:"varint,9,opt,name=status,proto3" json:"status,omitempty"`
 	MethodId      string                 `protobuf:"bytes,10,opt,name=methodId,proto3" json:"methodId,omitempty"`
-	OrderId       int32                  `protobuf:"varint,11,opt,name=orderId,proto3" json:"orderId,omitempty"`
-	Installments  int32                  `protobuf:"varint,12,opt,name=installments,proto3" json:"installments,omitempty"`
+	OrderId       uint32                 `protobuf:"varint,11,opt,name=orderId,proto3" json:"orderId,omitempty"`
+	Installments  uint32                 `protobuf:"varint,12,opt,name=installments,proto3" json:"installments,omitempty"`
 	Data          []*Data                `protobuf:"bytes,13,rep,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -69,14 +69,14 @@ func (*Payment) Descriptor() ([]byte, []int) {
 	return file_proto_payment_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Payment) GetId() int32 {
+func (x *Payment) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *Payment) GetCartId() int32 {
+func (x *Payment) GetCartId() uint32 {
 	if x != nil {
 		return x.CartId
 	}
@@ -90,7 +90,7 @@ func (x *Payment) GetCart() *Cart {
 	return nil
 }
 
-func (x *Payment) GetUserId() int32 {
+func (x *Payment) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -118,7 +118,7 @@ func (x *Payment) GetTotal() float64 {
 	return 0
 }
 
-func (x *Payment) GetStatus() int32 {
+func (x *Payment) GetStatus() uint32 {
 	if x != nil {
 		return x.Status
 	}
@@ -132,14 +132,14 @@ func (x *Payment) GetMethodId() string {
 	return ""
 }
 
-func (x *Payment) GetOrderId() int32 {
+func (x *Payment) GetOrderId() uint32 {
 	if x != nil {
 		return x.OrderId
 	}
 	return 0
 }
 
-func (x *Payment) GetInstallments() int32 {
+func (x *Payment) GetInstallments() uint32 {
 	if x != nil {
 		return x.Installments
 	}
@@ -160,7 +160,7 @@ type PaymentMethod struct {
 	Issuer              string                 `protobuf:"bytes,3,opt,name=issuer,proto3" json:"issuer,omitempty"`
 	Image               string                 `protobuf:"bytes,4,opt,name=image,proto3" json:"image,omitempty"`
 	Type                string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	InstallmentsOptions []int32                `protobuf:"varint,6,rep,packed,name=installmentsOptions,proto3" json:"installmentsOptions,omitempty"`
+	InstallmentsOptions []uint32               `protobuf:"varint,6,rep,packed,name=installmentsOptions,proto3" json:"installmentsOptions,omitempty"`
 	NeedCvv             bool                   `protobuf:"varint,7,opt,name=need_cvv,json=needCvv,proto3" json:"need_cvv,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
@@ -231,7 +231,7 @@ func (x *PaymentMethod) GetType() string {
 	return ""
 }
 
-func (x *PaymentMethod) GetInstallmentsOptions() []int32 {
+func (x *PaymentMethod) GetInstallmentsOptions() []uint32 {
 	if x != nil {
 		return x.InstallmentsOptions
 	}
@@ -251,18 +251,18 @@ const file_proto_payment_proto_rawDesc = "" +
 	"\n" +
 	"\x13proto/payment.proto\x1a\x10proto/cart.proto\x1a\x10proto/user.proto\x1a\x10proto/data.proto\"\xbc\x02\n" +
 	"\aPayment\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
-	"\x06cartId\x18\x03 \x01(\x05R\x06cartId\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
+	"\x06cartId\x18\x03 \x01(\rR\x06cartId\x12\x19\n" +
 	"\x04cart\x18\x04 \x01(\v2\x05.CartR\x04cart\x12\x16\n" +
-	"\x06userId\x18\x05 \x01(\x05R\x06userId\x12\x19\n" +
+	"\x06userId\x18\x05 \x01(\rR\x06userId\x12\x19\n" +
 	"\x04user\x18\x06 \x01(\v2\x05.UserR\x04user\x12\x18\n" +
 	"\agateway\x18\a \x01(\tR\agateway\x12\x14\n" +
 	"\x05total\x18\b \x01(\x01R\x05total\x12\x16\n" +
-	"\x06status\x18\t \x01(\x05R\x06status\x12\x1a\n" +
+	"\x06status\x18\t \x01(\rR\x06status\x12\x1a\n" +
 	"\bmethodId\x18\n" +
 	" \x01(\tR\bmethodId\x12\x18\n" +
-	"\aorderId\x18\v \x01(\x05R\aorderId\x12\"\n" +
-	"\finstallments\x18\f \x01(\x05R\finstallments\x12\x19\n" +
+	"\aorderId\x18\v \x01(\rR\aorderId\x12\"\n" +
+	"\finstallments\x18\f \x01(\rR\finstallments\x12\x19\n" +
 	"\x04data\x18\r \x03(\v2\x05.DataR\x04data\"\xce\x01\n" +
 	"\rPaymentMethod\x12\x1a\n" +
 	"\boriginId\x18\x01 \x01(\tR\boriginId\x12\x12\n" +
@@ -270,7 +270,7 @@ const file_proto_payment_proto_rawDesc = "" +
 	"\x06issuer\x18\x03 \x01(\tR\x06issuer\x12\x14\n" +
 	"\x05image\x18\x04 \x01(\tR\x05image\x12\x12\n" +
 	"\x04type\x18\x05 \x01(\tR\x04type\x120\n" +
-	"\x13installmentsOptions\x18\x06 \x03(\x05R\x13installmentsOptions\x12\x19\n" +
+	"\x13installmentsOptions\x18\x06 \x03(\rR\x13installmentsOptions\x12\x19\n" +
 	"\bneed_cvv\x18\a \x01(\bR\aneedCvvB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 
 var (

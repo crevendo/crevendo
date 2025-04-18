@@ -23,8 +23,8 @@ const (
 
 type Cart struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId        int32                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        uint32                 `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	Items         []*CartItem            `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty"`
 	Fees          []*Fee                 `protobuf:"bytes,5,rep,name=fees,proto3" json:"fees,omitempty"`
 	Total         float64                `protobuf:"fixed64,6,opt,name=total,proto3" json:"total,omitempty"`
@@ -64,14 +64,14 @@ func (*Cart) Descriptor() ([]byte, []int) {
 	return file_proto_cart_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Cart) GetId() int32 {
+func (x *Cart) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *Cart) GetUserId() int32 {
+func (x *Cart) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -115,14 +115,14 @@ func (x *Cart) GetSubtotal() float64 {
 
 type CartItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ProductId     int32                  `protobuf:"varint,2,opt,name=productId,proto3" json:"productId,omitempty"`
-	CartID        int32                  `protobuf:"varint,3,opt,name=cartID,proto3" json:"cartID,omitempty"`
-	Quantity      int32                  `protobuf:"varint,4,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	Image         string                 `protobuf:"bytes,6,opt,name=image,proto3" json:"image,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	CartID        uint32                 `protobuf:"varint,3,opt,name=cartID,proto3" json:"cartID,omitempty"`
+	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Image         string                 `protobuf:"bytes,5,opt,name=image,proto3" json:"image,omitempty"`
+	Quantity      uint32                 `protobuf:"varint,6,opt,name=quantity,proto3" json:"quantity,omitempty"`
 	Price         float64                `protobuf:"fixed64,7,opt,name=price,proto3" json:"price,omitempty"`
-	Data          []*Data                `protobuf:"bytes,8,rep,name=data,proto3" json:"data,omitempty"`
+	ProductId     string                 `protobuf:"bytes,8,opt,name=productId,proto3" json:"productId,omitempty"`
+	Data          []*Data                `protobuf:"bytes,9,rep,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -157,30 +157,16 @@ func (*CartItem) Descriptor() ([]byte, []int) {
 	return file_proto_cart_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CartItem) GetId() int32 {
+func (x *CartItem) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *CartItem) GetProductId() int32 {
-	if x != nil {
-		return x.ProductId
-	}
-	return 0
-}
-
-func (x *CartItem) GetCartID() int32 {
+func (x *CartItem) GetCartID() uint32 {
 	if x != nil {
 		return x.CartID
-	}
-	return 0
-}
-
-func (x *CartItem) GetQuantity() int32 {
-	if x != nil {
-		return x.Quantity
 	}
 	return 0
 }
@@ -199,11 +185,25 @@ func (x *CartItem) GetImage() string {
 	return ""
 }
 
+func (x *CartItem) GetQuantity() uint32 {
+	if x != nil {
+		return x.Quantity
+	}
+	return 0
+}
+
 func (x *CartItem) GetPrice() float64 {
 	if x != nil {
 		return x.Price
 	}
 	return 0
+}
+
+func (x *CartItem) GetProductId() string {
+	if x != nil {
+		return x.ProductId
+	}
+	return ""
 }
 
 func (x *CartItem) GetData() []*Data {
@@ -219,22 +219,22 @@ const file_proto_cart_proto_rawDesc = "" +
 	"\n" +
 	"\x10proto/cart.proto\x1a\x0fproto/fee.proto\x1a\x10proto/data.proto\"\xb1\x01\n" +
 	"\x04Cart\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\x05R\x06userId\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\rR\x06userId\x12\x1f\n" +
 	"\x05items\x18\x04 \x03(\v2\t.CartItemR\x05items\x12\x18\n" +
 	"\x04fees\x18\x05 \x03(\v2\x04.FeeR\x04fees\x12\x14\n" +
 	"\x05total\x18\x06 \x01(\x01R\x05total\x12\x14\n" +
 	"\x05taxes\x18\a \x01(\x01R\x05taxes\x12\x1a\n" +
 	"\bsubtotal\x18\b \x01(\x01R\bsubtotal\"\xc7\x01\n" +
 	"\bCartItem\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1c\n" +
-	"\tproductId\x18\x02 \x01(\x05R\tproductId\x12\x16\n" +
-	"\x06cartID\x18\x03 \x01(\x05R\x06cartID\x12\x1a\n" +
-	"\bquantity\x18\x04 \x01(\x05R\bquantity\x12\x12\n" +
-	"\x04name\x18\x05 \x01(\tR\x04name\x12\x14\n" +
-	"\x05image\x18\x06 \x01(\tR\x05image\x12\x14\n" +
-	"\x05price\x18\a \x01(\x01R\x05price\x12\x19\n" +
-	"\x04data\x18\b \x03(\v2\x05.DataR\x04dataB#Z!github.com/crevendo/crevendo/datab\x06proto3"
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
+	"\x06cartID\x18\x03 \x01(\rR\x06cartID\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\x12\x14\n" +
+	"\x05image\x18\x05 \x01(\tR\x05image\x12\x1a\n" +
+	"\bquantity\x18\x06 \x01(\rR\bquantity\x12\x14\n" +
+	"\x05price\x18\a \x01(\x01R\x05price\x12\x1c\n" +
+	"\tproductId\x18\b \x01(\tR\tproductId\x12\x19\n" +
+	"\x04data\x18\t \x03(\v2\x05.DataR\x04dataB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 
 var (
 	file_proto_cart_proto_rawDescOnce sync.Once

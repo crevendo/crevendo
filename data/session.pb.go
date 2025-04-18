@@ -24,7 +24,7 @@ const (
 
 type Session struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Uuid          string                 `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -61,7 +61,7 @@ func (*Session) Descriptor() ([]byte, []int) {
 	return file_proto_session_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Session) GetId() int32 {
+func (x *Session) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -88,7 +88,7 @@ const file_proto_session_proto_rawDesc = "" +
 	"\n" +
 	"\x13proto/session.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"g\n" +
 	"\aSession\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x128\n" +
 	"\tcreatedAt\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 

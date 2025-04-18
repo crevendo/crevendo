@@ -23,7 +23,7 @@ const (
 
 type Option struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Value         string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -60,7 +60,7 @@ func (*Option) Descriptor() ([]byte, []int) {
 	return file_proto_option_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Option) GetId() int32 {
+func (x *Option) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -87,7 +87,7 @@ const file_proto_option_proto_rawDesc = "" +
 	"\n" +
 	"\x12proto/option.proto\"B\n" +
 	"\x06Option\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
 	"\x05value\x18\x04 \x01(\tR\x05valueB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 

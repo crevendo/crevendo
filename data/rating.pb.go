@@ -23,9 +23,9 @@ const (
 
 type Rating struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ProductId     int32                  `protobuf:"varint,3,opt,name=productId,proto3" json:"productId,omitempty"`
-	Value         int32                  `protobuf:"varint,4,opt,name=value,proto3" json:"value,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	ProductId     uint32                 `protobuf:"varint,3,opt,name=productId,proto3" json:"productId,omitempty"`
+	Value         uint32                 `protobuf:"varint,4,opt,name=value,proto3" json:"value,omitempty"`
 	Comment       string                 `protobuf:"bytes,5,opt,name=comment,proto3" json:"comment,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -61,21 +61,21 @@ func (*Rating) Descriptor() ([]byte, []int) {
 	return file_proto_rating_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Rating) GetId() int32 {
+func (x *Rating) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *Rating) GetProductId() int32 {
+func (x *Rating) GetProductId() uint32 {
 	if x != nil {
 		return x.ProductId
 	}
 	return 0
 }
 
-func (x *Rating) GetValue() int32 {
+func (x *Rating) GetValue() uint32 {
 	if x != nil {
 		return x.Value
 	}
@@ -95,9 +95,9 @@ const file_proto_rating_proto_rawDesc = "" +
 	"\n" +
 	"\x12proto/rating.proto\"f\n" +
 	"\x06Rating\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1c\n" +
-	"\tproductId\x18\x03 \x01(\x05R\tproductId\x12\x14\n" +
-	"\x05value\x18\x04 \x01(\x05R\x05value\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1c\n" +
+	"\tproductId\x18\x03 \x01(\rR\tproductId\x12\x14\n" +
+	"\x05value\x18\x04 \x01(\rR\x05value\x12\x18\n" +
 	"\acomment\x18\x05 \x01(\tR\acommentB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 
 var (

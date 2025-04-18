@@ -104,7 +104,7 @@ func (x *IntegrationListResponse) GetIntegrations() []*data.Integration {
 
 type IntegrationGetMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -139,7 +139,7 @@ func (*IntegrationGetMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_integration_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *IntegrationGetMessage) GetId() int32 {
+func (x *IntegrationGetMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -192,7 +192,7 @@ func (x *IntegrationGetResponse) GetIntegration() *data.Integration {
 
 type IntegrationEnableMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -227,7 +227,7 @@ func (*IntegrationEnableMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_integration_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *IntegrationEnableMessage) GetId() int32 {
+func (x *IntegrationEnableMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -272,7 +272,7 @@ func (*IntegrationEnableResponse) Descriptor() ([]byte, []int) {
 
 type IntegrationDisableMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -307,7 +307,7 @@ func (*IntegrationDisableMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_integration_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *IntegrationDisableMessage) GetId() int32 {
+func (x *IntegrationDisableMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -359,14 +359,14 @@ const file_proto_message_integration_proto_rawDesc = "" +
 	"\x17IntegrationListResponse\x120\n" +
 	"\fintegrations\x18\x01 \x03(\v2\f.IntegrationR\fintegrations\"'\n" +
 	"\x15IntegrationGetMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"H\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"H\n" +
 	"\x16IntegrationGetResponse\x12.\n" +
 	"\vintegration\x18\x01 \x01(\v2\f.IntegrationR\vintegration\"*\n" +
 	"\x18IntegrationEnableMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"\x1b\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"\x1b\n" +
 	"\x19IntegrationEnableResponse\"+\n" +
 	"\x19IntegrationDisableMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"\x1c\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"\x1c\n" +
 	"\x1aIntegrationDisableResponseB&Z$github.com/crevendo/crevendo/messageb\x06proto3"
 
 var (

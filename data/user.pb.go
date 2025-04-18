@@ -23,14 +23,14 @@ const (
 
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Uuid          string                 `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	FirstName     string                 `protobuf:"bytes,4,opt,name=firstName,proto3" json:"firstName,omitempty"`
 	LastName      string                 `protobuf:"bytes,5,opt,name=lastName,proto3" json:"lastName,omitempty"`
 	Username      string                 `protobuf:"bytes,6,opt,name=username,proto3" json:"username,omitempty"`
 	Email         string                 `protobuf:"bytes,7,opt,name=email,proto3" json:"email,omitempty"`
 	Password      string                 `protobuf:"bytes,8,opt,name=password,proto3" json:"password,omitempty"`
-	Role          int32                  `protobuf:"varint,9,opt,name=role,proto3" json:"role,omitempty"`
+	Role          uint32                 `protobuf:"varint,9,opt,name=role,proto3" json:"role,omitempty"`
 	Data          []*Data                `protobuf:"bytes,10,rep,name=data,proto3" json:"data,omitempty"`
 	Fields        []*Field               `protobuf:"bytes,11,rep,name=fields,proto3" json:"fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -67,7 +67,7 @@ func (*User) Descriptor() ([]byte, []int) {
 	return file_proto_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *User) GetId() int32 {
+func (x *User) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -116,7 +116,7 @@ func (x *User) GetPassword() string {
 	return ""
 }
 
-func (x *User) GetRole() int32 {
+func (x *User) GetRole() uint32 {
 	if x != nil {
 		return x.Role
 	}
@@ -143,14 +143,14 @@ const file_proto_user_proto_rawDesc = "" +
 	"\n" +
 	"\x10proto/user.proto\x1a\x10proto/data.proto\x1a\x11proto/field.proto\"\x81\x02\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x1c\n" +
 	"\tfirstName\x18\x04 \x01(\tR\tfirstName\x12\x1a\n" +
 	"\blastName\x18\x05 \x01(\tR\blastName\x12\x1a\n" +
 	"\busername\x18\x06 \x01(\tR\busername\x12\x14\n" +
 	"\x05email\x18\a \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\b \x01(\tR\bpassword\x12\x12\n" +
-	"\x04role\x18\t \x01(\x05R\x04role\x12\x19\n" +
+	"\x04role\x18\t \x01(\rR\x04role\x12\x19\n" +
 	"\x04data\x18\n" +
 	" \x03(\v2\x05.DataR\x04data\x12\x1e\n" +
 	"\x06fields\x18\v \x03(\v2\x06.FieldR\x06fieldsB#Z!github.com/crevendo/crevendo/datab\x06proto3"

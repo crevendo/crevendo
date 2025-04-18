@@ -23,7 +23,7 @@ const (
 
 type InvoiceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	OrderId       int32                  `protobuf:"varint,1,opt,name=orderId,proto3" json:"orderId,omitempty"`
+	OrderId       uint32                 `protobuf:"varint,1,opt,name=orderId,proto3" json:"orderId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -58,7 +58,7 @@ func (*InvoiceRequest) Descriptor() ([]byte, []int) {
 	return file_proto_message_invoice_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *InvoiceRequest) GetOrderId() int32 {
+func (x *InvoiceRequest) GetOrderId() uint32 {
 	if x != nil {
 		return x.OrderId
 	}
@@ -115,7 +115,7 @@ const file_proto_message_invoice_proto_rawDesc = "" +
 	"\n" +
 	"\x1bproto/message/invoice.proto\"*\n" +
 	"\x0eInvoiceRequest\x12\x18\n" +
-	"\aorderId\x18\x01 \x01(\x05R\aorderId\"$\n" +
+	"\aorderId\x18\x01 \x01(\rR\aorderId\"$\n" +
 	"\fFileResponse\x12\x14\n" +
 	"\x05chunk\x18\x01 \x01(\fR\x05chunkB&Z$github.com/crevendo/crevendo/messageb\x06proto3"
 

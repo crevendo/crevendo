@@ -95,7 +95,7 @@ func (*CacheCleanResponse) Descriptor() ([]byte, []int) {
 
 type CacheProductDeleteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            *int32                 `protobuf:"varint,1,opt,name=Id,proto3,oneof" json:"Id,omitempty"`
+	Id            *uint32                `protobuf:"varint,1,opt,name=Id,proto3,oneof" json:"Id,omitempty"`
 	CustomId      *string                `protobuf:"bytes,2,opt,name=customId,proto3,oneof" json:"customId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -131,7 +131,7 @@ func (*CacheProductDeleteRequest) Descriptor() ([]byte, []int) {
 	return file_proto_message_cache_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CacheProductDeleteRequest) GetId() int32 {
+func (x *CacheProductDeleteRequest) GetId() uint32 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
@@ -269,7 +269,7 @@ const file_proto_message_cache_proto_rawDesc = "" +
 	"\x11CacheCleanRequest\"\x14\n" +
 	"\x12CacheCleanResponse\"e\n" +
 	"\x19CacheProductDeleteRequest\x12\x13\n" +
-	"\x02Id\x18\x01 \x01(\x05H\x00R\x02Id\x88\x01\x01\x12\x1f\n" +
+	"\x02Id\x18\x01 \x01(\rH\x00R\x02Id\x88\x01\x01\x12\x1f\n" +
 	"\bcustomId\x18\x02 \x01(\tH\x01R\bcustomId\x88\x01\x01B\x05\n" +
 	"\x03_IdB\v\n" +
 	"\t_customId\"\x1c\n" +

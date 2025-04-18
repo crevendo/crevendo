@@ -23,7 +23,7 @@ const (
 
 type Integration struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Admin         string                 `protobuf:"bytes,3,opt,name=admin,proto3" json:"admin,omitempty"`
 	Enabled       bool                   `protobuf:"varint,4,opt,name=enabled,proto3" json:"enabled,omitempty"`
@@ -61,7 +61,7 @@ func (*Integration) Descriptor() ([]byte, []int) {
 	return file_proto_integration_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Integration) GetId() int32 {
+func (x *Integration) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -95,7 +95,7 @@ const file_proto_integration_proto_rawDesc = "" +
 	"\n" +
 	"\x17proto/integration.proto\"a\n" +
 	"\vIntegration\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05admin\x18\x03 \x01(\tR\x05admin\x12\x18\n" +
 	"\aenabled\x18\x04 \x01(\bR\aenabledB#Z!github.com/crevendo/crevendo/datab\x06proto3"

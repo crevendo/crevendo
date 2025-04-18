@@ -24,7 +24,7 @@ const (
 
 type OrderStatus struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Key           string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
 	Label         string                 `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -61,7 +61,7 @@ func (*OrderStatus) Descriptor() ([]byte, []int) {
 	return file_proto_order_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *OrderStatus) GetId() int32 {
+func (x *OrderStatus) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -84,7 +84,7 @@ func (x *OrderStatus) GetLabel() string {
 
 type OrderItemStatus struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Key           string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
 	Label         string                 `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -121,7 +121,7 @@ func (*OrderItemStatus) Descriptor() ([]byte, []int) {
 	return file_proto_order_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *OrderItemStatus) GetId() int32 {
+func (x *OrderItemStatus) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -144,13 +144,13 @@ func (x *OrderItemStatus) GetLabel() string {
 
 type Order struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Uuid          string                 `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	UserId        int32                  `protobuf:"varint,3,opt,name=userId,proto3" json:"userId,omitempty"`
-	AddressId     int32                  `protobuf:"varint,4,opt,name=addressId,proto3" json:"addressId,omitempty"`
+	UserId        uint32                 `protobuf:"varint,3,opt,name=userId,proto3" json:"userId,omitempty"`
+	AddressId     uint32                 `protobuf:"varint,4,opt,name=addressId,proto3" json:"addressId,omitempty"`
 	Items         []*OrderItem           `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
 	Total         float64                `protobuf:"fixed64,6,opt,name=total,proto3" json:"total,omitempty"`
-	PaymentId     int32                  `protobuf:"varint,7,opt,name=paymentId,proto3" json:"paymentId,omitempty"`
+	PaymentId     uint32                 `protobuf:"varint,7,opt,name=paymentId,proto3" json:"paymentId,omitempty"`
 	Status        *OrderStatus           `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
 	Fees          []*Fee                 `protobuf:"bytes,9,rep,name=fees,proto3" json:"fees,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
@@ -190,7 +190,7 @@ func (*Order) Descriptor() ([]byte, []int) {
 	return file_proto_order_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Order) GetId() int32 {
+func (x *Order) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -204,14 +204,14 @@ func (x *Order) GetUuid() string {
 	return ""
 }
 
-func (x *Order) GetUserId() int32 {
+func (x *Order) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-func (x *Order) GetAddressId() int32 {
+func (x *Order) GetAddressId() uint32 {
 	if x != nil {
 		return x.AddressId
 	}
@@ -232,7 +232,7 @@ func (x *Order) GetTotal() float64 {
 	return 0
 }
 
-func (x *Order) GetPaymentId() int32 {
+func (x *Order) GetPaymentId() uint32 {
 	if x != nil {
 		return x.PaymentId
 	}
@@ -276,13 +276,13 @@ func (x *Order) GetData() []*Data {
 
 type OrderItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrderId       int32                  `protobuf:"varint,3,opt,name=orderId,proto3" json:"orderId,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	OrderId       uint32                 `protobuf:"varint,3,opt,name=orderId,proto3" json:"orderId,omitempty"`
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Image         string                 `protobuf:"bytes,5,opt,name=image,proto3" json:"image,omitempty"`
-	Quantity      int32                  `protobuf:"varint,6,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	Quantity      uint32                 `protobuf:"varint,6,opt,name=quantity,proto3" json:"quantity,omitempty"`
 	Price         float64                `protobuf:"fixed64,7,opt,name=price,proto3" json:"price,omitempty"`
-	ProductId     int32                  `protobuf:"varint,8,opt,name=productId,proto3" json:"productId,omitempty"`
+	ProductId     string                 `protobuf:"bytes,8,opt,name=productId,proto3" json:"productId,omitempty"`
 	Data          []*Data                `protobuf:"bytes,9,rep,name=data,proto3" json:"data,omitempty"`
 	Status        *OrderItemStatus       `protobuf:"bytes,10,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -319,14 +319,14 @@ func (*OrderItem) Descriptor() ([]byte, []int) {
 	return file_proto_order_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *OrderItem) GetId() int32 {
+func (x *OrderItem) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *OrderItem) GetOrderId() int32 {
+func (x *OrderItem) GetOrderId() uint32 {
 	if x != nil {
 		return x.OrderId
 	}
@@ -347,7 +347,7 @@ func (x *OrderItem) GetImage() string {
 	return ""
 }
 
-func (x *OrderItem) GetQuantity() int32 {
+func (x *OrderItem) GetQuantity() uint32 {
 	if x != nil {
 		return x.Quantity
 	}
@@ -361,11 +361,11 @@ func (x *OrderItem) GetPrice() float64 {
 	return 0
 }
 
-func (x *OrderItem) GetProductId() int32 {
+func (x *OrderItem) GetProductId() string {
 	if x != nil {
 		return x.ProductId
 	}
-	return 0
+	return ""
 }
 
 func (x *OrderItem) GetData() []*Data {
@@ -388,35 +388,35 @@ const file_proto_order_proto_rawDesc = "" +
 	"\n" +
 	"\x11proto/order.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x10proto/data.proto\x1a\x0fproto/fee.proto\"E\n" +
 	"\vOrderStatus\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
 	"\x05label\x18\x03 \x01(\tR\x05label\"I\n" +
 	"\x0fOrderItemStatus\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
 	"\x05label\x18\x03 \x01(\tR\x05label\"\x86\x03\n" +
 	"\x05Order\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x16\n" +
-	"\x06userId\x18\x03 \x01(\x05R\x06userId\x12\x1c\n" +
-	"\taddressId\x18\x04 \x01(\x05R\taddressId\x12 \n" +
+	"\x06userId\x18\x03 \x01(\rR\x06userId\x12\x1c\n" +
+	"\taddressId\x18\x04 \x01(\rR\taddressId\x12 \n" +
 	"\x05items\x18\x05 \x03(\v2\n" +
 	".OrderItemR\x05items\x12\x14\n" +
 	"\x05total\x18\x06 \x01(\x01R\x05total\x12\x1c\n" +
-	"\tpaymentId\x18\a \x01(\x05R\tpaymentId\x12$\n" +
+	"\tpaymentId\x18\a \x01(\rR\tpaymentId\x12$\n" +
 	"\x06status\x18\b \x01(\v2\f.OrderStatusR\x06status\x12\x18\n" +
 	"\x04fees\x18\t \x03(\v2\x04.FeeR\x04fees\x128\n" +
 	"\tcreatedAt\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
 	"\tupdatedAt\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x19\n" +
 	"\x04data\x18\x0e \x03(\v2\x05.DataR\x04data\"\xf4\x01\n" +
 	"\tOrderItem\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x18\n" +
-	"\aorderId\x18\x03 \x01(\x05R\aorderId\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x18\n" +
+	"\aorderId\x18\x03 \x01(\rR\aorderId\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x14\n" +
 	"\x05image\x18\x05 \x01(\tR\x05image\x12\x1a\n" +
-	"\bquantity\x18\x06 \x01(\x05R\bquantity\x12\x14\n" +
+	"\bquantity\x18\x06 \x01(\rR\bquantity\x12\x14\n" +
 	"\x05price\x18\a \x01(\x01R\x05price\x12\x1c\n" +
-	"\tproductId\x18\b \x01(\x05R\tproductId\x12\x19\n" +
+	"\tproductId\x18\b \x01(\tR\tproductId\x12\x19\n" +
 	"\x04data\x18\t \x03(\v2\x05.DataR\x04data\x12(\n" +
 	"\x06status\x18\n" +
 	" \x01(\v2\x10.OrderItemStatusR\x06statusB#Z!github.com/crevendo/crevendo/datab\x06proto3"

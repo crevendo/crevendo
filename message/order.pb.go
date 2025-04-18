@@ -24,14 +24,14 @@ const (
 
 type OrderCreateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
-	CartId        int32                  `protobuf:"varint,2,opt,name=cartId,proto3" json:"cartId,omitempty"`
+	UserId        uint32                 `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	CartId        uint32                 `protobuf:"varint,2,opt,name=cartId,proto3" json:"cartId,omitempty"`
 	Gateway       string                 `protobuf:"bytes,3,opt,name=Gateway,proto3" json:"Gateway,omitempty"`
-	AddressId     int32                  `protobuf:"varint,4,opt,name=addressId,proto3" json:"addressId,omitempty"`
-	ShipmentId    int32                  `protobuf:"varint,5,opt,name=shipmentId,proto3" json:"shipmentId,omitempty"`
+	AddressId     uint32                 `protobuf:"varint,4,opt,name=addressId,proto3" json:"addressId,omitempty"`
+	ShipmentId    uint32                 `protobuf:"varint,5,opt,name=shipmentId,proto3" json:"shipmentId,omitempty"`
 	MethodId      string                 `protobuf:"bytes,6,opt,name=methodId,proto3" json:"methodId,omitempty"`
 	Cvv           *string                `protobuf:"bytes,7,opt,name=cvv,proto3,oneof" json:"cvv,omitempty"`
-	Installments  *int32                 `protobuf:"varint,8,opt,name=installments,proto3,oneof" json:"installments,omitempty"`
+	Installments  *uint32                `protobuf:"varint,8,opt,name=installments,proto3,oneof" json:"installments,omitempty"`
 	Total         float64                `protobuf:"fixed64,9,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -67,14 +67,14 @@ func (*OrderCreateMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_order_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *OrderCreateMessage) GetUserId() int32 {
+func (x *OrderCreateMessage) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-func (x *OrderCreateMessage) GetCartId() int32 {
+func (x *OrderCreateMessage) GetCartId() uint32 {
 	if x != nil {
 		return x.CartId
 	}
@@ -88,14 +88,14 @@ func (x *OrderCreateMessage) GetGateway() string {
 	return ""
 }
 
-func (x *OrderCreateMessage) GetAddressId() int32 {
+func (x *OrderCreateMessage) GetAddressId() uint32 {
 	if x != nil {
 		return x.AddressId
 	}
 	return 0
 }
 
-func (x *OrderCreateMessage) GetShipmentId() int32 {
+func (x *OrderCreateMessage) GetShipmentId() uint32 {
 	if x != nil {
 		return x.ShipmentId
 	}
@@ -116,7 +116,7 @@ func (x *OrderCreateMessage) GetCvv() string {
 	return ""
 }
 
-func (x *OrderCreateMessage) GetInstallments() int32 {
+func (x *OrderCreateMessage) GetInstallments() uint32 {
 	if x != nil && x.Installments != nil {
 		return *x.Installments
 	}
@@ -176,7 +176,7 @@ func (x *OrderCreateResponse) GetOrder() *data.Order {
 
 type OrderGetMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -211,7 +211,7 @@ func (*OrderGetMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_order_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *OrderGetMessage) GetId() int32 {
+func (x *OrderGetMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -264,9 +264,9 @@ func (x *OrderGetResponse) GetOrder() *data.Order {
 
 type OrderListMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PaymentId     *int32                 `protobuf:"varint,1,opt,name=paymentId,proto3,oneof" json:"paymentId,omitempty"`
-	UserId        *int32                 `protobuf:"varint,2,opt,name=userId,proto3,oneof" json:"userId,omitempty"`
-	Id            *int32                 `protobuf:"varint,3,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	PaymentId     *uint32                `protobuf:"varint,1,opt,name=paymentId,proto3,oneof" json:"paymentId,omitempty"`
+	UserId        *uint32                `protobuf:"varint,2,opt,name=userId,proto3,oneof" json:"userId,omitempty"`
+	Id            *uint32                `protobuf:"varint,3,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -301,21 +301,21 @@ func (*OrderListMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_order_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *OrderListMessage) GetPaymentId() int32 {
+func (x *OrderListMessage) GetPaymentId() uint32 {
 	if x != nil && x.PaymentId != nil {
 		return *x.PaymentId
 	}
 	return 0
 }
 
-func (x *OrderListMessage) GetUserId() int32 {
+func (x *OrderListMessage) GetUserId() uint32 {
 	if x != nil && x.UserId != nil {
 		return *x.UserId
 	}
 	return 0
 }
 
-func (x *OrderListMessage) GetId() int32 {
+func (x *OrderListMessage) GetId() uint32 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
@@ -368,8 +368,8 @@ func (x *OrderListResponse) GetOrders() []*data.Order {
 
 type OrderUpdateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Status        int32                  `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Status        uint32                 `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -404,14 +404,14 @@ func (*OrderUpdateMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_order_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *OrderUpdateMessage) GetId() int32 {
+func (x *OrderUpdateMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *OrderUpdateMessage) GetStatus() int32 {
+func (x *OrderUpdateMessage) GetStatus() uint32 {
 	if x != nil {
 		return x.Status
 	}
@@ -620,29 +620,29 @@ const file_proto_message_order_proto_rawDesc = "" +
 	"\n" +
 	"\x19proto/message/order.proto\x1a\x11proto/order.proto\"\xa7\x02\n" +
 	"\x12OrderCreateMessage\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x05R\x06userId\x12\x16\n" +
-	"\x06cartId\x18\x02 \x01(\x05R\x06cartId\x12\x18\n" +
+	"\x06userId\x18\x01 \x01(\rR\x06userId\x12\x16\n" +
+	"\x06cartId\x18\x02 \x01(\rR\x06cartId\x12\x18\n" +
 	"\aGateway\x18\x03 \x01(\tR\aGateway\x12\x1c\n" +
-	"\taddressId\x18\x04 \x01(\x05R\taddressId\x12\x1e\n" +
+	"\taddressId\x18\x04 \x01(\rR\taddressId\x12\x1e\n" +
 	"\n" +
-	"shipmentId\x18\x05 \x01(\x05R\n" +
+	"shipmentId\x18\x05 \x01(\rR\n" +
 	"shipmentId\x12\x1a\n" +
 	"\bmethodId\x18\x06 \x01(\tR\bmethodId\x12\x15\n" +
 	"\x03cvv\x18\a \x01(\tH\x00R\x03cvv\x88\x01\x01\x12'\n" +
-	"\finstallments\x18\b \x01(\x05H\x01R\finstallments\x88\x01\x01\x12\x14\n" +
+	"\finstallments\x18\b \x01(\rH\x01R\finstallments\x88\x01\x01\x12\x14\n" +
 	"\x05total\x18\t \x01(\x01R\x05totalB\x06\n" +
 	"\x04_cvvB\x0f\n" +
 	"\r_installments\"3\n" +
 	"\x13OrderCreateResponse\x12\x1c\n" +
 	"\x05order\x18\x01 \x01(\v2\x06.OrderR\x05order\"!\n" +
 	"\x0fOrderGetMessage\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x05R\x02id\"0\n" +
+	"\x02id\x18\x02 \x01(\rR\x02id\"0\n" +
 	"\x10OrderGetResponse\x12\x1c\n" +
 	"\x05order\x18\x01 \x01(\v2\x06.OrderR\x05order\"\x87\x01\n" +
 	"\x10OrderListMessage\x12!\n" +
-	"\tpaymentId\x18\x01 \x01(\x05H\x00R\tpaymentId\x88\x01\x01\x12\x1b\n" +
-	"\x06userId\x18\x02 \x01(\x05H\x01R\x06userId\x88\x01\x01\x12\x13\n" +
-	"\x02id\x18\x03 \x01(\x05H\x02R\x02id\x88\x01\x01B\f\n" +
+	"\tpaymentId\x18\x01 \x01(\rH\x00R\tpaymentId\x88\x01\x01\x12\x1b\n" +
+	"\x06userId\x18\x02 \x01(\rH\x01R\x06userId\x88\x01\x01\x12\x13\n" +
+	"\x02id\x18\x03 \x01(\rH\x02R\x02id\x88\x01\x01B\f\n" +
 	"\n" +
 	"_paymentIdB\t\n" +
 	"\a_userIdB\x05\n" +
@@ -650,8 +650,8 @@ const file_proto_message_order_proto_rawDesc = "" +
 	"\x11OrderListResponse\x12\x1e\n" +
 	"\x06orders\x18\x01 \x03(\v2\x06.OrderR\x06orders\"<\n" +
 	"\x12OrderUpdateMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\x05R\x06status\"\x15\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\rR\x06status\"\x15\n" +
 	"\x13OrderUpdateResponse\"\x18\n" +
 	"\x16OrderStatusListMessage\"M\n" +
 	"\x17OrderStatusListResponse\x122\n" +

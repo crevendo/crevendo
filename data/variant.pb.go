@@ -23,7 +23,7 @@ const (
 
 type Variant struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	CustomId      string                 `protobuf:"bytes,3,opt,name=customId,proto3" json:"customId,omitempty"`
 	Image         string                 `protobuf:"bytes,4,opt,name=image,proto3" json:"image,omitempty"`
@@ -62,7 +62,7 @@ func (*Variant) Descriptor() ([]byte, []int) {
 	return file_proto_variant_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Variant) GetId() int32 {
+func (x *Variant) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -103,7 +103,7 @@ const file_proto_variant_proto_rawDesc = "" +
 	"\n" +
 	"\x13proto/variant.proto\x1a\x15proto/attribute.proto\"\x8b\x01\n" +
 	"\aVariant\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
 	"\bcustomId\x18\x03 \x01(\tR\bcustomId\x12\x14\n" +
 	"\x05image\x18\x04 \x01(\tR\x05image\x12*\n" +

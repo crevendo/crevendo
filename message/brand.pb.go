@@ -104,7 +104,7 @@ func (x *BrandListResponse) GetBrands() []*data.Brand {
 
 type BrandGetMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -139,7 +139,7 @@ func (*BrandGetMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_brand_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *BrandGetMessage) GetId() int32 {
+func (x *BrandGetMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -192,7 +192,7 @@ func (x *BrandGetResponse) GetBrand() *data.Brand {
 
 type BrandUpdateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Url           string                 `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -229,7 +229,7 @@ func (*BrandUpdateMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_brand_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *BrandUpdateMessage) GetId() int32 {
+func (x *BrandUpdateMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -295,11 +295,11 @@ const file_proto_message_brand_proto_rawDesc = "" +
 	"\x11BrandListResponse\x12\x1e\n" +
 	"\x06brands\x18\x01 \x03(\v2\x06.BrandR\x06brands\"!\n" +
 	"\x0fBrandGetMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"0\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"0\n" +
 	"\x10BrandGetResponse\x12\x1c\n" +
 	"\x05brand\x18\x01 \x01(\v2\x06.BrandR\x05brand\"J\n" +
 	"\x12BrandUpdateMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
 	"\x03url\x18\x03 \x01(\tR\x03url\"\x15\n" +
 	"\x13BrandUpdateResponseB&Z$github.com/crevendo/crevendo/messageb\x06proto3"

@@ -24,7 +24,7 @@ const (
 
 type GatewayListMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        uint32                 `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*GatewayListMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_gateway_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GatewayListMessage) GetUserId() int32 {
+func (x *GatewayListMessage) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -116,7 +116,7 @@ const file_proto_message_gateway_proto_rawDesc = "" +
 	"\n" +
 	"\x1bproto/message/gateway.proto\x1a\x13proto/gateway.proto\",\n" +
 	"\x12GatewayListMessage\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x05R\x06userId\";\n" +
+	"\x06userId\x18\x01 \x01(\rR\x06userId\";\n" +
 	"\x13GatewayListResponse\x12$\n" +
 	"\bgateways\x18\x01 \x03(\v2\b.GatewayR\bgatewaysB&Z$github.com/crevendo/crevendo/messageb\x06proto3"
 

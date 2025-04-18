@@ -24,7 +24,7 @@ const (
 
 type ProductGetMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            *int32                 `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	Id            *uint32                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	CustomId      *string                `protobuf:"bytes,2,opt,name=customId,proto3,oneof" json:"customId,omitempty"`
 	WithVariants  *bool                  `protobuf:"varint,3,opt,name=withVariants,proto3,oneof" json:"withVariants,omitempty"`
 	IgnoreCache   *bool                  `protobuf:"varint,4,opt,name=ignoreCache,proto3,oneof" json:"ignoreCache,omitempty"`
@@ -63,7 +63,7 @@ func (*ProductGetMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_product_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ProductGetMessage) GetId() int32 {
+func (x *ProductGetMessage) GetId() uint32 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
@@ -145,8 +145,8 @@ func (x *ProductGetResponse) GetProduct() *data.Product {
 type ProductListResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Products      []*data.Product        `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
-	Page          *int32                 `protobuf:"varint,2,opt,name=page,proto3,oneof" json:"page,omitempty"`
-	PageTotal     *int32                 `protobuf:"varint,3,opt,name=pageTotal,proto3,oneof" json:"pageTotal,omitempty"`
+	Page          *uint32                `protobuf:"varint,2,opt,name=page,proto3,oneof" json:"page,omitempty"`
+	PageTotal     *uint32                `protobuf:"varint,3,opt,name=pageTotal,proto3,oneof" json:"pageTotal,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -188,14 +188,14 @@ func (x *ProductListResponse) GetProducts() []*data.Product {
 	return nil
 }
 
-func (x *ProductListResponse) GetPage() int32 {
+func (x *ProductListResponse) GetPage() uint32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ProductListResponse) GetPageTotal() int32 {
+func (x *ProductListResponse) GetPageTotal() uint32 {
 	if x != nil && x.PageTotal != nil {
 		return *x.PageTotal
 	}
@@ -204,17 +204,17 @@ func (x *ProductListResponse) GetPageTotal() int32 {
 
 type ProductListMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ids           []int32                `protobuf:"varint,1,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Ids           []uint32               `protobuf:"varint,1,rep,packed,name=ids,proto3" json:"ids,omitempty"`
 	CustomIds     []string               `protobuf:"bytes,2,rep,name=customIds,proto3" json:"customIds,omitempty"`
-	CategoryId    *int32                 `protobuf:"varint,3,opt,name=categoryId,proto3,oneof" json:"categoryId,omitempty"`
+	CategoryId    *uint32                `protobuf:"varint,3,opt,name=categoryId,proto3,oneof" json:"categoryId,omitempty"`
 	Type          *string                `protobuf:"bytes,4,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	SearchTerm    *string                `protobuf:"bytes,6,opt,name=searchTerm,proto3,oneof" json:"searchTerm,omitempty"`
-	Page          *int32                 `protobuf:"varint,7,opt,name=page,proto3,oneof" json:"page,omitempty"`
-	Limit         *int32                 `protobuf:"varint,8,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
+	Page          *uint32                `protobuf:"varint,7,opt,name=page,proto3,oneof" json:"page,omitempty"`
+	Limit         *uint32                `protobuf:"varint,8,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
 	OrderBy       *string                `protobuf:"bytes,9,opt,name=orderBy,proto3,oneof" json:"orderBy,omitempty"`
 	IgnoreCache   *bool                  `protobuf:"varint,10,opt,name=ignoreCache,proto3,oneof" json:"ignoreCache,omitempty"`
 	SessionUUID   *string                `protobuf:"bytes,11,opt,name=sessionUUID,proto3,oneof" json:"sessionUUID,omitempty"`
-	TimeLimit     *int32                 `protobuf:"varint,12,opt,name=timeLimit,proto3,oneof" json:"timeLimit,omitempty"`
+	TimeLimit     *uint32                `protobuf:"varint,12,opt,name=timeLimit,proto3,oneof" json:"timeLimit,omitempty"`
 	Preloads      []string               `protobuf:"bytes,13,rep,name=preloads,proto3" json:"preloads,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -250,7 +250,7 @@ func (*ProductListMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_product_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ProductListMessage) GetIds() []int32 {
+func (x *ProductListMessage) GetIds() []uint32 {
 	if x != nil {
 		return x.Ids
 	}
@@ -264,7 +264,7 @@ func (x *ProductListMessage) GetCustomIds() []string {
 	return nil
 }
 
-func (x *ProductListMessage) GetCategoryId() int32 {
+func (x *ProductListMessage) GetCategoryId() uint32 {
 	if x != nil && x.CategoryId != nil {
 		return *x.CategoryId
 	}
@@ -285,14 +285,14 @@ func (x *ProductListMessage) GetSearchTerm() string {
 	return ""
 }
 
-func (x *ProductListMessage) GetPage() int32 {
+func (x *ProductListMessage) GetPage() uint32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ProductListMessage) GetLimit() int32 {
+func (x *ProductListMessage) GetLimit() uint32 {
 	if x != nil && x.Limit != nil {
 		return *x.Limit
 	}
@@ -320,7 +320,7 @@ func (x *ProductListMessage) GetSessionUUID() string {
 	return ""
 }
 
-func (x *ProductListMessage) GetTimeLimit() int32 {
+func (x *ProductListMessage) GetTimeLimit() uint32 {
 	if x != nil && x.TimeLimit != nil {
 		return *x.TimeLimit
 	}
@@ -336,16 +336,16 @@ func (x *ProductListMessage) GetPreloads() []string {
 
 type ProductUpdateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Price         float32                `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`
 	Image         string                 `protobuf:"bytes,4,opt,name=image,proto3" json:"image,omitempty"`
 	Description   string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
 	Excerpt       string                 `protobuf:"bytes,6,opt,name=excerpt,proto3" json:"excerpt,omitempty"`
-	BrandId       int32                  `protobuf:"varint,7,opt,name=brandId,proto3" json:"brandId,omitempty"`
-	Stock         int32                  `protobuf:"varint,8,opt,name=stock,proto3" json:"stock,omitempty"`
+	BrandId       uint32                 `protobuf:"varint,7,opt,name=brandId,proto3" json:"brandId,omitempty"`
+	Stock         uint32                 `protobuf:"varint,8,opt,name=stock,proto3" json:"stock,omitempty"`
 	Images        []string               `protobuf:"bytes,9,rep,name=images,proto3" json:"images,omitempty"`
-	CategoriesIds []int32                `protobuf:"varint,10,rep,packed,name=categoriesIds,proto3" json:"categoriesIds,omitempty"`
+	CategoriesIds []uint32               `protobuf:"varint,10,rep,packed,name=categoriesIds,proto3" json:"categoriesIds,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -380,7 +380,7 @@ func (*ProductUpdateMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_product_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ProductUpdateMessage) GetId() int32 {
+func (x *ProductUpdateMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -422,14 +422,14 @@ func (x *ProductUpdateMessage) GetExcerpt() string {
 	return ""
 }
 
-func (x *ProductUpdateMessage) GetBrandId() int32 {
+func (x *ProductUpdateMessage) GetBrandId() uint32 {
 	if x != nil {
 		return x.BrandId
 	}
 	return 0
 }
 
-func (x *ProductUpdateMessage) GetStock() int32 {
+func (x *ProductUpdateMessage) GetStock() uint32 {
 	if x != nil {
 		return x.Stock
 	}
@@ -443,7 +443,7 @@ func (x *ProductUpdateMessage) GetImages() []string {
 	return nil
 }
 
-func (x *ProductUpdateMessage) GetCategoriesIds() []int32 {
+func (x *ProductUpdateMessage) GetCategoriesIds() []uint32 {
 	if x != nil {
 		return x.CategoriesIds
 	}
@@ -501,10 +501,10 @@ type ProductCreateMessage struct {
 	Price         float32                `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	Excerpt       string                 `protobuf:"bytes,5,opt,name=excerpt,proto3" json:"excerpt,omitempty"`
-	BrandId       int32                  `protobuf:"varint,6,opt,name=brandId,proto3" json:"brandId,omitempty"`
-	Stock         int32                  `protobuf:"varint,7,opt,name=stock,proto3" json:"stock,omitempty"`
+	BrandId       uint32                 `protobuf:"varint,6,opt,name=brandId,proto3" json:"brandId,omitempty"`
+	Stock         uint32                 `protobuf:"varint,7,opt,name=stock,proto3" json:"stock,omitempty"`
 	Images        []string               `protobuf:"bytes,8,rep,name=images,proto3" json:"images,omitempty"`
-	CategoriesIds []int32                `protobuf:"varint,9,rep,packed,name=categoriesIds,proto3" json:"categoriesIds,omitempty"`
+	CategoriesIds []uint32               `protobuf:"varint,9,rep,packed,name=categoriesIds,proto3" json:"categoriesIds,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -574,14 +574,14 @@ func (x *ProductCreateMessage) GetExcerpt() string {
 	return ""
 }
 
-func (x *ProductCreateMessage) GetBrandId() int32 {
+func (x *ProductCreateMessage) GetBrandId() uint32 {
 	if x != nil {
 		return x.BrandId
 	}
 	return 0
 }
 
-func (x *ProductCreateMessage) GetStock() int32 {
+func (x *ProductCreateMessage) GetStock() uint32 {
 	if x != nil {
 		return x.Stock
 	}
@@ -595,7 +595,7 @@ func (x *ProductCreateMessage) GetImages() []string {
 	return nil
 }
 
-func (x *ProductCreateMessage) GetCategoriesIds() []int32 {
+func (x *ProductCreateMessage) GetCategoriesIds() []uint32 {
 	if x != nil {
 		return x.CategoriesIds
 	}
@@ -648,7 +648,7 @@ func (x *ProductCreateResponse) GetProduct() *data.Product {
 
 type ProductDeleteMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -683,7 +683,7 @@ func (*ProductDeleteMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_product_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ProductDeleteMessage) GetId() int32 {
+func (x *ProductDeleteMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -740,7 +740,7 @@ const file_proto_message_product_proto_rawDesc = "" +
 	"\n" +
 	"\x1bproto/message/product.proto\x1a\x14proto/validate.proto\x1a\x13proto/product.proto\"\xf3\x01\n" +
 	"\x11ProductGetMessage\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\x05B\a\xfaB\x04\x1a\x02 \x00H\x00R\x02id\x88\x01\x01\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\rB\a\xfaB\x04*\x02 \x00H\x00R\x02id\x88\x01\x01\x12\x1f\n" +
 	"\bcustomId\x18\x02 \x01(\tH\x01R\bcustomId\x88\x01\x01\x12'\n" +
 	"\fwithVariants\x18\x03 \x01(\bH\x02R\fwithVariants\x88\x01\x01\x12%\n" +
 	"\vignoreCache\x18\x04 \x01(\bH\x03R\vignoreCache\x88\x01\x01\x12\x1a\n" +
@@ -753,28 +753,28 @@ const file_proto_message_product_proto_rawDesc = "" +
 	"\aproduct\x18\x01 \x01(\v2\b.ProductR\aproduct\"\x8e\x01\n" +
 	"\x13ProductListResponse\x12$\n" +
 	"\bproducts\x18\x01 \x03(\v2\b.ProductR\bproducts\x12\x17\n" +
-	"\x04page\x18\x02 \x01(\x05H\x00R\x04page\x88\x01\x01\x12!\n" +
-	"\tpageTotal\x18\x03 \x01(\x05H\x01R\tpageTotal\x88\x01\x01B\a\n" +
+	"\x04page\x18\x02 \x01(\rH\x00R\x04page\x88\x01\x01\x12!\n" +
+	"\tpageTotal\x18\x03 \x01(\rH\x01R\tpageTotal\x88\x01\x01B\a\n" +
 	"\x05_pageB\f\n" +
 	"\n" +
 	"_pageTotal\"\xfb\x03\n" +
 	"\x12ProductListMessage\x12\x10\n" +
-	"\x03ids\x18\x01 \x03(\x05R\x03ids\x12\x1c\n" +
+	"\x03ids\x18\x01 \x03(\rR\x03ids\x12\x1c\n" +
 	"\tcustomIds\x18\x02 \x03(\tR\tcustomIds\x12#\n" +
 	"\n" +
-	"categoryId\x18\x03 \x01(\x05H\x00R\n" +
+	"categoryId\x18\x03 \x01(\rH\x00R\n" +
 	"categoryId\x88\x01\x01\x12\x17\n" +
 	"\x04type\x18\x04 \x01(\tH\x01R\x04type\x88\x01\x01\x12#\n" +
 	"\n" +
 	"searchTerm\x18\x06 \x01(\tH\x02R\n" +
 	"searchTerm\x88\x01\x01\x12\x17\n" +
-	"\x04page\x18\a \x01(\x05H\x03R\x04page\x88\x01\x01\x12\x19\n" +
-	"\x05limit\x18\b \x01(\x05H\x04R\x05limit\x88\x01\x01\x12\x1d\n" +
+	"\x04page\x18\a \x01(\rH\x03R\x04page\x88\x01\x01\x12\x19\n" +
+	"\x05limit\x18\b \x01(\rH\x04R\x05limit\x88\x01\x01\x12\x1d\n" +
 	"\aorderBy\x18\t \x01(\tH\x05R\aorderBy\x88\x01\x01\x12%\n" +
 	"\vignoreCache\x18\n" +
 	" \x01(\bH\x06R\vignoreCache\x88\x01\x01\x12%\n" +
 	"\vsessionUUID\x18\v \x01(\tH\aR\vsessionUUID\x88\x01\x01\x12!\n" +
-	"\ttimeLimit\x18\f \x01(\x05H\bR\ttimeLimit\x88\x01\x01\x12\x1a\n" +
+	"\ttimeLimit\x18\f \x01(\rH\bR\ttimeLimit\x88\x01\x01\x12\x1a\n" +
 	"\bpreloads\x18\r \x03(\tR\bpreloadsB\r\n" +
 	"\v_categoryIdB\a\n" +
 	"\x05_typeB\r\n" +
@@ -788,17 +788,17 @@ const file_proto_message_product_proto_rawDesc = "" +
 	"\n" +
 	"_timeLimit\"\x90\x02\n" +
 	"\x14ProductUpdateMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x02R\x05price\x12\x14\n" +
 	"\x05image\x18\x04 \x01(\tR\x05image\x12 \n" +
 	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x18\n" +
 	"\aexcerpt\x18\x06 \x01(\tR\aexcerpt\x12\x18\n" +
-	"\abrandId\x18\a \x01(\x05R\abrandId\x12\x14\n" +
-	"\x05stock\x18\b \x01(\x05R\x05stock\x12\x16\n" +
+	"\abrandId\x18\a \x01(\rR\abrandId\x12\x14\n" +
+	"\x05stock\x18\b \x01(\rR\x05stock\x12\x16\n" +
 	"\x06images\x18\t \x03(\tR\x06images\x12$\n" +
 	"\rcategoriesIds\x18\n" +
-	" \x03(\x05R\rcategoriesIds\";\n" +
+	" \x03(\rR\rcategoriesIds\";\n" +
 	"\x15ProductUpdateResponse\x12\"\n" +
 	"\aproduct\x18\x01 \x01(\v2\b.ProductR\aproduct\"\x80\x02\n" +
 	"\x14ProductCreateMessage\x12\x12\n" +
@@ -807,14 +807,14 @@ const file_proto_message_product_proto_rawDesc = "" +
 	"\x05price\x18\x03 \x01(\x02R\x05price\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\aexcerpt\x18\x05 \x01(\tR\aexcerpt\x12\x18\n" +
-	"\abrandId\x18\x06 \x01(\x05R\abrandId\x12\x14\n" +
-	"\x05stock\x18\a \x01(\x05R\x05stock\x12\x16\n" +
+	"\abrandId\x18\x06 \x01(\rR\abrandId\x12\x14\n" +
+	"\x05stock\x18\a \x01(\rR\x05stock\x12\x16\n" +
 	"\x06images\x18\b \x03(\tR\x06images\x12$\n" +
-	"\rcategoriesIds\x18\t \x03(\x05R\rcategoriesIds\";\n" +
+	"\rcategoriesIds\x18\t \x03(\rR\rcategoriesIds\";\n" +
 	"\x15ProductCreateResponse\x12\"\n" +
 	"\aproduct\x18\x01 \x01(\v2\b.ProductR\aproduct\"&\n" +
 	"\x14ProductDeleteMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"1\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"1\n" +
 	"\x15ProductDeleteResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccessB&Z$github.com/crevendo/crevendo/messageb\x06proto3"
 

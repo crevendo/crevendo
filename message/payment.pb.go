@@ -104,7 +104,7 @@ func (*PaymentMethodDeleteResponse) Descriptor() ([]byte, []int) {
 
 type PaymentMethodListMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        uint32                 `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -139,7 +139,7 @@ func (*PaymentMethodListMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_payment_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *PaymentMethodListMessage) GetUserId() int32 {
+func (x *PaymentMethodListMessage) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -199,7 +199,7 @@ const file_proto_message_payment_proto_rawDesc = "" +
 	"\x0fpaymentMethodId\x18\x02 \x01(\tR\x0fpaymentMethodId\"\x1d\n" +
 	"\x1bPaymentMethodDeleteResponse\"2\n" +
 	"\x18PaymentMethodListMessage\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x05R\x06userId\"S\n" +
+	"\x06userId\x18\x01 \x01(\rR\x06userId\"S\n" +
 	"\x19PaymentMethodListResponse\x126\n" +
 	"\x0ePaymentMethods\x18\x01 \x03(\v2\x0e.PaymentMethodR\x0ePaymentMethodsB&Z$github.com/crevendo/crevendo/messageb\x06proto3"
 

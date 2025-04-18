@@ -24,7 +24,7 @@ const (
 
 type CartGetMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*CartGetMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_cart_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CartGetMessage) GetId() int32 {
+func (x *CartGetMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -192,9 +192,9 @@ func (x *CartCreateResponse) GetCart() *data.Cart {
 
 type AddItemMessage struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
-	CartId          int32                  `protobuf:"varint,1,opt,name=cartId,proto3" json:"cartId,omitempty"`
-	Quantity        int32                  `protobuf:"varint,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	ProductId       *int32                 `protobuf:"varint,3,opt,name=productId,proto3,oneof" json:"productId,omitempty"`
+	CartId          uint32                 `protobuf:"varint,1,opt,name=cartId,proto3" json:"cartId,omitempty"`
+	Quantity        uint32                 `protobuf:"varint,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	ProductId       *uint32                `protobuf:"varint,3,opt,name=productId,proto3,oneof" json:"productId,omitempty"`
 	ProductCustomId *string                `protobuf:"bytes,4,opt,name=productCustomId,proto3,oneof" json:"productCustomId,omitempty"`
 	CustomData      []*data.Data           `protobuf:"bytes,5,rep,name=customData,proto3" json:"customData,omitempty"`
 	unknownFields   protoimpl.UnknownFields
@@ -231,21 +231,21 @@ func (*AddItemMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_cart_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *AddItemMessage) GetCartId() int32 {
+func (x *AddItemMessage) GetCartId() uint32 {
 	if x != nil {
 		return x.CartId
 	}
 	return 0
 }
 
-func (x *AddItemMessage) GetQuantity() int32 {
+func (x *AddItemMessage) GetQuantity() uint32 {
 	if x != nil {
 		return x.Quantity
 	}
 	return 0
 }
 
-func (x *AddItemMessage) GetProductId() int32 {
+func (x *AddItemMessage) GetProductId() uint32 {
 	if x != nil && x.ProductId != nil {
 		return *x.ProductId
 	}
@@ -311,10 +311,12 @@ func (x *AddItemResponse) GetCart() *data.Cart {
 }
 
 type RemoveItemMessage struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ItemId        int32                  `protobuf:"varint,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	CartId          uint32                 `protobuf:"varint,1,opt,name=cartId,proto3" json:"cartId,omitempty"`
+	ProductId       *uint32                `protobuf:"varint,2,opt,name=productId,proto3,oneof" json:"productId,omitempty"`
+	ProductCustomId *string                `protobuf:"bytes,3,opt,name=productCustomId,proto3,oneof" json:"productCustomId,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *RemoveItemMessage) Reset() {
@@ -347,15 +349,30 @@ func (*RemoveItemMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_cart_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *RemoveItemMessage) GetItemId() int32 {
+func (x *RemoveItemMessage) GetCartId() uint32 {
 	if x != nil {
-		return x.ItemId
+		return x.CartId
 	}
 	return 0
 }
 
+func (x *RemoveItemMessage) GetProductId() uint32 {
+	if x != nil && x.ProductId != nil {
+		return *x.ProductId
+	}
+	return 0
+}
+
+func (x *RemoveItemMessage) GetProductCustomId() string {
+	if x != nil && x.ProductCustomId != nil {
+		return *x.ProductCustomId
+	}
+	return ""
+}
+
 type RemoveItemResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Cart          *data.Cart             `protobuf:"bytes,1,opt,name=cart,proto3" json:"cart,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -390,11 +407,18 @@ func (*RemoveItemResponse) Descriptor() ([]byte, []int) {
 	return file_proto_message_cart_proto_rawDescGZIP(), []int{7}
 }
 
+func (x *RemoveItemResponse) GetCart() *data.Cart {
+	if x != nil {
+		return x.Cart
+	}
+	return nil
+}
+
 type UpdateItemQuantityMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CartId        int32                  `protobuf:"varint,1,opt,name=cartId,proto3" json:"cartId,omitempty"`
-	ItemId        int32                  `protobuf:"varint,2,opt,name=itemId,proto3" json:"itemId,omitempty"`
-	Quantity      int32                  `protobuf:"varint,3,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	CartId        uint32                 `protobuf:"varint,1,opt,name=cartId,proto3" json:"cartId,omitempty"`
+	ItemId        uint32                 `protobuf:"varint,2,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	Quantity      uint32                 `protobuf:"varint,3,opt,name=quantity,proto3" json:"quantity,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -429,21 +453,21 @@ func (*UpdateItemQuantityMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_cart_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *UpdateItemQuantityMessage) GetCartId() int32 {
+func (x *UpdateItemQuantityMessage) GetCartId() uint32 {
 	if x != nil {
 		return x.CartId
 	}
 	return 0
 }
 
-func (x *UpdateItemQuantityMessage) GetItemId() int32 {
+func (x *UpdateItemQuantityMessage) GetItemId() uint32 {
 	if x != nil {
 		return x.ItemId
 	}
 	return 0
 }
 
-func (x *UpdateItemQuantityMessage) GetQuantity() int32 {
+func (x *UpdateItemQuantityMessage) GetQuantity() uint32 {
 	if x != nil {
 		return x.Quantity
 	}
@@ -544,16 +568,16 @@ const file_proto_message_cart_proto_rawDesc = "" +
 	"\n" +
 	"\x18proto/message/cart.proto\x1a\x10proto/cart.proto\x1a\x10proto/data.proto\" \n" +
 	"\x0eCartGetMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\",\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\",\n" +
 	"\x0fCartGetResponse\x12\x19\n" +
 	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"\x13\n" +
 	"\x11CartCreateMessage\"/\n" +
 	"\x12CartCreateResponse\x12\x19\n" +
 	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"\xdf\x01\n" +
 	"\x0eAddItemMessage\x12\x16\n" +
-	"\x06cartId\x18\x01 \x01(\x05R\x06cartId\x12\x1a\n" +
-	"\bquantity\x18\x02 \x01(\x05R\bquantity\x12!\n" +
-	"\tproductId\x18\x03 \x01(\x05H\x00R\tproductId\x88\x01\x01\x12-\n" +
+	"\x06cartId\x18\x01 \x01(\rR\x06cartId\x12\x1a\n" +
+	"\bquantity\x18\x02 \x01(\rR\bquantity\x12!\n" +
+	"\tproductId\x18\x03 \x01(\rH\x00R\tproductId\x88\x01\x01\x12-\n" +
 	"\x0fproductCustomId\x18\x04 \x01(\tH\x01R\x0fproductCustomId\x88\x01\x01\x12%\n" +
 	"\n" +
 	"customData\x18\x05 \x03(\v2\x05.DataR\n" +
@@ -562,14 +586,20 @@ const file_proto_message_cart_proto_rawDesc = "" +
 	"_productIdB\x12\n" +
 	"\x10_productCustomId\",\n" +
 	"\x0fAddItemResponse\x12\x19\n" +
-	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"+\n" +
+	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"\x9f\x01\n" +
 	"\x11RemoveItemMessage\x12\x16\n" +
-	"\x06itemId\x18\x01 \x01(\x05R\x06itemId\"\x14\n" +
-	"\x12RemoveItemResponse\"g\n" +
+	"\x06cartId\x18\x01 \x01(\rR\x06cartId\x12!\n" +
+	"\tproductId\x18\x02 \x01(\rH\x00R\tproductId\x88\x01\x01\x12-\n" +
+	"\x0fproductCustomId\x18\x03 \x01(\tH\x01R\x0fproductCustomId\x88\x01\x01B\f\n" +
+	"\n" +
+	"_productIdB\x12\n" +
+	"\x10_productCustomId\"/\n" +
+	"\x12RemoveItemResponse\x12\x19\n" +
+	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"g\n" +
 	"\x19UpdateItemQuantityMessage\x12\x16\n" +
-	"\x06cartId\x18\x01 \x01(\x05R\x06cartId\x12\x16\n" +
-	"\x06itemId\x18\x02 \x01(\x05R\x06itemId\x12\x1a\n" +
-	"\bquantity\x18\x03 \x01(\x05R\bquantity\"7\n" +
+	"\x06cartId\x18\x01 \x01(\rR\x06cartId\x12\x16\n" +
+	"\x06itemId\x18\x02 \x01(\rR\x06itemId\x12\x1a\n" +
+	"\bquantity\x18\x03 \x01(\rR\bquantity\"7\n" +
 	"\x1aUpdateItemQuantityResponse\x12\x19\n" +
 	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"-\n" +
 	"\x15GetOrderTotalResponse\x12\x14\n" +
@@ -608,12 +638,13 @@ var file_proto_message_cart_proto_depIdxs = []int32{
 	11, // 1: CartCreateResponse.cart:type_name -> Cart
 	12, // 2: AddItemMessage.customData:type_name -> Data
 	11, // 3: AddItemResponse.cart:type_name -> Cart
-	11, // 4: UpdateItemQuantityResponse.cart:type_name -> Cart
-	5,  // [5:5] is the sub-list for method output_type
-	5,  // [5:5] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	11, // 4: RemoveItemResponse.cart:type_name -> Cart
+	11, // 5: UpdateItemQuantityResponse.cart:type_name -> Cart
+	6,  // [6:6] is the sub-list for method output_type
+	6,  // [6:6] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_proto_message_cart_proto_init() }
@@ -622,6 +653,7 @@ func file_proto_message_cart_proto_init() {
 		return
 	}
 	file_proto_message_cart_proto_msgTypes[4].OneofWrappers = []any{}
+	file_proto_message_cart_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

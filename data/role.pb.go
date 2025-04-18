@@ -23,9 +23,9 @@ const (
 
 type Role struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Role          int32                  `protobuf:"varint,3,opt,name=role,proto3" json:"role,omitempty"`
+	Role          uint32                 `protobuf:"varint,3,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -60,7 +60,7 @@ func (*Role) Descriptor() ([]byte, []int) {
 	return file_proto_role_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Role) GetId() int32 {
+func (x *Role) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -74,7 +74,7 @@ func (x *Role) GetName() string {
 	return ""
 }
 
-func (x *Role) GetRole() int32 {
+func (x *Role) GetRole() uint32 {
 	if x != nil {
 		return x.Role
 	}
@@ -87,9 +87,9 @@ const file_proto_role_proto_rawDesc = "" +
 	"\n" +
 	"\x10proto/role.proto\">\n" +
 	"\x04Role\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04role\x18\x03 \x01(\x05R\x04roleB#Z!github.com/crevendo/crevendo/datab\x06proto3"
+	"\x04role\x18\x03 \x01(\rR\x04roleB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 
 var (
 	file_proto_role_proto_rawDescOnce sync.Once

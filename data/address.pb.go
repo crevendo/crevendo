@@ -23,12 +23,12 @@ const (
 
 type Address struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId        int32                  `protobuf:"varint,3,opt,name=userId,proto3" json:"userId,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        uint32                 `protobuf:"varint,3,opt,name=userId,proto3" json:"userId,omitempty"`
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
-	PostalCode    int32                  `protobuf:"varint,6,opt,name=postalCode,proto3" json:"postalCode,omitempty"`
-	Phone         string                 `protobuf:"bytes,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	PostalCode    uint32                 `protobuf:"varint,6,opt,name=postalCode,proto3" json:"postalCode,omitempty"`
+	Phone         uint32                 `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
 	Notes         string                 `protobuf:"bytes,8,opt,name=notes,proto3" json:"notes,omitempty"`
 	Fields        []*Field               `protobuf:"bytes,9,rep,name=fields,proto3" json:"fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -65,14 +65,14 @@ func (*Address) Descriptor() ([]byte, []int) {
 	return file_proto_address_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Address) GetId() int32 {
+func (x *Address) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *Address) GetUserId() int32 {
+func (x *Address) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -93,18 +93,18 @@ func (x *Address) GetAddress() string {
 	return ""
 }
 
-func (x *Address) GetPostalCode() int32 {
+func (x *Address) GetPostalCode() uint32 {
 	if x != nil {
 		return x.PostalCode
 	}
 	return 0
 }
 
-func (x *Address) GetPhone() string {
+func (x *Address) GetPhone() uint32 {
 	if x != nil {
 		return x.Phone
 	}
-	return ""
+	return 0
 }
 
 func (x *Address) GetNotes() string {
@@ -127,14 +127,14 @@ const file_proto_address_proto_rawDesc = "" +
 	"\n" +
 	"\x13proto/address.proto\x1a\x11proto/field.proto\"\xcb\x01\n" +
 	"\aAddress\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
-	"\x06userId\x18\x03 \x01(\x05R\x06userId\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
+	"\x06userId\x18\x03 \x01(\rR\x06userId\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x18\n" +
 	"\aaddress\x18\x05 \x01(\tR\aaddress\x12\x1e\n" +
 	"\n" +
-	"postalCode\x18\x06 \x01(\x05R\n" +
+	"postalCode\x18\x06 \x01(\rR\n" +
 	"postalCode\x12\x14\n" +
-	"\x05phone\x18\a \x01(\tR\x05phone\x12\x14\n" +
+	"\x05phone\x18\a \x01(\rR\x05phone\x12\x14\n" +
 	"\x05notes\x18\b \x01(\tR\x05notes\x12\x1e\n" +
 	"\x06fields\x18\t \x03(\v2\x06.FieldR\x06fieldsB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 

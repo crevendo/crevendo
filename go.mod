@@ -1,12 +1,14 @@
 module github.com/crevendo/crevendo
 
-go 1.24.2
+go 1.18
 
 require (
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/joho/godotenv v1.4.0
+	github.com/labstack/echo/v4 v4.10.0
 	google.golang.org/grpc v1.51.0
-	google.golang.org/protobuf v1.33.0
+	google.golang.org/protobuf v1.28.1
+	gorm.io/gorm v1.24.5
 )
 
 require (

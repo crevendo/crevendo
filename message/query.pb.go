@@ -23,11 +23,11 @@ const (
 
 type Query struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            *int32                 `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
-	Ids           []int32                `protobuf:"varint,2,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Page          *int32                 `protobuf:"varint,3,opt,name=page,proto3,oneof" json:"page,omitempty"`
+	Id            *uint32                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	Ids           []uint32               `protobuf:"varint,2,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Page          *uint32                `protobuf:"varint,3,opt,name=page,proto3,oneof" json:"page,omitempty"`
 	OrderBy       *string                `protobuf:"bytes,4,opt,name=orderBy,proto3,oneof" json:"orderBy,omitempty"`
-	Limit         *int32                 `protobuf:"varint,5,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
+	Limit         *uint32                `protobuf:"varint,5,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
 	SearchTerm    *string                `protobuf:"bytes,6,opt,name=searchTerm,proto3,oneof" json:"searchTerm,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -63,21 +63,21 @@ func (*Query) Descriptor() ([]byte, []int) {
 	return file_proto_message_query_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Query) GetId() int32 {
+func (x *Query) GetId() uint32 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *Query) GetIds() []int32 {
+func (x *Query) GetIds() []uint32 {
 	if x != nil {
 		return x.Ids
 	}
 	return nil
 }
 
-func (x *Query) GetPage() int32 {
+func (x *Query) GetPage() uint32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
@@ -91,7 +91,7 @@ func (x *Query) GetOrderBy() string {
 	return ""
 }
 
-func (x *Query) GetLimit() int32 {
+func (x *Query) GetLimit() uint32 {
 	if x != nil && x.Limit != nil {
 		return *x.Limit
 	}
@@ -111,11 +111,11 @@ const file_proto_message_query_proto_rawDesc = "" +
 	"\n" +
 	"\x19proto/message/query.proto\"\xdb\x01\n" +
 	"\x05Query\x12\x13\n" +
-	"\x02id\x18\x01 \x01(\x05H\x00R\x02id\x88\x01\x01\x12\x10\n" +
-	"\x03ids\x18\x02 \x03(\x05R\x03ids\x12\x17\n" +
-	"\x04page\x18\x03 \x01(\x05H\x01R\x04page\x88\x01\x01\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rH\x00R\x02id\x88\x01\x01\x12\x10\n" +
+	"\x03ids\x18\x02 \x03(\rR\x03ids\x12\x17\n" +
+	"\x04page\x18\x03 \x01(\rH\x01R\x04page\x88\x01\x01\x12\x1d\n" +
 	"\aorderBy\x18\x04 \x01(\tH\x02R\aorderBy\x88\x01\x01\x12\x19\n" +
-	"\x05limit\x18\x05 \x01(\x05H\x03R\x05limit\x88\x01\x01\x12#\n" +
+	"\x05limit\x18\x05 \x01(\rH\x03R\x05limit\x88\x01\x01\x12#\n" +
 	"\n" +
 	"searchTerm\x18\x06 \x01(\tH\x04R\n" +
 	"searchTerm\x88\x01\x01B\x05\n" +

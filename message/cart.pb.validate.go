@@ -796,7 +796,15 @@ func (m *RemoveItemMessage) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for ItemId
+	// no validation rules for CartId
+
+	if m.ProductId != nil {
+		// no validation rules for ProductId
+	}
+
+	if m.ProductCustomId != nil {
+		// no validation rules for ProductCustomId
+	}
 
 	if len(errors) > 0 {
 		return RemoveItemMessageMultiError(errors)
@@ -899,6 +907,35 @@ func (m *RemoveItemResponse) validate(all bool) error {
 	}
 
 	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetCart()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, RemoveItemResponseValidationError{
+					field:  "Cart",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, RemoveItemResponseValidationError{
+					field:  "Cart",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCart()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return RemoveItemResponseValidationError{
+				field:  "Cart",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return RemoveItemResponseMultiError(errors)

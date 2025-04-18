@@ -24,7 +24,7 @@ const (
 
 type AddressGetMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*AddressGetMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_address_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AddressGetMessage) GetId() int32 {
+func (x *AddressGetMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -112,7 +112,7 @@ func (x *AddressGetResponse) GetAddress() *data.Address {
 
 type AddressDeleteMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -147,7 +147,7 @@ func (*AddressDeleteMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_address_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *AddressDeleteMessage) GetId() int32 {
+func (x *AddressDeleteMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -192,7 +192,7 @@ func (*AddressDeleteResponse) Descriptor() ([]byte, []int) {
 
 type AddressListMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        uint32                 `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -227,7 +227,7 @@ func (*AddressListMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_address_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *AddressListMessage) GetUserId() int32 {
+func (x *AddressListMessage) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -280,11 +280,11 @@ func (x *AddressListResponse) GetAddress() []*data.Address {
 
 type AddressCreateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        uint32                 `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
-	PostalCode    int32                  `protobuf:"varint,6,opt,name=postalCode,proto3" json:"postalCode,omitempty"`
-	Phone         string                 `protobuf:"bytes,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	PostalCode    uint32                 `protobuf:"varint,6,opt,name=postalCode,proto3" json:"postalCode,omitempty"`
+	Phone         uint32                 `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
 	Notes         string                 `protobuf:"bytes,8,opt,name=notes,proto3" json:"notes,omitempty"`
 	Fields        []*data.Field          `protobuf:"bytes,9,rep,name=fields,proto3" json:"fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -321,7 +321,7 @@ func (*AddressCreateMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_address_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *AddressCreateMessage) GetUserId() int32 {
+func (x *AddressCreateMessage) GetUserId() uint32 {
 	if x != nil {
 		return x.UserId
 	}
@@ -342,18 +342,18 @@ func (x *AddressCreateMessage) GetAddress() string {
 	return ""
 }
 
-func (x *AddressCreateMessage) GetPostalCode() int32 {
+func (x *AddressCreateMessage) GetPostalCode() uint32 {
 	if x != nil {
 		return x.PostalCode
 	}
 	return 0
 }
 
-func (x *AddressCreateMessage) GetPhone() string {
+func (x *AddressCreateMessage) GetPhone() uint32 {
 	if x != nil {
 		return x.Phone
 	}
-	return ""
+	return 0
 }
 
 func (x *AddressCreateMessage) GetNotes() string {
@@ -408,11 +408,11 @@ func (*AddressCreateResponse) Descriptor() ([]byte, []int) {
 
 type AddressUpdateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
-	PostalCode    int32                  `protobuf:"varint,6,opt,name=postalCode,proto3" json:"postalCode,omitempty"`
-	Phone         string                 `protobuf:"bytes,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	PostalCode    uint32                 `protobuf:"varint,6,opt,name=postalCode,proto3" json:"postalCode,omitempty"`
+	Phone         uint32                 `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
 	Notes         string                 `protobuf:"bytes,8,opt,name=notes,proto3" json:"notes,omitempty"`
 	Fields        []*data.Field          `protobuf:"bytes,9,rep,name=fields,proto3" json:"fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -449,7 +449,7 @@ func (*AddressUpdateMessage) Descriptor() ([]byte, []int) {
 	return file_proto_message_address_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *AddressUpdateMessage) GetId() int32 {
+func (x *AddressUpdateMessage) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
@@ -470,18 +470,18 @@ func (x *AddressUpdateMessage) GetAddress() string {
 	return ""
 }
 
-func (x *AddressUpdateMessage) GetPostalCode() int32 {
+func (x *AddressUpdateMessage) GetPostalCode() uint32 {
 	if x != nil {
 		return x.PostalCode
 	}
 	return 0
 }
 
-func (x *AddressUpdateMessage) GetPhone() string {
+func (x *AddressUpdateMessage) GetPhone() uint32 {
 	if x != nil {
 		return x.Phone
 	}
-	return ""
+	return 0
 }
 
 func (x *AddressUpdateMessage) GetNotes() string {
@@ -548,35 +548,35 @@ const file_proto_message_address_proto_rawDesc = "" +
 	"\n" +
 	"\x1bproto/message/address.proto\x1a\x13proto/address.proto\x1a\x11proto/field.proto\"#\n" +
 	"\x11AddressGetMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"8\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"8\n" +
 	"\x12AddressGetResponse\x12\"\n" +
 	"\aaddress\x18\x01 \x01(\v2\b.AddressR\aaddress\"&\n" +
 	"\x14AddressDeleteMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"\x17\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"\x17\n" +
 	"\x15AddressDeleteResponse\",\n" +
 	"\x12AddressListMessage\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x05R\x06userId\"9\n" +
+	"\x06userId\x18\x01 \x01(\rR\x06userId\"9\n" +
 	"\x13AddressListResponse\x12\"\n" +
 	"\aaddress\x18\x01 \x03(\v2\b.AddressR\aaddress\"\xc8\x01\n" +
 	"\x14AddressCreateMessage\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\x05R\x06userId\x12\x12\n" +
+	"\x06userId\x18\x02 \x01(\rR\x06userId\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x18\n" +
 	"\aaddress\x18\x05 \x01(\tR\aaddress\x12\x1e\n" +
 	"\n" +
-	"postalCode\x18\x06 \x01(\x05R\n" +
+	"postalCode\x18\x06 \x01(\rR\n" +
 	"postalCode\x12\x14\n" +
-	"\x05phone\x18\a \x01(\tR\x05phone\x12\x14\n" +
+	"\x05phone\x18\a \x01(\rR\x05phone\x12\x14\n" +
 	"\x05notes\x18\b \x01(\tR\x05notes\x12\x1e\n" +
 	"\x06fields\x18\t \x03(\v2\x06.FieldR\x06fields\"\x17\n" +
 	"\x15AddressCreateResponse\"\xc0\x01\n" +
 	"\x14AddressUpdateMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x18\n" +
 	"\aaddress\x18\x05 \x01(\tR\aaddress\x12\x1e\n" +
 	"\n" +
-	"postalCode\x18\x06 \x01(\x05R\n" +
+	"postalCode\x18\x06 \x01(\rR\n" +
 	"postalCode\x12\x14\n" +
-	"\x05phone\x18\a \x01(\tR\x05phone\x12\x14\n" +
+	"\x05phone\x18\a \x01(\rR\x05phone\x12\x14\n" +
 	"\x05notes\x18\b \x01(\tR\x05notes\x12\x1e\n" +
 	"\x06fields\x18\t \x03(\v2\x06.FieldR\x06fields\";\n" +
 	"\x15AddressUpdateResponse\x12\"\n" +
