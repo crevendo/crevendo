@@ -25,11 +25,11 @@ type Cart struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	UserId        uint32                 `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	Items         []*CartItem            `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty"`
-	Fees          []*Fee                 `protobuf:"bytes,5,rep,name=fees,proto3" json:"fees,omitempty"`
-	Total         float64                `protobuf:"fixed64,6,opt,name=total,proto3" json:"total,omitempty"`
-	Taxes         float64                `protobuf:"fixed64,7,opt,name=taxes,proto3" json:"taxes,omitempty"`
-	Subtotal      float64                `protobuf:"fixed64,8,opt,name=subtotal,proto3" json:"subtotal,omitempty"`
+	Items         []*CartItem            `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
+	Fees          []*Fee                 `protobuf:"bytes,4,rep,name=fees,proto3" json:"fees,omitempty"`
+	Total         float64                `protobuf:"fixed64,5,opt,name=total,proto3" json:"total,omitempty"`
+	Taxes         float64                `protobuf:"fixed64,6,opt,name=taxes,proto3" json:"taxes,omitempty"`
+	Subtotal      float64                `protobuf:"fixed64,7,opt,name=subtotal,proto3" json:"subtotal,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -221,11 +221,11 @@ const file_proto_cart_proto_rawDesc = "" +
 	"\x04Cart\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\rR\x06userId\x12\x1f\n" +
-	"\x05items\x18\x04 \x03(\v2\t.CartItemR\x05items\x12\x18\n" +
-	"\x04fees\x18\x05 \x03(\v2\x04.FeeR\x04fees\x12\x14\n" +
-	"\x05total\x18\x06 \x01(\x01R\x05total\x12\x14\n" +
-	"\x05taxes\x18\a \x01(\x01R\x05taxes\x12\x1a\n" +
-	"\bsubtotal\x18\b \x01(\x01R\bsubtotal\"\xc7\x01\n" +
+	"\x05items\x18\x03 \x03(\v2\t.CartItemR\x05items\x12\x18\n" +
+	"\x04fees\x18\x04 \x03(\v2\x04.FeeR\x04fees\x12\x14\n" +
+	"\x05total\x18\x05 \x01(\x01R\x05total\x12\x14\n" +
+	"\x05taxes\x18\x06 \x01(\x01R\x05taxes\x12\x1a\n" +
+	"\bsubtotal\x18\a \x01(\x01R\bsubtotal\"\xc7\x01\n" +
 	"\bCartItem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
 	"\x06cartID\x18\x02 \x01(\rR\x06cartID\x12\x1a\n" +
