@@ -24,7 +24,7 @@ const (
 type Fee struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Value         float64                `protobuf:"fixed64,2,opt,name=value,proto3" json:"value,omitempty"`
+	Value         float32                `protobuf:"fixed32,2,opt,name=value,proto3" json:"value,omitempty"`
 	Included      bool                   `protobuf:"varint,3,opt,name=included,proto3" json:"included,omitempty"`
 	Public        bool                   `protobuf:"varint,4,opt,name=public,proto3" json:"public,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -68,7 +68,7 @@ func (x *Fee) GetName() string {
 	return ""
 }
 
-func (x *Fee) GetValue() float64 {
+func (x *Fee) GetValue() float32 {
 	if x != nil {
 		return x.Value
 	}
@@ -96,7 +96,7 @@ const file_proto_fee_proto_rawDesc = "" +
 	"\x0fproto/fee.proto\"c\n" +
 	"\x03Fee\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value\x12\x1a\n" +
+	"\x05value\x18\x02 \x01(\x02R\x05value\x12\x1a\n" +
 	"\bincluded\x18\x03 \x01(\bR\bincluded\x12\x16\n" +
 	"\x06public\x18\x04 \x01(\bR\x06publicB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 
