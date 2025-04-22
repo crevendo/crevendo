@@ -26,7 +26,7 @@ type Product struct {
 	Id             uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	CustomId       string                 `protobuf:"bytes,3,opt,name=customId,proto3" json:"customId,omitempty"`
 	Name           string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	Price          float64                `protobuf:"fixed64,5,opt,name=price,proto3" json:"price,omitempty"`
+	Price          uint32                 `protobuf:"varint,5,opt,name=price,proto3" json:"price,omitempty"`
 	Image          string                 `protobuf:"bytes,6,opt,name=image,proto3" json:"image,omitempty"`
 	Images         []string               `protobuf:"bytes,7,rep,name=images,proto3" json:"images,omitempty"`
 	Description    string                 `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
@@ -96,7 +96,7 @@ func (x *Product) GetName() string {
 	return ""
 }
 
-func (x *Product) GetPrice() float64 {
+func (x *Product) GetPrice() uint32 {
 	if x != nil {
 		return x.Price
 	}
@@ -210,7 +210,7 @@ const file_proto_product_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1a\n" +
 	"\bcustomId\x18\x03 \x01(\tR\bcustomId\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x14\n" +
-	"\x05price\x18\x05 \x01(\x01R\x05price\x12\x14\n" +
+	"\x05price\x18\x05 \x01(\rR\x05price\x12\x14\n" +
 	"\x05image\x18\x06 \x01(\tR\x05image\x12\x16\n" +
 	"\x06images\x18\a \x03(\tR\x06images\x12 \n" +
 	"\vdescription\x18\b \x01(\tR\vdescription\x12\x18\n" +
