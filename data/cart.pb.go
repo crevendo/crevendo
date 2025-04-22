@@ -27,9 +27,9 @@ type Cart struct {
 	UserId        uint32                 `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	Items         []*CartItem            `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
 	Fees          []*Fee                 `protobuf:"bytes,4,rep,name=fees,proto3" json:"fees,omitempty"`
-	Total         float32                `protobuf:"fixed32,5,opt,name=total,proto3" json:"total,omitempty"`
-	Taxes         float32                `protobuf:"fixed32,6,opt,name=taxes,proto3" json:"taxes,omitempty"`
-	Subtotal      float32                `protobuf:"fixed32,7,opt,name=subtotal,proto3" json:"subtotal,omitempty"`
+	Total         uint32                 `protobuf:"varint,5,opt,name=total,proto3" json:"total,omitempty"`
+	Taxes         uint32                 `protobuf:"varint,6,opt,name=taxes,proto3" json:"taxes,omitempty"`
+	Subtotal      uint32                 `protobuf:"varint,7,opt,name=subtotal,proto3" json:"subtotal,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -92,21 +92,21 @@ func (x *Cart) GetFees() []*Fee {
 	return nil
 }
 
-func (x *Cart) GetTotal() float32 {
+func (x *Cart) GetTotal() uint32 {
 	if x != nil {
 		return x.Total
 	}
 	return 0
 }
 
-func (x *Cart) GetTaxes() float32 {
+func (x *Cart) GetTaxes() uint32 {
 	if x != nil {
 		return x.Taxes
 	}
 	return 0
 }
 
-func (x *Cart) GetSubtotal() float32 {
+func (x *Cart) GetSubtotal() uint32 {
 	if x != nil {
 		return x.Subtotal
 	}
@@ -121,7 +121,7 @@ type CartItem struct {
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Image         string                 `protobuf:"bytes,5,opt,name=image,proto3" json:"image,omitempty"`
 	ProductId     string                 `protobuf:"bytes,6,opt,name=productId,proto3" json:"productId,omitempty"`
-	Price         float32                `protobuf:"fixed32,7,opt,name=price,proto3" json:"price,omitempty"`
+	Price         uint32                 `protobuf:"varint,7,opt,name=price,proto3" json:"price,omitempty"`
 	Data          []*Data                `protobuf:"bytes,8,rep,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -199,7 +199,7 @@ func (x *CartItem) GetProductId() string {
 	return ""
 }
 
-func (x *CartItem) GetPrice() float32 {
+func (x *CartItem) GetPrice() uint32 {
 	if x != nil {
 		return x.Price
 	}
@@ -223,9 +223,9 @@ const file_proto_cart_proto_rawDesc = "" +
 	"\x06userId\x18\x02 \x01(\rR\x06userId\x12\x1f\n" +
 	"\x05items\x18\x03 \x03(\v2\t.CartItemR\x05items\x12\x18\n" +
 	"\x04fees\x18\x04 \x03(\v2\x04.FeeR\x04fees\x12\x14\n" +
-	"\x05total\x18\x05 \x01(\x02R\x05total\x12\x14\n" +
-	"\x05taxes\x18\x06 \x01(\x02R\x05taxes\x12\x1a\n" +
-	"\bsubtotal\x18\a \x01(\x02R\bsubtotal\"\xc7\x01\n" +
+	"\x05total\x18\x05 \x01(\rR\x05total\x12\x14\n" +
+	"\x05taxes\x18\x06 \x01(\rR\x05taxes\x12\x1a\n" +
+	"\bsubtotal\x18\a \x01(\rR\bsubtotal\"\xc7\x01\n" +
 	"\bCartItem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
 	"\x06cartID\x18\x02 \x01(\rR\x06cartID\x12\x1a\n" +
@@ -233,7 +233,7 @@ const file_proto_cart_proto_rawDesc = "" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x14\n" +
 	"\x05image\x18\x05 \x01(\tR\x05image\x12\x1c\n" +
 	"\tproductId\x18\x06 \x01(\tR\tproductId\x12\x14\n" +
-	"\x05price\x18\a \x01(\x02R\x05price\x12\x19\n" +
+	"\x05price\x18\a \x01(\rR\x05price\x12\x19\n" +
 	"\x04data\x18\b \x03(\v2\x05.DataR\x04dataB#Z!github.com/crevendo/crevendo/datab\x06proto3"
 
 var (

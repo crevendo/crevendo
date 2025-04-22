@@ -149,7 +149,7 @@ type Order struct {
 	UserId        uint32                 `protobuf:"varint,3,opt,name=userId,proto3" json:"userId,omitempty"`
 	AddressId     uint32                 `protobuf:"varint,4,opt,name=addressId,proto3" json:"addressId,omitempty"`
 	Items         []*OrderItem           `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
-	Total         float32                `protobuf:"fixed32,6,opt,name=total,proto3" json:"total,omitempty"`
+	Total         uint32                 `protobuf:"varint,6,opt,name=total,proto3" json:"total,omitempty"`
 	PaymentId     uint32                 `protobuf:"varint,7,opt,name=paymentId,proto3" json:"paymentId,omitempty"`
 	Status        *OrderStatus           `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
 	Fees          []*Fee                 `protobuf:"bytes,9,rep,name=fees,proto3" json:"fees,omitempty"`
@@ -225,7 +225,7 @@ func (x *Order) GetItems() []*OrderItem {
 	return nil
 }
 
-func (x *Order) GetTotal() float32 {
+func (x *Order) GetTotal() uint32 {
 	if x != nil {
 		return x.Total
 	}
@@ -281,7 +281,7 @@ type OrderItem struct {
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Image         string                 `protobuf:"bytes,5,opt,name=image,proto3" json:"image,omitempty"`
 	Quantity      uint32                 `protobuf:"varint,6,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	Price         float32                `protobuf:"fixed32,7,opt,name=price,proto3" json:"price,omitempty"`
+	Price         uint32                 `protobuf:"varint,7,opt,name=price,proto3" json:"price,omitempty"`
 	ProductId     string                 `protobuf:"bytes,8,opt,name=productId,proto3" json:"productId,omitempty"`
 	Data          []*Data                `protobuf:"bytes,9,rep,name=data,proto3" json:"data,omitempty"`
 	Status        *OrderItemStatus       `protobuf:"bytes,10,opt,name=status,proto3" json:"status,omitempty"`
@@ -354,7 +354,7 @@ func (x *OrderItem) GetQuantity() uint32 {
 	return 0
 }
 
-func (x *OrderItem) GetPrice() float32 {
+func (x *OrderItem) GetPrice() uint32 {
 	if x != nil {
 		return x.Price
 	}
@@ -402,7 +402,7 @@ const file_proto_order_proto_rawDesc = "" +
 	"\taddressId\x18\x04 \x01(\rR\taddressId\x12 \n" +
 	"\x05items\x18\x05 \x03(\v2\n" +
 	".OrderItemR\x05items\x12\x14\n" +
-	"\x05total\x18\x06 \x01(\x02R\x05total\x12\x1c\n" +
+	"\x05total\x18\x06 \x01(\rR\x05total\x12\x1c\n" +
 	"\tpaymentId\x18\a \x01(\rR\tpaymentId\x12$\n" +
 	"\x06status\x18\b \x01(\v2\f.OrderStatusR\x06status\x12\x18\n" +
 	"\x04fees\x18\t \x03(\v2\x04.FeeR\x04fees\x128\n" +
@@ -415,7 +415,7 @@ const file_proto_order_proto_rawDesc = "" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x14\n" +
 	"\x05image\x18\x05 \x01(\tR\x05image\x12\x1a\n" +
 	"\bquantity\x18\x06 \x01(\rR\bquantity\x12\x14\n" +
-	"\x05price\x18\a \x01(\x02R\x05price\x12\x1c\n" +
+	"\x05price\x18\a \x01(\rR\x05price\x12\x1c\n" +
 	"\tproductId\x18\b \x01(\tR\tproductId\x12\x19\n" +
 	"\x04data\x18\t \x03(\v2\x05.DataR\x04data\x12(\n" +
 	"\x06status\x18\n" +

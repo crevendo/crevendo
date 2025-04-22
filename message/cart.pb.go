@@ -512,7 +512,7 @@ func (x *UpdateItemQuantityResponse) GetCart() *data.Cart {
 
 type GetOrderTotalResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Total         float32                `protobuf:"fixed32,1,opt,name=total,proto3" json:"total,omitempty"`
+	Total         uint32                 `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -547,7 +547,7 @@ func (*GetOrderTotalResponse) Descriptor() ([]byte, []int) {
 	return file_proto_message_cart_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *GetOrderTotalResponse) GetTotal() float32 {
+func (x *GetOrderTotalResponse) GetTotal() uint32 {
 	if x != nil {
 		return x.Total
 	}
@@ -591,7 +591,7 @@ const file_proto_message_cart_proto_rawDesc = "" +
 	"\x1aUpdateItemQuantityResponse\x12\x19\n" +
 	"\x04cart\x18\x01 \x01(\v2\x05.CartR\x04cart\"-\n" +
 	"\x15GetOrderTotalResponse\x12\x14\n" +
-	"\x05total\x18\x01 \x01(\x02R\x05totalB&Z$github.com/crevendo/crevendo/messageb\x06proto3"
+	"\x05total\x18\x01 \x01(\rR\x05totalB&Z$github.com/crevendo/crevendo/messageb\x06proto3"
 
 var (
 	file_proto_message_cart_proto_rawDescOnce sync.Once

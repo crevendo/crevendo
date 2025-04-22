@@ -338,7 +338,7 @@ type ProductUpdateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Price         float32                `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`
+	Price         uint32                 `protobuf:"varint,3,opt,name=price,proto3" json:"price,omitempty"`
 	Image         string                 `protobuf:"bytes,4,opt,name=image,proto3" json:"image,omitempty"`
 	Description   string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
 	Excerpt       string                 `protobuf:"bytes,6,opt,name=excerpt,proto3" json:"excerpt,omitempty"`
@@ -394,7 +394,7 @@ func (x *ProductUpdateMessage) GetName() string {
 	return ""
 }
 
-func (x *ProductUpdateMessage) GetPrice() float32 {
+func (x *ProductUpdateMessage) GetPrice() uint32 {
 	if x != nil {
 		return x.Price
 	}
@@ -498,7 +498,7 @@ type ProductCreateMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Image         string                 `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
-	Price         float32                `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`
+	Price         uint32                 `protobuf:"varint,3,opt,name=price,proto3" json:"price,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	Excerpt       string                 `protobuf:"bytes,5,opt,name=excerpt,proto3" json:"excerpt,omitempty"`
 	BrandId       uint32                 `protobuf:"varint,6,opt,name=brandId,proto3" json:"brandId,omitempty"`
@@ -553,7 +553,7 @@ func (x *ProductCreateMessage) GetImage() string {
 	return ""
 }
 
-func (x *ProductCreateMessage) GetPrice() float32 {
+func (x *ProductCreateMessage) GetPrice() uint32 {
 	if x != nil {
 		return x.Price
 	}
@@ -790,7 +790,7 @@ const file_proto_message_product_proto_rawDesc = "" +
 	"\x14ProductUpdateMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
-	"\x05price\x18\x03 \x01(\x02R\x05price\x12\x14\n" +
+	"\x05price\x18\x03 \x01(\rR\x05price\x12\x14\n" +
 	"\x05image\x18\x04 \x01(\tR\x05image\x12 \n" +
 	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x18\n" +
 	"\aexcerpt\x18\x06 \x01(\tR\aexcerpt\x12\x18\n" +
@@ -804,7 +804,7 @@ const file_proto_message_product_proto_rawDesc = "" +
 	"\x14ProductCreateMessage\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05image\x18\x02 \x01(\tR\x05image\x12\x14\n" +
-	"\x05price\x18\x03 \x01(\x02R\x05price\x12 \n" +
+	"\x05price\x18\x03 \x01(\rR\x05price\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\aexcerpt\x18\x05 \x01(\tR\aexcerpt\x12\x18\n" +
 	"\abrandId\x18\x06 \x01(\rR\abrandId\x12\x14\n" +
