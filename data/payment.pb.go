@@ -29,7 +29,7 @@ type Payment struct {
 	UserId        uint32                 `protobuf:"varint,5,opt,name=userId,proto3" json:"userId,omitempty"`
 	User          *User                  `protobuf:"bytes,6,opt,name=user,proto3" json:"user,omitempty"`
 	Gateway       string                 `protobuf:"bytes,7,opt,name=gateway,proto3" json:"gateway,omitempty"`
-	Total         float64                `protobuf:"fixed64,8,opt,name=total,proto3" json:"total,omitempty"`
+	Total         uint32                 `protobuf:"varint,8,opt,name=total,proto3" json:"total,omitempty"`
 	Status        uint32                 `protobuf:"varint,9,opt,name=status,proto3" json:"status,omitempty"`
 	MethodId      string                 `protobuf:"bytes,10,opt,name=methodId,proto3" json:"methodId,omitempty"`
 	OrderId       uint32                 `protobuf:"varint,11,opt,name=orderId,proto3" json:"orderId,omitempty"`
@@ -111,7 +111,7 @@ func (x *Payment) GetGateway() string {
 	return ""
 }
 
-func (x *Payment) GetTotal() float64 {
+func (x *Payment) GetTotal() uint32 {
 	if x != nil {
 		return x.Total
 	}
@@ -257,7 +257,7 @@ const file_proto_payment_proto_rawDesc = "" +
 	"\x06userId\x18\x05 \x01(\rR\x06userId\x12\x19\n" +
 	"\x04user\x18\x06 \x01(\v2\x05.UserR\x04user\x12\x18\n" +
 	"\agateway\x18\a \x01(\tR\agateway\x12\x14\n" +
-	"\x05total\x18\b \x01(\x01R\x05total\x12\x16\n" +
+	"\x05total\x18\b \x01(\rR\x05total\x12\x16\n" +
 	"\x06status\x18\t \x01(\rR\x06status\x12\x1a\n" +
 	"\bmethodId\x18\n" +
 	" \x01(\tR\bmethodId\x12\x18\n" +
