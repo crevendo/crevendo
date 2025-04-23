@@ -64,8 +64,6 @@ func (m *Product) validate(all bool) error {
 
 	// no validation rules for Price
 
-	// no validation rules for Image
-
 	// no validation rules for Description
 
 	// no validation rules for Excerpt

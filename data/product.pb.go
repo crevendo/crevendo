@@ -27,7 +27,6 @@ type Product struct {
 	CustomId       string                 `protobuf:"bytes,3,opt,name=customId,proto3" json:"customId,omitempty"`
 	Name           string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Price          uint32                 `protobuf:"varint,5,opt,name=price,proto3" json:"price,omitempty"`
-	Image          string                 `protobuf:"bytes,6,opt,name=image,proto3" json:"image,omitempty"`
 	Images         []string               `protobuf:"bytes,7,rep,name=images,proto3" json:"images,omitempty"`
 	Description    string                 `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
 	Excerpt        string                 `protobuf:"bytes,9,opt,name=excerpt,proto3" json:"excerpt,omitempty"`
@@ -101,13 +100,6 @@ func (x *Product) GetPrice() uint32 {
 		return x.Price
 	}
 	return 0
-}
-
-func (x *Product) GetImage() string {
-	if x != nil {
-		return x.Image
-	}
-	return ""
 }
 
 func (x *Product) GetImages() []string {
@@ -205,13 +197,12 @@ var File_proto_product_proto protoreflect.FileDescriptor
 
 const file_proto_product_proto_rawDesc = "" +
 	"\n" +
-	"\x13proto/product.proto\x1a\x10proto/data.proto\x1a\x12proto/rating.proto\x1a\x15proto/attribute.proto\x1a\x13proto/variant.proto\x1a\x14proto/category.proto\"\x96\x04\n" +
+	"\x13proto/product.proto\x1a\x10proto/data.proto\x1a\x12proto/rating.proto\x1a\x15proto/attribute.proto\x1a\x13proto/variant.proto\x1a\x14proto/category.proto\"\x80\x04\n" +
 	"\aProduct\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1a\n" +
 	"\bcustomId\x18\x03 \x01(\tR\bcustomId\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x14\n" +
-	"\x05price\x18\x05 \x01(\rR\x05price\x12\x14\n" +
-	"\x05image\x18\x06 \x01(\tR\x05image\x12\x16\n" +
+	"\x05price\x18\x05 \x01(\rR\x05price\x12\x16\n" +
 	"\x06images\x18\a \x03(\tR\x06images\x12 \n" +
 	"\vdescription\x18\b \x01(\tR\vdescription\x12\x18\n" +
 	"\aexcerpt\x18\t \x01(\tR\aexcerpt\x12)\n" +
